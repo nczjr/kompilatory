@@ -40,7 +40,13 @@ function
   | DOUBLE
   ;
 
-	value: STRING_VALUE | INT_VALUE | CHAR_VALUE | BOOLEAN_VALUE | DOUBLE_VALUE ;
+	value
+  : STRING_VALUE
+  | INT_VALUE
+  | CHAR_VALUE
+  | BOOLEAN_VALUE
+  | DOUBLE_VALUE
+  ;
 
   expression
   : variable expression
@@ -134,23 +140,19 @@ function
         -> skip
     ;
 
-Newline
+    Newline
     :   (   '\r' '\n'?
         |   '\n'
         )
         -> skip
     ;
 
-BlockComment
+    BlockComment
     :   '/*' .*? '*/'
         -> skip
     ;
 
-LineComment
+    LineComment
     :   '//' ~[\r\n]*
         -> skip
     ;
-
-
-
-  
