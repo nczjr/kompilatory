@@ -22,6 +22,12 @@ public interface GnocchiVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitFunctionDeclaration(GnocchiParser.FunctionDeclarationContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link GnocchiParser#typcio}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTypcio(GnocchiParser.TypcioContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link GnocchiParser#functionMain}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
