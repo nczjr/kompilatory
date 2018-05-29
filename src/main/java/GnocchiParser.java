@@ -16,11 +16,11 @@ public class GnocchiParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		CIUL=1, VAR=2, FUNC=3, RETURN=4, MAIN=5, ASSIGNMENT=6, EQUALS=7, NOT_EQUALS=8, 
-		LOWER=9, GREATER=10, LOWER_OR_EQUAL=11, GREATER_OR_EQUAL=12, PLUS=13, 
-		MINUS=14, DIVIDE=15, MULTIPLY=16, SEMICOLON=17, COLON=18, ARROW=19, COMMA=20, 
-		OPEN_BRACKET=21, CLOSE_BRACKET=22, OPEN_PARENTHESIS=23, CLOSE_PARENTHESIS=24, 
-		IDENTIFIER=25, INT=26, STRING=27, CHAR=28, BOOLEAN=29, DOUBLE=30, DOT=31, 
+		CIUL=1, VAR=2, FUNC=3, RETURN=4, MAIN=5, INT=6, STRING=7, CHAR=8, BOOLEAN=9, 
+		DOUBLE=10, DOT=11, ASSIGNMENT=12, EQUALS=13, NOT_EQUALS=14, LOWER=15, 
+		GREATER=16, LOWER_OR_EQUAL=17, GREATER_OR_EQUAL=18, PLUS=19, MINUS=20, 
+		DIVIDE=21, MULTIPLY=22, SEMICOLON=23, COLON=24, ARROW=25, COMMA=26, OPEN_BRACKET=27, 
+		CLOSE_BRACKET=28, OPEN_PARENTHESIS=29, CLOSE_PARENTHESIS=30, IDENTIFIER=31, 
 		STRING_VALUE=32, CHAR_VALUE=33, DIGIT=34, INT_VALUE=35, DOUBLE_VALUE=36, 
 		BOOLEAN_VALUE=37, Whitespace=38, Newline=39, BlockComment=40, LineComment=41;
 	public static final int
@@ -37,17 +37,17 @@ public class GnocchiParser extends Parser {
 	};
 
 	private static final String[] _LITERAL_NAMES = {
-		null, "'ciul'", "'var'", "'func'", "'return'", "'main'", "'='", "'=='", 
-		"'!='", "'<'", "'>'", "'<='", "'>='", "'+'", "'-'", "'/'", "'*'", "';'", 
-		"':'", "'=>'", "','", "'{'", "'}'", "'('", "')'", null, "'Int'", "'String'", 
-		"'Char'", "'Bool'", "'Double'", "'.'"
+		null, "'ciul'", "'var'", "'func'", "'return'", "'main'", "'Int'", "'String'", 
+		"'Char'", "'Bool'", "'Double'", "'.'", "'='", "'=='", "'!='", "'<'", "'>'", 
+		"'<='", "'>='", "'+'", "'-'", "'/'", "'*'", "';'", "':'", "'=>'", "','", 
+		"'{'", "'}'", "'('", "')'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
-		null, "CIUL", "VAR", "FUNC", "RETURN", "MAIN", "ASSIGNMENT", "EQUALS", 
-		"NOT_EQUALS", "LOWER", "GREATER", "LOWER_OR_EQUAL", "GREATER_OR_EQUAL", 
-		"PLUS", "MINUS", "DIVIDE", "MULTIPLY", "SEMICOLON", "COLON", "ARROW", 
-		"COMMA", "OPEN_BRACKET", "CLOSE_BRACKET", "OPEN_PARENTHESIS", "CLOSE_PARENTHESIS", 
-		"IDENTIFIER", "INT", "STRING", "CHAR", "BOOLEAN", "DOUBLE", "DOT", "STRING_VALUE", 
+		null, "CIUL", "VAR", "FUNC", "RETURN", "MAIN", "INT", "STRING", "CHAR", 
+		"BOOLEAN", "DOUBLE", "DOT", "ASSIGNMENT", "EQUALS", "NOT_EQUALS", "LOWER", 
+		"GREATER", "LOWER_OR_EQUAL", "GREATER_OR_EQUAL", "PLUS", "MINUS", "DIVIDE", 
+		"MULTIPLY", "SEMICOLON", "COLON", "ARROW", "COMMA", "OPEN_BRACKET", "CLOSE_BRACKET", 
+		"OPEN_PARENTHESIS", "CLOSE_PARENTHESIS", "IDENTIFIER", "STRING_VALUE", 
 		"CHAR_VALUE", "DIGIT", "INT_VALUE", "DOUBLE_VALUE", "BOOLEAN_VALUE", "Whitespace", 
 		"Newline", "BlockComment", "LineComment"
 	};
@@ -1245,28 +1245,28 @@ public class GnocchiParser extends Parser {
 		"\f\13\16\13e\13\13\3\f\3\f\3\f\3\f\5\fk\n\f\3\r\3\r\3\r\3\r\3\16\3\16"+
 		"\3\17\3\17\3\20\3\20\3\20\5\20x\n\20\3\21\3\21\3\21\3\21\3\22\3\22\5\22"+
 		"\u0080\n\22\3\23\3\23\3\24\3\24\3\24\2\2\25\2\4\6\b\n\f\16\20\22\24\26"+
-		"\30\32\34\36 \"$&\2\7\4\2\3\3\5\5\3\2\34 \4\2\"#%\'\3\2\17\22\3\2\t\16"+
+		"\30\32\34\36 \"$&\2\7\4\2\3\3\5\5\3\2\b\f\4\2\"#%\'\3\2\25\30\3\2\17\24"+
 		"\2}\2+\3\2\2\2\4\60\3\2\2\2\68\3\2\2\2\b:\3\2\2\2\n=\3\2\2\2\f@\3\2\2"+
 		"\2\16B\3\2\2\2\20X\3\2\2\2\22Z\3\2\2\2\24c\3\2\2\2\26f\3\2\2\2\30l\3\2"+
 		"\2\2\32p\3\2\2\2\34r\3\2\2\2\36w\3\2\2\2 y\3\2\2\2\"\177\3\2\2\2$\u0081"+
 		"\3\2\2\2&\u0083\3\2\2\2(*\5\4\3\2)(\3\2\2\2*-\3\2\2\2+)\3\2\2\2+,\3\2"+
 		"\2\2,.\3\2\2\2-+\3\2\2\2./\5\b\5\2/\3\3\2\2\2\60\61\7\5\2\2\61\64\5\n"+
-		"\6\2\62\63\7\25\2\2\63\65\5\32\16\2\64\62\3\2\2\2\64\65\3\2\2\2\65\66"+
+		"\6\2\62\63\7\33\2\2\63\65\5\32\16\2\64\62\3\2\2\2\64\65\3\2\2\2\65\66"+
 		"\3\2\2\2\66\67\5\22\n\2\67\5\3\2\2\289\t\2\2\29\7\3\2\2\2:;\7\5\2\2;<"+
-		"\7\7\2\2<\t\3\2\2\2=>\7\33\2\2>?\5\16\b\2?\13\3\2\2\2@A\5\n\6\2A\r\3\2"+
-		"\2\2BD\7\31\2\2CE\5\20\t\2DC\3\2\2\2DE\3\2\2\2EF\3\2\2\2FG\7\32\2\2G\17"+
-		"\3\2\2\2HM\5\30\r\2IJ\7\26\2\2JL\5\30\r\2KI\3\2\2\2LO\3\2\2\2MK\3\2\2"+
-		"\2MN\3\2\2\2NY\3\2\2\2OM\3\2\2\2PU\5\34\17\2QR\7\26\2\2RT\5\34\17\2SQ"+
-		"\3\2\2\2TW\3\2\2\2US\3\2\2\2UV\3\2\2\2VY\3\2\2\2WU\3\2\2\2XH\3\2\2\2X"+
-		"P\3\2\2\2Y\21\3\2\2\2Z[\7\27\2\2[\\\5\24\13\2\\]\7\30\2\2]\23\3\2\2\2"+
-		"^_\5\36\20\2_`\7\23\2\2`b\3\2\2\2a^\3\2\2\2be\3\2\2\2ca\3\2\2\2cd\3\2"+
-		"\2\2d\25\3\2\2\2ec\3\2\2\2fg\7\4\2\2gj\5\30\r\2hi\7\b\2\2ik\5\34\17\2"+
-		"jh\3\2\2\2jk\3\2\2\2k\27\3\2\2\2lm\7\33\2\2mn\7\24\2\2no\5\32\16\2o\31"+
-		"\3\2\2\2pq\t\3\2\2q\33\3\2\2\2rs\t\4\2\2s\35\3\2\2\2tx\5\26\f\2ux\5 \21"+
-		"\2vx\5\f\7\2wt\3\2\2\2wu\3\2\2\2wv\3\2\2\2x\37\3\2\2\2yz\7\33\2\2z{\5"+
-		"\"\22\2{|\7\33\2\2|!\3\2\2\2}\u0080\5$\23\2~\u0080\5&\24\2\177}\3\2\2"+
-		"\2\177~\3\2\2\2\u0080#\3\2\2\2\u0081\u0082\t\5\2\2\u0082%\3\2\2\2\u0083"+
-		"\u0084\t\6\2\2\u0084\'\3\2\2\2\f+\64DMUXcjw\177";
+		"\7\7\2\2<\t\3\2\2\2=>\7!\2\2>?\5\16\b\2?\13\3\2\2\2@A\5\n\6\2A\r\3\2\2"+
+		"\2BD\7\37\2\2CE\5\20\t\2DC\3\2\2\2DE\3\2\2\2EF\3\2\2\2FG\7 \2\2G\17\3"+
+		"\2\2\2HM\5\30\r\2IJ\7\34\2\2JL\5\30\r\2KI\3\2\2\2LO\3\2\2\2MK\3\2\2\2"+
+		"MN\3\2\2\2NY\3\2\2\2OM\3\2\2\2PU\5\34\17\2QR\7\34\2\2RT\5\34\17\2SQ\3"+
+		"\2\2\2TW\3\2\2\2US\3\2\2\2UV\3\2\2\2VY\3\2\2\2WU\3\2\2\2XH\3\2\2\2XP\3"+
+		"\2\2\2Y\21\3\2\2\2Z[\7\35\2\2[\\\5\24\13\2\\]\7\36\2\2]\23\3\2\2\2^_\5"+
+		"\36\20\2_`\7\31\2\2`b\3\2\2\2a^\3\2\2\2be\3\2\2\2ca\3\2\2\2cd\3\2\2\2"+
+		"d\25\3\2\2\2ec\3\2\2\2fg\7\4\2\2gj\5\30\r\2hi\7\16\2\2ik\5\34\17\2jh\3"+
+		"\2\2\2jk\3\2\2\2k\27\3\2\2\2lm\7!\2\2mn\7\32\2\2no\5\32\16\2o\31\3\2\2"+
+		"\2pq\t\3\2\2q\33\3\2\2\2rs\t\4\2\2s\35\3\2\2\2tx\5\26\f\2ux\5 \21\2vx"+
+		"\5\f\7\2wt\3\2\2\2wu\3\2\2\2wv\3\2\2\2x\37\3\2\2\2yz\7!\2\2z{\5\"\22\2"+
+		"{|\7!\2\2|!\3\2\2\2}\u0080\5$\23\2~\u0080\5&\24\2\177}\3\2\2\2\177~\3"+
+		"\2\2\2\u0080#\3\2\2\2\u0081\u0082\t\5\2\2\u0082%\3\2\2\2\u0083\u0084\t"+
+		"\6\2\2\u0084\'\3\2\2\2\f+\64DMUXcjw\177";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
