@@ -10,13 +10,6 @@ start
 	: FUNC functionIdentifier (ARROW type)? functionBody
   ;
 
-	typcio
-	: FUNC
-	| CIUL
-	;
-
-	CIUL: 'ciul';
-
   functionMain
   : FUNC MAIN
   ;
@@ -64,6 +57,7 @@ start
   | DOUBLE
   ;
 
+
 	value
   : STRING_VALUE
   | INT_VALUE
@@ -109,6 +103,13 @@ start
   RETURN: 'return';
   MAIN: 'main';
 
+	INT: 'Int';
+  STRING: 'String';
+  CHAR: 'Char';
+  BOOLEAN: 'Bool';
+  DOUBLE: 'Double';
+  DOT: '.';
+
   ASSIGNMENT: '=';
   EQUALS: '==';
   NOT_EQUALS: '!=';
@@ -130,15 +131,9 @@ start
   OPEN_PARENTHESIS: '(';
   CLOSE_PARENTHESIS: ')';
 
+
+	fragment
   IDENTIFIER:	('a'..'z' | 'A'..'Z' | '_') ('a'..'z' | 'A'..'Z' | '_' | '0'..'9')* ;
-
-  INT: 'Int';
-  STRING: 'String';
-  CHAR: 'Char';
-  BOOLEAN: 'Bool';
-  DOUBLE: 'Double';
-  DOT: '.';
-
 
   fragment
   STRING_VALUE: (CHARACTER_VALUE)+ ;

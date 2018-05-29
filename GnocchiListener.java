@@ -27,16 +27,6 @@ public interface GnocchiListener extends ParseTreeListener {
 	 */
 	void exitFunctionDeclaration(GnocchiParser.FunctionDeclarationContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GnocchiParser#typcio}.
-	 * @param ctx the parse tree
-	 */
-	void enterTypcio(GnocchiParser.TypcioContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link GnocchiParser#typcio}.
-	 * @param ctx the parse tree
-	 */
-	void exitTypcio(GnocchiParser.TypcioContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link GnocchiParser#functionMain}.
 	 * @param ctx the parse tree
 	 */
