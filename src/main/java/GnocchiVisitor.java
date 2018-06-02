@@ -1,4 +1,4 @@
-// Generated from /Users/marcinwloczko/Desktop/Gramatyka/Gnocchi.g4 by ANTLR 4.7.1
+// Generated from /Users/marcinwloczko/IdeaProjects/kompilatory/src/main/java/Gnocchi.g4 by ANTLR 4.7.1
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -21,12 +21,6 @@ public interface GnocchiVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitFunctionDeclaration(GnocchiParser.FunctionDeclarationContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link GnocchiParser#typcio}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitTypcio(GnocchiParser.TypcioContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link GnocchiParser#functionMain}.
 	 * @param ctx the parse tree
@@ -81,6 +75,12 @@ public interface GnocchiVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitVariableDef(GnocchiParser.VariableDefContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GnocchiParser#selectionStatement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSelectionStatement(GnocchiParser.SelectionStatementContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link GnocchiParser#type}.
 	 * @param ctx the parse tree

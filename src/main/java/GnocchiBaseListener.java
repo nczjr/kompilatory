@@ -1,4 +1,4 @@
-// Generated from /Users/marcinwloczko/Desktop/Gramatyka/Gnocchi.g4 by ANTLR 4.7.1
+// Generated from /Users/marcinwloczko/IdeaProjects/kompilatory/src/main/java/Gnocchi.g4 by ANTLR 4.7.1
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
@@ -34,18 +34,6 @@ public class GnocchiBaseListener implements GnocchiListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitFunctionDeclaration(GnocchiParser.FunctionDeclarationContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterTypcio(GnocchiParser.TypcioContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitTypcio(GnocchiParser.TypcioContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -154,6 +142,18 @@ public class GnocchiBaseListener implements GnocchiListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitVariableDef(GnocchiParser.VariableDefContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterSelectionStatement(GnocchiParser.SelectionStatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSelectionStatement(GnocchiParser.SelectionStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
