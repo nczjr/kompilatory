@@ -21,19 +21,19 @@ public class GnocchiParser extends Parser {
 		NOT_EQUALS=18, LOWER=19, GREATER=20, LOWER_OR_EQUAL=21, GREATER_OR_EQUAL=22, 
 		PLUS=23, MINUS=24, DIVIDE=25, MULTIPLY=26, SEMICOLON=27, COLON=28, ARROW=29, 
 		COMMA=30, OPEN_BRACKET=31, CLOSE_BRACKET=32, OPEN_PARENTHESIS=33, CLOSE_PARENTHESIS=34, 
-		INCREMENT=35, DECREMENT=36, IDENTIFIER=37, STRING_VALUE=38, CHAR_VALUE=39, 
+		INCREMENT=35, DECREMENT=36, IDENT=37, STRING_VALUE=38, CHAR_VALUE=39, 
 		INT_VALUE=40, DOUBLE_VALUE=41, BOOLEAN_VALUE=42, Whitespace=43, Newline=44, 
 		BlockComment=45, LineComment=46;
 	public static final int
-		RULE_start = 0, RULE_functionDeclaration = 1, RULE_functionMain = 2, RULE_functionIdentifier = 3, 
-		RULE_functionCall = 4, RULE_parameters = 5, RULE_parameterList = 6, RULE_body = 7, 
-		RULE_variable = 8, RULE_variableDef = 9, RULE_selectionStatement = 10, 
-		RULE_iterationStatement = 11, RULE_forCondition = 12, RULE_unaryExpression = 13, 
-		RULE_type = 14, RULE_value = 15, RULE_expression = 16, RULE_operation = 17, 
-		RULE_logical_operation = 18, RULE_math_operation = 19, RULE_math_operator = 20, 
-		RULE_logical_operator = 21;
+		RULE_start = 0, RULE_identifier = 1, RULE_functionDeclaration = 2, RULE_functionMain = 3, 
+		RULE_functionIdentifier = 4, RULE_functionCall = 5, RULE_parameters = 6, 
+		RULE_parameterList = 7, RULE_body = 8, RULE_variable = 9, RULE_variableDef = 10, 
+		RULE_selectionStatement = 11, RULE_iterationStatement = 12, RULE_forCondition = 13, 
+		RULE_unaryExpression = 14, RULE_type = 15, RULE_value = 16, RULE_expression = 17, 
+		RULE_operation = 18, RULE_logical_operation = 19, RULE_math_operation = 20, 
+		RULE_math_operator = 21, RULE_logical_operator = 22;
 	public static final String[] ruleNames = {
-		"start", "functionDeclaration", "functionMain", "functionIdentifier", 
+		"start", "identifier", "functionDeclaration", "functionMain", "functionIdentifier", 
 		"functionCall", "parameters", "parameterList", "body", "variable", "variableDef", 
 		"selectionStatement", "iterationStatement", "forCondition", "unaryExpression", 
 		"type", "value", "expression", "operation", "logical_operation", "math_operation", 
@@ -53,9 +53,9 @@ public class GnocchiParser extends Parser {
 		"NOT_EQUALS", "LOWER", "GREATER", "LOWER_OR_EQUAL", "GREATER_OR_EQUAL", 
 		"PLUS", "MINUS", "DIVIDE", "MULTIPLY", "SEMICOLON", "COLON", "ARROW", 
 		"COMMA", "OPEN_BRACKET", "CLOSE_BRACKET", "OPEN_PARENTHESIS", "CLOSE_PARENTHESIS", 
-		"INCREMENT", "DECREMENT", "IDENTIFIER", "STRING_VALUE", "CHAR_VALUE", 
-		"INT_VALUE", "DOUBLE_VALUE", "BOOLEAN_VALUE", "Whitespace", "Newline", 
-		"BlockComment", "LineComment"
+		"INCREMENT", "DECREMENT", "IDENT", "STRING_VALUE", "CHAR_VALUE", "INT_VALUE", 
+		"DOUBLE_VALUE", "BOOLEAN_VALUE", "Whitespace", "Newline", "BlockComment", 
+		"LineComment"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -143,26 +143,68 @@ public class GnocchiParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(47);
+			setState(49);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,0,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
-					setState(44);
+					setState(46);
 					functionDeclaration();
 					}
 					} 
 				}
-				setState(49);
+				setState(51);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,0,_ctx);
 			}
-			setState(50);
+			setState(52);
 			functionMain();
-			setState(51);
+			setState(53);
 			match(EOF);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class IdentifierContext extends ParserRuleContext {
+		public TerminalNode IDENT() { return getToken(GnocchiParser.IDENT, 0); }
+		public IdentifierContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_identifier; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).enterIdentifier(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).exitIdentifier(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GnocchiVisitor ) return ((GnocchiVisitor<? extends T>)visitor).visitIdentifier(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final IdentifierContext identifier() throws RecognitionException {
+		IdentifierContext _localctx = new IdentifierContext(_ctx, getState());
+		enterRule(_localctx, 2, RULE_identifier);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(55);
+			match(IDENT);
 			}
 		}
 		catch (RecognitionException re) {
@@ -209,28 +251,28 @@ public class GnocchiParser extends Parser {
 
 	public final FunctionDeclarationContext functionDeclaration() throws RecognitionException {
 		FunctionDeclarationContext _localctx = new FunctionDeclarationContext(_ctx, getState());
-		enterRule(_localctx, 2, RULE_functionDeclaration);
+		enterRule(_localctx, 4, RULE_functionDeclaration);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(53);
-			match(FUNC);
-			setState(54);
-			functionIdentifier();
 			setState(57);
+			match(FUNC);
+			setState(58);
+			functionIdentifier();
+			setState(61);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==ARROW) {
 				{
-				setState(55);
+				setState(59);
 				match(ARROW);
-				setState(56);
+				setState(60);
 				type();
 				}
 			}
 
-			setState(59);
+			setState(63);
 			body();
 			}
 		}
@@ -274,19 +316,19 @@ public class GnocchiParser extends Parser {
 
 	public final FunctionMainContext functionMain() throws RecognitionException {
 		FunctionMainContext _localctx = new FunctionMainContext(_ctx, getState());
-		enterRule(_localctx, 4, RULE_functionMain);
+		enterRule(_localctx, 6, RULE_functionMain);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(61);
-			match(FUNC);
-			setState(62);
-			match(MAIN);
-			setState(63);
-			match(OPEN_PARENTHESIS);
-			setState(64);
-			match(CLOSE_PARENTHESIS);
 			setState(65);
+			match(FUNC);
+			setState(66);
+			match(MAIN);
+			setState(67);
+			match(OPEN_PARENTHESIS);
+			setState(68);
+			match(CLOSE_PARENTHESIS);
+			setState(69);
 			body();
 			}
 		}
@@ -302,7 +344,9 @@ public class GnocchiParser extends Parser {
 	}
 
 	public static class FunctionIdentifierContext extends ParserRuleContext {
-		public TerminalNode IDENTIFIER() { return getToken(GnocchiParser.IDENTIFIER, 0); }
+		public IdentifierContext identifier() {
+			return getRuleContext(IdentifierContext.class,0);
+		}
 		public ParametersContext parameters() {
 			return getRuleContext(ParametersContext.class,0);
 		}
@@ -327,13 +371,13 @@ public class GnocchiParser extends Parser {
 
 	public final FunctionIdentifierContext functionIdentifier() throws RecognitionException {
 		FunctionIdentifierContext _localctx = new FunctionIdentifierContext(_ctx, getState());
-		enterRule(_localctx, 6, RULE_functionIdentifier);
+		enterRule(_localctx, 8, RULE_functionIdentifier);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(67);
-			match(IDENTIFIER);
-			setState(68);
+			setState(71);
+			identifier();
+			setState(72);
 			parameters();
 			}
 		}
@@ -373,11 +417,11 @@ public class GnocchiParser extends Parser {
 
 	public final FunctionCallContext functionCall() throws RecognitionException {
 		FunctionCallContext _localctx = new FunctionCallContext(_ctx, getState());
-		enterRule(_localctx, 8, RULE_functionCall);
+		enterRule(_localctx, 10, RULE_functionCall);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(70);
+			setState(74);
 			functionIdentifier();
 			}
 		}
@@ -419,24 +463,24 @@ public class GnocchiParser extends Parser {
 
 	public final ParametersContext parameters() throws RecognitionException {
 		ParametersContext _localctx = new ParametersContext(_ctx, getState());
-		enterRule(_localctx, 10, RULE_parameters);
+		enterRule(_localctx, 12, RULE_parameters);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(72);
+			setState(76);
 			match(OPEN_PARENTHESIS);
-			setState(74);
+			setState(78);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << IDENTIFIER) | (1L << STRING_VALUE) | (1L << CHAR_VALUE) | (1L << INT_VALUE) | (1L << DOUBLE_VALUE) | (1L << BOOLEAN_VALUE))) != 0)) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << IDENT) | (1L << STRING_VALUE) | (1L << CHAR_VALUE) | (1L << INT_VALUE) | (1L << DOUBLE_VALUE) | (1L << BOOLEAN_VALUE))) != 0)) {
 				{
-				setState(73);
+				setState(77);
 				parameterList();
 				}
 			}
 
-			setState(76);
+			setState(80);
 			match(CLOSE_PARENTHESIS);
 			}
 		}
@@ -489,30 +533,30 @@ public class GnocchiParser extends Parser {
 
 	public final ParameterListContext parameterList() throws RecognitionException {
 		ParameterListContext _localctx = new ParameterListContext(_ctx, getState());
-		enterRule(_localctx, 12, RULE_parameterList);
+		enterRule(_localctx, 14, RULE_parameterList);
 		int _la;
 		try {
-			setState(94);
+			setState(98);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
-			case IDENTIFIER:
+			case IDENT:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(78);
+				setState(82);
 				variableDef();
-				setState(83);
+				setState(87);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				while (_la==COMMA) {
 					{
 					{
-					setState(79);
+					setState(83);
 					match(COMMA);
-					setState(80);
+					setState(84);
 					variableDef();
 					}
 					}
-					setState(85);
+					setState(89);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
@@ -525,21 +569,21 @@ public class GnocchiParser extends Parser {
 			case BOOLEAN_VALUE:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(86);
+				setState(90);
 				value();
-				setState(91);
+				setState(95);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				while (_la==COMMA) {
 					{
 					{
-					setState(87);
+					setState(91);
 					match(COMMA);
-					setState(88);
+					setState(92);
 					value();
 					}
 					}
-					setState(93);
+					setState(97);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
@@ -594,30 +638,30 @@ public class GnocchiParser extends Parser {
 
 	public final BodyContext body() throws RecognitionException {
 		BodyContext _localctx = new BodyContext(_ctx, getState());
-		enterRule(_localctx, 14, RULE_body);
+		enterRule(_localctx, 16, RULE_body);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(96);
+			setState(100);
 			match(OPEN_BRACKET);
-			setState(102);
+			setState(106);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << VAR) | (1L << IF) | (1L << FOR) | (1L << WHILE) | (1L << DO) | (1L << IDENTIFIER) | (1L << STRING_VALUE) | (1L << CHAR_VALUE) | (1L << INT_VALUE) | (1L << DOUBLE_VALUE) | (1L << BOOLEAN_VALUE))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << VAR) | (1L << IF) | (1L << FOR) | (1L << WHILE) | (1L << DO) | (1L << IDENT) | (1L << STRING_VALUE) | (1L << CHAR_VALUE) | (1L << INT_VALUE) | (1L << DOUBLE_VALUE) | (1L << BOOLEAN_VALUE))) != 0)) {
 				{
 				{
-				setState(97);
+				setState(101);
 				expression();
-				setState(98);
+				setState(102);
 				match(SEMICOLON);
 				}
 				}
-				setState(104);
+				setState(108);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(105);
+			setState(109);
 			match(CLOSE_BRACKET);
 			}
 		}
@@ -662,23 +706,23 @@ public class GnocchiParser extends Parser {
 
 	public final VariableContext variable() throws RecognitionException {
 		VariableContext _localctx = new VariableContext(_ctx, getState());
-		enterRule(_localctx, 16, RULE_variable);
+		enterRule(_localctx, 18, RULE_variable);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(107);
-			match(VAR);
-			setState(108);
-			variableDef();
 			setState(111);
+			match(VAR);
+			setState(112);
+			variableDef();
+			setState(115);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==ASSIGNMENT) {
 				{
-				setState(109);
+				setState(113);
 				match(ASSIGNMENT);
-				setState(110);
+				setState(114);
 				value();
 				}
 			}
@@ -697,7 +741,9 @@ public class GnocchiParser extends Parser {
 	}
 
 	public static class VariableDefContext extends ParserRuleContext {
-		public TerminalNode IDENTIFIER() { return getToken(GnocchiParser.IDENTIFIER, 0); }
+		public IdentifierContext identifier() {
+			return getRuleContext(IdentifierContext.class,0);
+		}
 		public TerminalNode COLON() { return getToken(GnocchiParser.COLON, 0); }
 		public TypeContext type() {
 			return getRuleContext(TypeContext.class,0);
@@ -723,15 +769,15 @@ public class GnocchiParser extends Parser {
 
 	public final VariableDefContext variableDef() throws RecognitionException {
 		VariableDefContext _localctx = new VariableDefContext(_ctx, getState());
-		enterRule(_localctx, 18, RULE_variableDef);
+		enterRule(_localctx, 20, RULE_variableDef);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(113);
-			match(IDENTIFIER);
-			setState(114);
+			setState(117);
+			identifier();
+			setState(118);
 			match(COLON);
-			setState(115);
+			setState(119);
 			type();
 			}
 		}
@@ -781,29 +827,29 @@ public class GnocchiParser extends Parser {
 
 	public final SelectionStatementContext selectionStatement() throws RecognitionException {
 		SelectionStatementContext _localctx = new SelectionStatementContext(_ctx, getState());
-		enterRule(_localctx, 20, RULE_selectionStatement);
+		enterRule(_localctx, 22, RULE_selectionStatement);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(117);
-			match(IF);
-			setState(118);
-			match(OPEN_PARENTHESIS);
-			setState(119);
-			logical_operation();
-			setState(120);
-			match(CLOSE_PARENTHESIS);
 			setState(121);
-			body();
+			match(IF);
+			setState(122);
+			match(OPEN_PARENTHESIS);
+			setState(123);
+			logical_operation();
 			setState(124);
+			match(CLOSE_PARENTHESIS);
+			setState(125);
+			body();
+			setState(128);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==ELSE) {
 				{
-				setState(122);
+				setState(126);
 				match(ELSE);
-				setState(123);
+				setState(127);
 				body();
 				}
 			}
@@ -857,55 +903,55 @@ public class GnocchiParser extends Parser {
 
 	public final IterationStatementContext iterationStatement() throws RecognitionException {
 		IterationStatementContext _localctx = new IterationStatementContext(_ctx, getState());
-		enterRule(_localctx, 22, RULE_iterationStatement);
+		enterRule(_localctx, 24, RULE_iterationStatement);
 		try {
-			setState(145);
+			setState(149);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case WHILE:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(126);
-				match(WHILE);
-				setState(127);
-				match(OPEN_PARENTHESIS);
-				setState(128);
-				logical_operation();
-				setState(129);
-				match(CLOSE_PARENTHESIS);
 				setState(130);
+				match(WHILE);
+				setState(131);
+				match(OPEN_PARENTHESIS);
+				setState(132);
+				logical_operation();
+				setState(133);
+				match(CLOSE_PARENTHESIS);
+				setState(134);
 				body();
 				}
 				break;
 			case DO:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(132);
-				match(DO);
-				setState(133);
-				body();
-				setState(134);
-				match(WHILE);
-				setState(135);
-				match(OPEN_PARENTHESIS);
 				setState(136);
-				logical_operation();
+				match(DO);
 				setState(137);
+				body();
+				setState(138);
+				match(WHILE);
+				setState(139);
+				match(OPEN_PARENTHESIS);
+				setState(140);
+				logical_operation();
+				setState(141);
 				match(CLOSE_PARENTHESIS);
 				}
 				break;
 			case FOR:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(139);
-				match(FOR);
-				setState(140);
-				match(OPEN_PARENTHESIS);
-				setState(141);
-				forCondition();
-				setState(142);
-				match(CLOSE_PARENTHESIS);
 				setState(143);
+				match(FOR);
+				setState(144);
+				match(OPEN_PARENTHESIS);
+				setState(145);
+				forCondition();
+				setState(146);
+				match(CLOSE_PARENTHESIS);
+				setState(147);
 				body();
 				}
 				break;
@@ -932,7 +978,9 @@ public class GnocchiParser extends Parser {
 		public VariableContext variable() {
 			return getRuleContext(VariableContext.class,0);
 		}
-		public TerminalNode IDENTIFIER() { return getToken(GnocchiParser.IDENTIFIER, 0); }
+		public IdentifierContext identifier() {
+			return getRuleContext(IdentifierContext.class,0);
+		}
 		public Logical_operationContext logical_operation() {
 			return getRuleContext(Logical_operationContext.class,0);
 		}
@@ -960,24 +1008,24 @@ public class GnocchiParser extends Parser {
 
 	public final ForConditionContext forCondition() throws RecognitionException {
 		ForConditionContext _localctx = new ForConditionContext(_ctx, getState());
-		enterRule(_localctx, 24, RULE_forCondition);
+		enterRule(_localctx, 26, RULE_forCondition);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(149);
+			setState(153);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case VAR:
 				{
-				setState(147);
+				setState(151);
 				variable();
 				}
 				break;
-			case IDENTIFIER:
+			case IDENT:
 				{
-				setState(148);
-				match(IDENTIFIER);
+				setState(152);
+				identifier();
 				}
 				break;
 			case SEMICOLON:
@@ -985,26 +1033,26 @@ public class GnocchiParser extends Parser {
 			default:
 				break;
 			}
-			setState(151);
-			match(SEMICOLON);
-			setState(153);
-			_errHandler.sync(this);
-			_la = _input.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << IDENTIFIER) | (1L << STRING_VALUE) | (1L << CHAR_VALUE) | (1L << INT_VALUE) | (1L << DOUBLE_VALUE) | (1L << BOOLEAN_VALUE))) != 0)) {
-				{
-				setState(152);
-				logical_operation();
-				}
-			}
-
 			setState(155);
 			match(SEMICOLON);
 			setState(157);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if (_la==IDENTIFIER) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << IDENT) | (1L << STRING_VALUE) | (1L << CHAR_VALUE) | (1L << INT_VALUE) | (1L << DOUBLE_VALUE) | (1L << BOOLEAN_VALUE))) != 0)) {
 				{
 				setState(156);
+				logical_operation();
+				}
+			}
+
+			setState(159);
+			match(SEMICOLON);
+			setState(161);
+			_errHandler.sync(this);
+			_la = _input.LA(1);
+			if (_la==IDENT) {
+				{
+				setState(160);
 				unaryExpression();
 				}
 			}
@@ -1023,7 +1071,9 @@ public class GnocchiParser extends Parser {
 	}
 
 	public static class UnaryExpressionContext extends ParserRuleContext {
-		public TerminalNode IDENTIFIER() { return getToken(GnocchiParser.IDENTIFIER, 0); }
+		public IdentifierContext identifier() {
+			return getRuleContext(IdentifierContext.class,0);
+		}
 		public TerminalNode INCREMENT() { return getToken(GnocchiParser.INCREMENT, 0); }
 		public TerminalNode DECREMENT() { return getToken(GnocchiParser.DECREMENT, 0); }
 		public UnaryExpressionContext(ParserRuleContext parent, int invokingState) {
@@ -1047,26 +1097,26 @@ public class GnocchiParser extends Parser {
 
 	public final UnaryExpressionContext unaryExpression() throws RecognitionException {
 		UnaryExpressionContext _localctx = new UnaryExpressionContext(_ctx, getState());
-		enterRule(_localctx, 26, RULE_unaryExpression);
+		enterRule(_localctx, 28, RULE_unaryExpression);
 		try {
-			setState(163);
+			setState(169);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,13,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(159);
-				match(IDENTIFIER);
-				setState(160);
+				setState(163);
+				identifier();
+				setState(164);
 				match(INCREMENT);
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(161);
-				match(IDENTIFIER);
-				setState(162);
+				setState(166);
+				identifier();
+				setState(167);
 				match(DECREMENT);
 				}
 				break;
@@ -1110,12 +1160,12 @@ public class GnocchiParser extends Parser {
 
 	public final TypeContext type() throws RecognitionException {
 		TypeContext _localctx = new TypeContext(_ctx, getState());
-		enterRule(_localctx, 28, RULE_type);
+		enterRule(_localctx, 30, RULE_type);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(165);
+			setState(171);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << INT) | (1L << STRING) | (1L << CHAR) | (1L << BOOLEAN) | (1L << DOUBLE))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -1165,12 +1215,12 @@ public class GnocchiParser extends Parser {
 
 	public final ValueContext value() throws RecognitionException {
 		ValueContext _localctx = new ValueContext(_ctx, getState());
-		enterRule(_localctx, 30, RULE_value);
+		enterRule(_localctx, 32, RULE_value);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(167);
+			setState(173);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << STRING_VALUE) | (1L << CHAR_VALUE) | (1L << INT_VALUE) | (1L << DOUBLE_VALUE) | (1L << BOOLEAN_VALUE))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -1230,43 +1280,43 @@ public class GnocchiParser extends Parser {
 
 	public final ExpressionContext expression() throws RecognitionException {
 		ExpressionContext _localctx = new ExpressionContext(_ctx, getState());
-		enterRule(_localctx, 32, RULE_expression);
+		enterRule(_localctx, 34, RULE_expression);
 		try {
-			setState(174);
+			setState(180);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,14,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(169);
+				setState(175);
 				variable();
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(170);
+				setState(176);
 				operation();
 				}
 				break;
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(171);
+				setState(177);
 				functionCall();
 				}
 				break;
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(172);
+				setState(178);
 				selectionStatement();
 				}
 				break;
 			case 5:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(173);
+				setState(179);
 				iterationStatement();
 				}
 				break;
@@ -1311,22 +1361,22 @@ public class GnocchiParser extends Parser {
 
 	public final OperationContext operation() throws RecognitionException {
 		OperationContext _localctx = new OperationContext(_ctx, getState());
-		enterRule(_localctx, 34, RULE_operation);
+		enterRule(_localctx, 36, RULE_operation);
 		try {
-			setState(178);
+			setState(184);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,15,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(176);
+				setState(182);
 				logical_operation();
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(177);
+				setState(183);
 				math_operation();
 				}
 				break;
@@ -1347,9 +1397,11 @@ public class GnocchiParser extends Parser {
 		public Logical_operatorContext logical_operator() {
 			return getRuleContext(Logical_operatorContext.class,0);
 		}
-		public List<TerminalNode> IDENTIFIER() { return getTokens(GnocchiParser.IDENTIFIER); }
-		public TerminalNode IDENTIFIER(int i) {
-			return getToken(GnocchiParser.IDENTIFIER, i);
+		public List<IdentifierContext> identifier() {
+			return getRuleContexts(IdentifierContext.class);
+		}
+		public IdentifierContext identifier(int i) {
+			return getRuleContext(IdentifierContext.class,i);
 		}
 		public List<ValueContext> value() {
 			return getRuleContexts(ValueContext.class);
@@ -1378,17 +1430,17 @@ public class GnocchiParser extends Parser {
 
 	public final Logical_operationContext logical_operation() throws RecognitionException {
 		Logical_operationContext _localctx = new Logical_operationContext(_ctx, getState());
-		enterRule(_localctx, 36, RULE_logical_operation);
+		enterRule(_localctx, 38, RULE_logical_operation);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(182);
+			setState(188);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
-			case IDENTIFIER:
+			case IDENT:
 				{
-				setState(180);
-				match(IDENTIFIER);
+				setState(186);
+				identifier();
 				}
 				break;
 			case STRING_VALUE:
@@ -1397,22 +1449,22 @@ public class GnocchiParser extends Parser {
 			case DOUBLE_VALUE:
 			case BOOLEAN_VALUE:
 				{
-				setState(181);
+				setState(187);
 				value();
 				}
 				break;
 			default:
 				throw new NoViableAltException(this);
 			}
-			setState(184);
+			setState(190);
 			logical_operator();
-			setState(187);
+			setState(193);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
-			case IDENTIFIER:
+			case IDENT:
 				{
-				setState(185);
-				match(IDENTIFIER);
+				setState(191);
+				identifier();
 				}
 				break;
 			case STRING_VALUE:
@@ -1421,7 +1473,7 @@ public class GnocchiParser extends Parser {
 			case DOUBLE_VALUE:
 			case BOOLEAN_VALUE:
 				{
-				setState(186);
+				setState(192);
 				value();
 				}
 				break;
@@ -1445,9 +1497,11 @@ public class GnocchiParser extends Parser {
 		public Math_operatorContext math_operator() {
 			return getRuleContext(Math_operatorContext.class,0);
 		}
-		public List<TerminalNode> IDENTIFIER() { return getTokens(GnocchiParser.IDENTIFIER); }
-		public TerminalNode IDENTIFIER(int i) {
-			return getToken(GnocchiParser.IDENTIFIER, i);
+		public List<IdentifierContext> identifier() {
+			return getRuleContexts(IdentifierContext.class);
+		}
+		public IdentifierContext identifier(int i) {
+			return getRuleContext(IdentifierContext.class,i);
 		}
 		public List<ValueContext> value() {
 			return getRuleContexts(ValueContext.class);
@@ -1476,17 +1530,17 @@ public class GnocchiParser extends Parser {
 
 	public final Math_operationContext math_operation() throws RecognitionException {
 		Math_operationContext _localctx = new Math_operationContext(_ctx, getState());
-		enterRule(_localctx, 38, RULE_math_operation);
+		enterRule(_localctx, 40, RULE_math_operation);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(191);
+			setState(197);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
-			case IDENTIFIER:
+			case IDENT:
 				{
-				setState(189);
-				match(IDENTIFIER);
+				setState(195);
+				identifier();
 				}
 				break;
 			case STRING_VALUE:
@@ -1495,22 +1549,22 @@ public class GnocchiParser extends Parser {
 			case DOUBLE_VALUE:
 			case BOOLEAN_VALUE:
 				{
-				setState(190);
+				setState(196);
 				value();
 				}
 				break;
 			default:
 				throw new NoViableAltException(this);
 			}
-			setState(193);
+			setState(199);
 			math_operator();
-			setState(196);
+			setState(202);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
-			case IDENTIFIER:
+			case IDENT:
 				{
-				setState(194);
-				match(IDENTIFIER);
+				setState(200);
+				identifier();
 				}
 				break;
 			case STRING_VALUE:
@@ -1519,7 +1573,7 @@ public class GnocchiParser extends Parser {
 			case DOUBLE_VALUE:
 			case BOOLEAN_VALUE:
 				{
-				setState(195);
+				setState(201);
 				value();
 				}
 				break;
@@ -1565,12 +1619,12 @@ public class GnocchiParser extends Parser {
 
 	public final Math_operatorContext math_operator() throws RecognitionException {
 		Math_operatorContext _localctx = new Math_operatorContext(_ctx, getState());
-		enterRule(_localctx, 40, RULE_math_operator);
+		enterRule(_localctx, 42, RULE_math_operator);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(198);
+			setState(204);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << PLUS) | (1L << MINUS) | (1L << DIVIDE) | (1L << MULTIPLY))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -1621,12 +1675,12 @@ public class GnocchiParser extends Parser {
 
 	public final Logical_operatorContext logical_operator() throws RecognitionException {
 		Logical_operatorContext _localctx = new Logical_operatorContext(_ctx, getState());
-		enterRule(_localctx, 42, RULE_logical_operator);
+		enterRule(_localctx, 44, RULE_logical_operator);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(200);
+			setState(206);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << EQUALS) | (1L << NOT_EQUALS) | (1L << LOWER) | (1L << GREATER) | (1L << LOWER_OR_EQUAL) | (1L << GREATER_OR_EQUAL))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -1650,68 +1704,71 @@ public class GnocchiParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\60\u00cd\4\2\t\2"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\60\u00d3\4\2\t\2"+
 		"\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13"+
 		"\t\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
-		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\3\2\7\2\60\n\2\f\2"+
-		"\16\2\63\13\2\3\2\3\2\3\2\3\3\3\3\3\3\3\3\5\3<\n\3\3\3\3\3\3\4\3\4\3\4"+
-		"\3\4\3\4\3\4\3\5\3\5\3\5\3\6\3\6\3\7\3\7\5\7M\n\7\3\7\3\7\3\b\3\b\3\b"+
-		"\7\bT\n\b\f\b\16\bW\13\b\3\b\3\b\3\b\7\b\\\n\b\f\b\16\b_\13\b\5\ba\n\b"+
-		"\3\t\3\t\3\t\3\t\7\tg\n\t\f\t\16\tj\13\t\3\t\3\t\3\n\3\n\3\n\3\n\5\nr"+
-		"\n\n\3\13\3\13\3\13\3\13\3\f\3\f\3\f\3\f\3\f\3\f\3\f\5\f\177\n\f\3\r\3"+
-		"\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r"+
-		"\5\r\u0094\n\r\3\16\3\16\5\16\u0098\n\16\3\16\3\16\5\16\u009c\n\16\3\16"+
-		"\3\16\5\16\u00a0\n\16\3\17\3\17\3\17\3\17\5\17\u00a6\n\17\3\20\3\20\3"+
-		"\21\3\21\3\22\3\22\3\22\3\22\3\22\5\22\u00b1\n\22\3\23\3\23\5\23\u00b5"+
-		"\n\23\3\24\3\24\5\24\u00b9\n\24\3\24\3\24\3\24\5\24\u00be\n\24\3\25\3"+
-		"\25\5\25\u00c2\n\25\3\25\3\25\3\25\5\25\u00c7\n\25\3\26\3\26\3\27\3\27"+
-		"\3\27\2\2\30\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&(*,\2\6\3\2\f"+
-		"\20\3\2(,\3\2\31\34\3\2\23\30\2\u00cf\2\61\3\2\2\2\4\67\3\2\2\2\6?\3\2"+
-		"\2\2\bE\3\2\2\2\nH\3\2\2\2\fJ\3\2\2\2\16`\3\2\2\2\20b\3\2\2\2\22m\3\2"+
-		"\2\2\24s\3\2\2\2\26w\3\2\2\2\30\u0093\3\2\2\2\32\u0097\3\2\2\2\34\u00a5"+
-		"\3\2\2\2\36\u00a7\3\2\2\2 \u00a9\3\2\2\2\"\u00b0\3\2\2\2$\u00b4\3\2\2"+
-		"\2&\u00b8\3\2\2\2(\u00c1\3\2\2\2*\u00c8\3\2\2\2,\u00ca\3\2\2\2.\60\5\4"+
-		"\3\2/.\3\2\2\2\60\63\3\2\2\2\61/\3\2\2\2\61\62\3\2\2\2\62\64\3\2\2\2\63"+
-		"\61\3\2\2\2\64\65\5\6\4\2\65\66\7\2\2\3\66\3\3\2\2\2\678\7\4\2\28;\5\b"+
-		"\5\29:\7\37\2\2:<\5\36\20\2;9\3\2\2\2;<\3\2\2\2<=\3\2\2\2=>\5\20\t\2>"+
-		"\5\3\2\2\2?@\7\4\2\2@A\7\6\2\2AB\7#\2\2BC\7$\2\2CD\5\20\t\2D\7\3\2\2\2"+
-		"EF\7\'\2\2FG\5\f\7\2G\t\3\2\2\2HI\5\b\5\2I\13\3\2\2\2JL\7#\2\2KM\5\16"+
-		"\b\2LK\3\2\2\2LM\3\2\2\2MN\3\2\2\2NO\7$\2\2O\r\3\2\2\2PU\5\24\13\2QR\7"+
-		" \2\2RT\5\24\13\2SQ\3\2\2\2TW\3\2\2\2US\3\2\2\2UV\3\2\2\2Va\3\2\2\2WU"+
-		"\3\2\2\2X]\5 \21\2YZ\7 \2\2Z\\\5 \21\2[Y\3\2\2\2\\_\3\2\2\2][\3\2\2\2"+
-		"]^\3\2\2\2^a\3\2\2\2_]\3\2\2\2`P\3\2\2\2`X\3\2\2\2a\17\3\2\2\2bh\7!\2"+
-		"\2cd\5\"\22\2de\7\35\2\2eg\3\2\2\2fc\3\2\2\2gj\3\2\2\2hf\3\2\2\2hi\3\2"+
-		"\2\2ik\3\2\2\2jh\3\2\2\2kl\7\"\2\2l\21\3\2\2\2mn\7\3\2\2nq\5\24\13\2o"+
-		"p\7\22\2\2pr\5 \21\2qo\3\2\2\2qr\3\2\2\2r\23\3\2\2\2st\7\'\2\2tu\7\36"+
-		"\2\2uv\5\36\20\2v\25\3\2\2\2wx\7\7\2\2xy\7#\2\2yz\5&\24\2z{\7$\2\2{~\5"+
-		"\20\t\2|}\7\b\2\2}\177\5\20\t\2~|\3\2\2\2~\177\3\2\2\2\177\27\3\2\2\2"+
-		"\u0080\u0081\7\n\2\2\u0081\u0082\7#\2\2\u0082\u0083\5&\24\2\u0083\u0084"+
-		"\7$\2\2\u0084\u0085\5\20\t\2\u0085\u0094\3\2\2\2\u0086\u0087\7\13\2\2"+
-		"\u0087\u0088\5\20\t\2\u0088\u0089\7\n\2\2\u0089\u008a\7#\2\2\u008a\u008b"+
-		"\5&\24\2\u008b\u008c\7$\2\2\u008c\u0094\3\2\2\2\u008d\u008e\7\t\2\2\u008e"+
-		"\u008f\7#\2\2\u008f\u0090\5\32\16\2\u0090\u0091\7$\2\2\u0091\u0092\5\20"+
-		"\t\2\u0092\u0094\3\2\2\2\u0093\u0080\3\2\2\2\u0093\u0086\3\2\2\2\u0093"+
-		"\u008d\3\2\2\2\u0094\31\3\2\2\2\u0095\u0098\5\22\n\2\u0096\u0098\7\'\2"+
-		"\2\u0097\u0095\3\2\2\2\u0097\u0096\3\2\2\2\u0097\u0098\3\2\2\2\u0098\u0099"+
-		"\3\2\2\2\u0099\u009b\7\35\2\2\u009a\u009c\5&\24\2\u009b\u009a\3\2\2\2"+
-		"\u009b\u009c\3\2\2\2\u009c\u009d\3\2\2\2\u009d\u009f\7\35\2\2\u009e\u00a0"+
-		"\5\34\17\2\u009f\u009e\3\2\2\2\u009f\u00a0\3\2\2\2\u00a0\33\3\2\2\2\u00a1"+
-		"\u00a2\7\'\2\2\u00a2\u00a6\7%\2\2\u00a3\u00a4\7\'\2\2\u00a4\u00a6\7&\2"+
-		"\2\u00a5\u00a1\3\2\2\2\u00a5\u00a3\3\2\2\2\u00a6\35\3\2\2\2\u00a7\u00a8"+
-		"\t\2\2\2\u00a8\37\3\2\2\2\u00a9\u00aa\t\3\2\2\u00aa!\3\2\2\2\u00ab\u00b1"+
-		"\5\22\n\2\u00ac\u00b1\5$\23\2\u00ad\u00b1\5\n\6\2\u00ae\u00b1\5\26\f\2"+
-		"\u00af\u00b1\5\30\r\2\u00b0\u00ab\3\2\2\2\u00b0\u00ac\3\2\2\2\u00b0\u00ad"+
-		"\3\2\2\2\u00b0\u00ae\3\2\2\2\u00b0\u00af\3\2\2\2\u00b1#\3\2\2\2\u00b2"+
-		"\u00b5\5&\24\2\u00b3\u00b5\5(\25\2\u00b4\u00b2\3\2\2\2\u00b4\u00b3\3\2"+
-		"\2\2\u00b5%\3\2\2\2\u00b6\u00b9\7\'\2\2\u00b7\u00b9\5 \21\2\u00b8\u00b6"+
-		"\3\2\2\2\u00b8\u00b7\3\2\2\2\u00b9\u00ba\3\2\2\2\u00ba\u00bd\5,\27\2\u00bb"+
-		"\u00be\7\'\2\2\u00bc\u00be\5 \21\2\u00bd\u00bb\3\2\2\2\u00bd\u00bc\3\2"+
-		"\2\2\u00be\'\3\2\2\2\u00bf\u00c2\7\'\2\2\u00c0\u00c2\5 \21\2\u00c1\u00bf"+
-		"\3\2\2\2\u00c1\u00c0\3\2\2\2\u00c2\u00c3\3\2\2\2\u00c3\u00c6\5*\26\2\u00c4"+
-		"\u00c7\7\'\2\2\u00c5\u00c7\5 \21\2\u00c6\u00c4\3\2\2\2\u00c6\u00c5\3\2"+
-		"\2\2\u00c7)\3\2\2\2\u00c8\u00c9\t\4\2\2\u00c9+\3\2\2\2\u00ca\u00cb\t\5"+
-		"\2\2\u00cb-\3\2\2\2\26\61;LU]`hq~\u0093\u0097\u009b\u009f\u00a5\u00b0"+
-		"\u00b4\u00b8\u00bd\u00c1\u00c6";
+		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\3\2\7\2\62"+
+		"\n\2\f\2\16\2\65\13\2\3\2\3\2\3\2\3\3\3\3\3\4\3\4\3\4\3\4\5\4@\n\4\3\4"+
+		"\3\4\3\5\3\5\3\5\3\5\3\5\3\5\3\6\3\6\3\6\3\7\3\7\3\b\3\b\5\bQ\n\b\3\b"+
+		"\3\b\3\t\3\t\3\t\7\tX\n\t\f\t\16\t[\13\t\3\t\3\t\3\t\7\t`\n\t\f\t\16\t"+
+		"c\13\t\5\te\n\t\3\n\3\n\3\n\3\n\7\nk\n\n\f\n\16\nn\13\n\3\n\3\n\3\13\3"+
+		"\13\3\13\3\13\5\13v\n\13\3\f\3\f\3\f\3\f\3\r\3\r\3\r\3\r\3\r\3\r\3\r\5"+
+		"\r\u0083\n\r\3\16\3\16\3\16\3\16\3\16\3\16\3\16\3\16\3\16\3\16\3\16\3"+
+		"\16\3\16\3\16\3\16\3\16\3\16\3\16\3\16\5\16\u0098\n\16\3\17\3\17\5\17"+
+		"\u009c\n\17\3\17\3\17\5\17\u00a0\n\17\3\17\3\17\5\17\u00a4\n\17\3\20\3"+
+		"\20\3\20\3\20\3\20\3\20\5\20\u00ac\n\20\3\21\3\21\3\22\3\22\3\23\3\23"+
+		"\3\23\3\23\3\23\5\23\u00b7\n\23\3\24\3\24\5\24\u00bb\n\24\3\25\3\25\5"+
+		"\25\u00bf\n\25\3\25\3\25\3\25\5\25\u00c4\n\25\3\26\3\26\5\26\u00c8\n\26"+
+		"\3\26\3\26\3\26\5\26\u00cd\n\26\3\27\3\27\3\30\3\30\3\30\2\2\31\2\4\6"+
+		"\b\n\f\16\20\22\24\26\30\32\34\36 \"$&(*,.\2\6\3\2\f\20\3\2(,\3\2\31\34"+
+		"\3\2\23\30\2\u00d4\2\63\3\2\2\2\49\3\2\2\2\6;\3\2\2\2\bC\3\2\2\2\nI\3"+
+		"\2\2\2\fL\3\2\2\2\16N\3\2\2\2\20d\3\2\2\2\22f\3\2\2\2\24q\3\2\2\2\26w"+
+		"\3\2\2\2\30{\3\2\2\2\32\u0097\3\2\2\2\34\u009b\3\2\2\2\36\u00ab\3\2\2"+
+		"\2 \u00ad\3\2\2\2\"\u00af\3\2\2\2$\u00b6\3\2\2\2&\u00ba\3\2\2\2(\u00be"+
+		"\3\2\2\2*\u00c7\3\2\2\2,\u00ce\3\2\2\2.\u00d0\3\2\2\2\60\62\5\6\4\2\61"+
+		"\60\3\2\2\2\62\65\3\2\2\2\63\61\3\2\2\2\63\64\3\2\2\2\64\66\3\2\2\2\65"+
+		"\63\3\2\2\2\66\67\5\b\5\2\678\7\2\2\38\3\3\2\2\29:\7\'\2\2:\5\3\2\2\2"+
+		";<\7\4\2\2<?\5\n\6\2=>\7\37\2\2>@\5 \21\2?=\3\2\2\2?@\3\2\2\2@A\3\2\2"+
+		"\2AB\5\22\n\2B\7\3\2\2\2CD\7\4\2\2DE\7\6\2\2EF\7#\2\2FG\7$\2\2GH\5\22"+
+		"\n\2H\t\3\2\2\2IJ\5\4\3\2JK\5\16\b\2K\13\3\2\2\2LM\5\n\6\2M\r\3\2\2\2"+
+		"NP\7#\2\2OQ\5\20\t\2PO\3\2\2\2PQ\3\2\2\2QR\3\2\2\2RS\7$\2\2S\17\3\2\2"+
+		"\2TY\5\26\f\2UV\7 \2\2VX\5\26\f\2WU\3\2\2\2X[\3\2\2\2YW\3\2\2\2YZ\3\2"+
+		"\2\2Ze\3\2\2\2[Y\3\2\2\2\\a\5\"\22\2]^\7 \2\2^`\5\"\22\2_]\3\2\2\2`c\3"+
+		"\2\2\2a_\3\2\2\2ab\3\2\2\2be\3\2\2\2ca\3\2\2\2dT\3\2\2\2d\\\3\2\2\2e\21"+
+		"\3\2\2\2fl\7!\2\2gh\5$\23\2hi\7\35\2\2ik\3\2\2\2jg\3\2\2\2kn\3\2\2\2l"+
+		"j\3\2\2\2lm\3\2\2\2mo\3\2\2\2nl\3\2\2\2op\7\"\2\2p\23\3\2\2\2qr\7\3\2"+
+		"\2ru\5\26\f\2st\7\22\2\2tv\5\"\22\2us\3\2\2\2uv\3\2\2\2v\25\3\2\2\2wx"+
+		"\5\4\3\2xy\7\36\2\2yz\5 \21\2z\27\3\2\2\2{|\7\7\2\2|}\7#\2\2}~\5(\25\2"+
+		"~\177\7$\2\2\177\u0082\5\22\n\2\u0080\u0081\7\b\2\2\u0081\u0083\5\22\n"+
+		"\2\u0082\u0080\3\2\2\2\u0082\u0083\3\2\2\2\u0083\31\3\2\2\2\u0084\u0085"+
+		"\7\n\2\2\u0085\u0086\7#\2\2\u0086\u0087\5(\25\2\u0087\u0088\7$\2\2\u0088"+
+		"\u0089\5\22\n\2\u0089\u0098\3\2\2\2\u008a\u008b\7\13\2\2\u008b\u008c\5"+
+		"\22\n\2\u008c\u008d\7\n\2\2\u008d\u008e\7#\2\2\u008e\u008f\5(\25\2\u008f"+
+		"\u0090\7$\2\2\u0090\u0098\3\2\2\2\u0091\u0092\7\t\2\2\u0092\u0093\7#\2"+
+		"\2\u0093\u0094\5\34\17\2\u0094\u0095\7$\2\2\u0095\u0096\5\22\n\2\u0096"+
+		"\u0098\3\2\2\2\u0097\u0084\3\2\2\2\u0097\u008a\3\2\2\2\u0097\u0091\3\2"+
+		"\2\2\u0098\33\3\2\2\2\u0099\u009c\5\24\13\2\u009a\u009c\5\4\3\2\u009b"+
+		"\u0099\3\2\2\2\u009b\u009a\3\2\2\2\u009b\u009c\3\2\2\2\u009c\u009d\3\2"+
+		"\2\2\u009d\u009f\7\35\2\2\u009e\u00a0\5(\25\2\u009f\u009e\3\2\2\2\u009f"+
+		"\u00a0\3\2\2\2\u00a0\u00a1\3\2\2\2\u00a1\u00a3\7\35\2\2\u00a2\u00a4\5"+
+		"\36\20\2\u00a3\u00a2\3\2\2\2\u00a3\u00a4\3\2\2\2\u00a4\35\3\2\2\2\u00a5"+
+		"\u00a6\5\4\3\2\u00a6\u00a7\7%\2\2\u00a7\u00ac\3\2\2\2\u00a8\u00a9\5\4"+
+		"\3\2\u00a9\u00aa\7&\2\2\u00aa\u00ac\3\2\2\2\u00ab\u00a5\3\2\2\2\u00ab"+
+		"\u00a8\3\2\2\2\u00ac\37\3\2\2\2\u00ad\u00ae\t\2\2\2\u00ae!\3\2\2\2\u00af"+
+		"\u00b0\t\3\2\2\u00b0#\3\2\2\2\u00b1\u00b7\5\24\13\2\u00b2\u00b7\5&\24"+
+		"\2\u00b3\u00b7\5\f\7\2\u00b4\u00b7\5\30\r\2\u00b5\u00b7\5\32\16\2\u00b6"+
+		"\u00b1\3\2\2\2\u00b6\u00b2\3\2\2\2\u00b6\u00b3\3\2\2\2\u00b6\u00b4\3\2"+
+		"\2\2\u00b6\u00b5\3\2\2\2\u00b7%\3\2\2\2\u00b8\u00bb\5(\25\2\u00b9\u00bb"+
+		"\5*\26\2\u00ba\u00b8\3\2\2\2\u00ba\u00b9\3\2\2\2\u00bb\'\3\2\2\2\u00bc"+
+		"\u00bf\5\4\3\2\u00bd\u00bf\5\"\22\2\u00be\u00bc\3\2\2\2\u00be\u00bd\3"+
+		"\2\2\2\u00bf\u00c0\3\2\2\2\u00c0\u00c3\5.\30\2\u00c1\u00c4\5\4\3\2\u00c2"+
+		"\u00c4\5\"\22\2\u00c3\u00c1\3\2\2\2\u00c3\u00c2\3\2\2\2\u00c4)\3\2\2\2"+
+		"\u00c5\u00c8\5\4\3\2\u00c6\u00c8\5\"\22\2\u00c7\u00c5\3\2\2\2\u00c7\u00c6"+
+		"\3\2\2\2\u00c8\u00c9\3\2\2\2\u00c9\u00cc\5,\27\2\u00ca\u00cd\5\4\3\2\u00cb"+
+		"\u00cd\5\"\22\2\u00cc\u00ca\3\2\2\2\u00cc\u00cb\3\2\2\2\u00cd+\3\2\2\2"+
+		"\u00ce\u00cf\t\4\2\2\u00cf-\3\2\2\2\u00d0\u00d1\t\5\2\2\u00d1/\3\2\2\2"+
+		"\26\63?PYadlu\u0082\u0097\u009b\u009f\u00a3\u00ab\u00b6\u00ba\u00be\u00c3"+
+		"\u00c7\u00cc";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

@@ -5,6 +5,8 @@ start
 	: functionDeclaration* functionMain EOF
   ;
 
+  identifier : IDENT ;
+
 
 	functionDeclaration
 	: FUNC functionIdentifier (ARROW type)? body
@@ -16,7 +18,7 @@ start
   ;
 
   functionIdentifier
-  : IDENTIFIER parameters
+  : identifier parameters
   ;
 
   functionCall
@@ -44,7 +46,7 @@ start
 	;
 
   variableDef
-  : IDENTIFIER COLON type
+  : identifier COLON type
   ;
 
 	selectionStatement
@@ -59,12 +61,12 @@ start
 
 
     forCondition
-    	:   (variable | IDENTIFIER)? SEMICOLON logical_operation? SEMICOLON unaryExpression?
+    	:   (variable | identifier)? SEMICOLON logical_operation? SEMICOLON unaryExpression?
     	;
 
     unaryExpression
-        :   IDENTIFIER INCREMENT
-        |   IDENTIFIER DECREMENT
+        :   identifier INCREMENT
+        |   identifier DECREMENT
         ;
 
   type
@@ -98,11 +100,11 @@ start
   ;
 
   logical_operation
-  : ( IDENTIFIER | value ) logical_operator ( IDENTIFIER | value )
+  : ( identifier | value ) logical_operator ( identifier | value )
     ;
 
 	math_operation
-	: ( IDENTIFIER | value ) math_operator ( IDENTIFIER | value )
+	: ( identifier | value ) math_operator ( identifier | value )
 	;
 
   math_operator
@@ -120,7 +122,6 @@ start
   | LOWER_OR_EQUAL
   | GREATER_OR_EQUAL
   ;
-
 
   VAR: 'var';
   FUNC: 'func';
@@ -161,7 +162,10 @@ start
   INCREMENT: '++';
   DECREMENT: '--';
 
-  IDENTIFIER:	('a'..'z' | 'A'..'Z' | '_') ('a'..'z' | 'A'..'Z' | '_' | '0'..'9')* ;
+
+  IDENT
+	:	('a'..'z' | 'A'..'Z' | '_') ('a'..'z' | 'A'..'Z' | '_' | '0'..'9')*
+	;
 
 
 
