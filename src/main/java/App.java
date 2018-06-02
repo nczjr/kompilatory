@@ -4,17 +4,18 @@ import org.antlr.v4.runtime.tree.ParseTree;
 
 public class App {
     public static void main(String[] args) {
-        String s = " func slonecznaFunkcja(promyk1 : Int) => String { promyczek + promyk3; } func main() {} " ;
+        String s = " func slonecznaFunkcja(promyk1 : Int) => String {" +
+                " promyczek + promyk3; } " +
+                "func main() {" +
+                " if (a > b) { for (var a: Int = 3 ; a < 13; a++) {};}; } " ;
         GnocchiLexer gnocchiLexer = new GnocchiLexer(new ANTLRInputStream(s));
         CommonTokenStream tokens = new CommonTokenStream(gnocchiLexer);
 
-        // Pass the tokens to the parser
         GnocchiParser parser = new GnocchiParser(tokens);
 
-        // Specify our entry point
         ParseTree tree = parser.start();
         System.out.println();
-        System.out.println(tree.toStringTree(parser)); // print LISP-style tree
+        System.out.println(tree.toStringTree(parser));
 
     }
 }

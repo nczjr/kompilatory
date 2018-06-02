@@ -52,12 +52,6 @@ public interface GnocchiVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitParameterList(GnocchiParser.ParameterListContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link GnocchiParser#functionBody}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitFunctionBody(GnocchiParser.FunctionBodyContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link GnocchiParser#body}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -81,6 +75,24 @@ public interface GnocchiVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitSelectionStatement(GnocchiParser.SelectionStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GnocchiParser#iterationStatement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIterationStatement(GnocchiParser.IterationStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GnocchiParser#forCondition}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitForCondition(GnocchiParser.ForConditionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GnocchiParser#unaryExpression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitUnaryExpression(GnocchiParser.UnaryExpressionContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link GnocchiParser#type}.
 	 * @param ctx the parse tree
@@ -106,11 +118,17 @@ public interface GnocchiVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitOperation(GnocchiParser.OperationContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link GnocchiParser#operator}.
+	 * Visit a parse tree produced by {@link GnocchiParser#logical_operation}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitOperator(GnocchiParser.OperatorContext ctx);
+	T visitLogical_operation(GnocchiParser.Logical_operationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GnocchiParser#math_operation}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMath_operation(GnocchiParser.Math_operationContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link GnocchiParser#math_operator}.
 	 * @param ctx the parse tree

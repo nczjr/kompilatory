@@ -99,18 +99,6 @@ public class GnocchiBaseListener implements GnocchiListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFunctionBody(GnocchiParser.FunctionBodyContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitFunctionBody(GnocchiParser.FunctionBodyContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterBody(GnocchiParser.BodyContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -154,6 +142,42 @@ public class GnocchiBaseListener implements GnocchiListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitSelectionStatement(GnocchiParser.SelectionStatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterIterationStatement(GnocchiParser.IterationStatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitIterationStatement(GnocchiParser.IterationStatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterForCondition(GnocchiParser.ForConditionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitForCondition(GnocchiParser.ForConditionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterUnaryExpression(GnocchiParser.UnaryExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitUnaryExpression(GnocchiParser.UnaryExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -207,13 +231,25 @@ public class GnocchiBaseListener implements GnocchiListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterOperator(GnocchiParser.OperatorContext ctx) { }
+	@Override public void enterLogical_operation(GnocchiParser.Logical_operationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitOperator(GnocchiParser.OperatorContext ctx) { }
+	@Override public void exitLogical_operation(GnocchiParser.Logical_operationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterMath_operation(GnocchiParser.Math_operationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitMath_operation(GnocchiParser.Math_operationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

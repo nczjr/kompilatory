@@ -59,7 +59,7 @@ start
 
 
     forCondition
-    	:   (variableDef | IDENTIFIER)? SEMICOLON logical_operation? SEMICOLON unaryExpression?
+    	:   (variable | IDENTIFIER)? SEMICOLON logical_operation? SEMICOLON unaryExpression?
     	;
 
     unaryExpression
@@ -88,6 +88,7 @@ start
   | operation
   | functionCall
   | selectionStatement
+  | iterationStatement
   ;
 
 
@@ -97,11 +98,11 @@ start
   ;
 
   logical_operation
-  : IDENTIFIER logical_operator IDENTIFIER
+  : ( IDENTIFIER | value ) logical_operator ( IDENTIFIER | value )
     ;
 
 	math_operation
-	: IDENTIFIER math_operator IDENTIFIER
+	: ( IDENTIFIER | value ) math_operator ( IDENTIFIER | value )
 	;
 
   math_operator
@@ -169,7 +170,7 @@ start
 
   CHAR_VALUE: [a-zA-Z] ;
 
-
+   fragment
   DIGIT: '0' .. '9' ;
 
 
