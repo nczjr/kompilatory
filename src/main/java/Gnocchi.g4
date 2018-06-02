@@ -7,12 +7,12 @@ start
 
 
 	functionDeclaration
-	: FUNC functionIdentifier (ARROW type)? functionBody
+	: FUNC functionIdentifier (ARROW type)? body
   ;
 
 
   functionMain
-  : FUNC MAIN OPEN_PARENTHESIS CLOSE_PARENTHESIS functionBody
+  : FUNC MAIN OPEN_PARENTHESIS CLOSE_PARENTHESIS body
   ;
 
   functionIdentifier
@@ -34,13 +34,10 @@ start
   ;
 
 
-  functionBody
-  : OPEN_BRACKET body CLOSE_BRACKET
+  body
+  : OPEN_BRACKET  (expression SEMICOLON)* CLOSE_BRACKET
   ;
 
-  body
-  : (expression SEMICOLON)*
-  ;
 
   variable
 	: VAR variableDef (ASSIGNMENT value)?
@@ -51,8 +48,24 @@ start
   ;
 
 	selectionStatement
-    :   IF OPEN_PARENTHESIS operation CLOSE_PARENTHESIS functionBody (ELSE functionBody)?
+    :   IF OPEN_PARENTHESIS logical_operation CLOSE_PARENTHESIS body (ELSE body)?
     ;
+
+    iterationStatement
+        :   WHILE OPEN_PARENTHESIS logical_operation CLOSE_PARENTHESIS body
+        |   DO body WHILE OPEN_PARENTHESIS logical_operation CLOSE_PARENTHESIS
+        |   FOR OPEN_PARENTHESIS forCondition CLOSE_PARENTHESIS body
+        ;
+
+
+    forCondition
+    	:   (variableDef | IDENTIFIER)? SEMICOLON logical_operation? SEMICOLON unaryExpression?
+    	;
+
+    unaryExpression
+        :   IDENTIFIER INCREMENT
+        |   IDENTIFIER DECREMENT
+        ;
 
   type
   : INT
@@ -79,12 +92,17 @@ start
 
 
   operation
-  : IDENTIFIER operator IDENTIFIER
-	;
-
-  operator
-  : math_operator | logical_operator
+  : logical_operation
+  | math_operation
   ;
+
+  logical_operation
+  : IDENTIFIER logical_operator IDENTIFIER
+    ;
+
+	math_operation
+	: IDENTIFIER math_operator IDENTIFIER
+	;
 
   math_operator
   : PLUS
@@ -109,6 +127,9 @@ start
   MAIN: 'main';
 	IF: 'if';
 	ELSE: 'else';
+	FOR: 'for';
+	WHILE: 'while';
+	DO: 'do';
 	INT: 'Int';
   STRING: 'String';
   CHAR: 'Char';
@@ -136,6 +157,8 @@ start
   CLOSE_BRACKET: '}';
   OPEN_PARENTHESIS: '(';
   CLOSE_PARENTHESIS: ')';
+  INCREMENT: '++';
+  DECREMENT: '--';
 
   IDENTIFIER:	('a'..'z' | 'A'..'Z' | '_') ('a'..'z' | 'A'..'Z' | '_' | '0'..'9')* ;
 
