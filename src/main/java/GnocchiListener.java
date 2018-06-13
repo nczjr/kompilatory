@@ -1,4 +1,4 @@
-// Generated from /Users/marcinwloczko/IdeaProjects/kompilatory/src/main/java/Gnocchi.g4 by ANTLR 4.7.1
+// Generated from Gnocchi.g4 by ANTLR 4.7.1
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -97,25 +97,55 @@ public interface GnocchiListener extends ParseTreeListener {
 	 */
 	void exitBody(GnocchiParser.BodyContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GnocchiParser#variable}.
+	 * Enter a parse tree produced by {@link GnocchiParser#variableOperations}.
 	 * @param ctx the parse tree
 	 */
-	void enterVariable(GnocchiParser.VariableContext ctx);
+	void enterVariableOperations(GnocchiParser.VariableOperationsContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link GnocchiParser#variable}.
+	 * Exit a parse tree produced by {@link GnocchiParser#variableOperations}.
 	 * @param ctx the parse tree
 	 */
-	void exitVariable(GnocchiParser.VariableContext ctx);
+	void exitVariableOperations(GnocchiParser.VariableOperationsContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GnocchiParser#variableDef}.
+	 * Enter a parse tree produced by {@link GnocchiParser#variableDeclaration}.
 	 * @param ctx the parse tree
 	 */
-	void enterVariableDef(GnocchiParser.VariableDefContext ctx);
+	void enterVariableDeclaration(GnocchiParser.VariableDeclarationContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link GnocchiParser#variableDef}.
+	 * Exit a parse tree produced by {@link GnocchiParser#variableDeclaration}.
 	 * @param ctx the parse tree
 	 */
-	void exitVariableDef(GnocchiParser.VariableDefContext ctx);
+	void exitVariableDeclaration(GnocchiParser.VariableDeclarationContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GnocchiParser#variableAssigment}.
+	 * @param ctx the parse tree
+	 */
+	void enterVariableAssigment(GnocchiParser.VariableAssigmentContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GnocchiParser#variableAssigment}.
+	 * @param ctx the parse tree
+	 */
+	void exitVariableAssigment(GnocchiParser.VariableAssigmentContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GnocchiParser#values}.
+	 * @param ctx the parse tree
+	 */
+	void enterValues(GnocchiParser.ValuesContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GnocchiParser#values}.
+	 * @param ctx the parse tree
+	 */
+	void exitValues(GnocchiParser.ValuesContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GnocchiParser#arrayValue}.
+	 * @param ctx the parse tree
+	 */
+	void enterArrayValue(GnocchiParser.ArrayValueContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GnocchiParser#arrayValue}.
+	 * @param ctx the parse tree
+	 */
+	void exitArrayValue(GnocchiParser.ArrayValueContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link GnocchiParser#selectionStatement}.
 	 * @param ctx the parse tree
@@ -166,6 +196,26 @@ public interface GnocchiListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitType(GnocchiParser.TypeContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GnocchiParser#basicType}.
+	 * @param ctx the parse tree
+	 */
+	void enterBasicType(GnocchiParser.BasicTypeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GnocchiParser#basicType}.
+	 * @param ctx the parse tree
+	 */
+	void exitBasicType(GnocchiParser.BasicTypeContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GnocchiParser#arrayType}.
+	 * @param ctx the parse tree
+	 */
+	void enterArrayType(GnocchiParser.ArrayTypeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GnocchiParser#arrayType}.
+	 * @param ctx the parse tree
+	 */
+	void exitArrayType(GnocchiParser.ArrayTypeContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link GnocchiParser#value}.
 	 * @param ctx the parse tree

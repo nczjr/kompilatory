@@ -1,20 +1,20 @@
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
 public class App {
     public static void main(String[] args) {
-        String s = " func slonecznaFunkcja(promyk1 : Int) => String {}" +
-                "func main() {}";
+        String s = " var zmienna: Int = 3 ";
         GnocchiLexer gnocchiLexer = new GnocchiLexer(new ANTLRInputStream(s));
         CommonTokenStream tokens = new CommonTokenStream(gnocchiLexer);
 
         GnocchiParser parser = new GnocchiParser(tokens);
-        parser.addParseListener(new GnocchiBaseListener());
+        GnocchiParser.VariableContext context = parser.variable();
 
-        ParseTree tree = parser.start();
-        System.out.println();
-        System.out.println(tree.toStringTree(parser));
+        ParseTreeWalker walker = new ParseTreeWalker();
+        GnocchiBaseListener listener = new GnocchiBaseListener();
 
+        walker.walk(listener, context);
     }
 }

@@ -1,4 +1,4 @@
-// Generated from /Users/marcinwloczko/IdeaProjects/kompilatory/src/main/java/Gnocchi.g4 by ANTLR 4.7.1
+// Generated from Gnocchi.g4 by ANTLR 4.7.1
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -64,17 +64,35 @@ public interface GnocchiVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitBody(GnocchiParser.BodyContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link GnocchiParser#variable}.
+	 * Visit a parse tree produced by {@link GnocchiParser#variableOperations}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitVariable(GnocchiParser.VariableContext ctx);
+	T visitVariableOperations(GnocchiParser.VariableOperationsContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link GnocchiParser#variableDef}.
+	 * Visit a parse tree produced by {@link GnocchiParser#variableDeclaration}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitVariableDef(GnocchiParser.VariableDefContext ctx);
+	T visitVariableDeclaration(GnocchiParser.VariableDeclarationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GnocchiParser#variableAssigment}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitVariableAssigment(GnocchiParser.VariableAssigmentContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GnocchiParser#values}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitValues(GnocchiParser.ValuesContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GnocchiParser#arrayValue}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitArrayValue(GnocchiParser.ArrayValueContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link GnocchiParser#selectionStatement}.
 	 * @param ctx the parse tree
@@ -105,6 +123,18 @@ public interface GnocchiVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitType(GnocchiParser.TypeContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GnocchiParser#basicType}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBasicType(GnocchiParser.BasicTypeContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GnocchiParser#arrayType}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitArrayType(GnocchiParser.ArrayTypeContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link GnocchiParser#value}.
 	 * @param ctx the parse tree

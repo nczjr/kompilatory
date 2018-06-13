@@ -1,15 +1,21 @@
 grammar Gnocchi;
 
+  //TODO funckje systemowe: print
 
-start
-	: functionDeclaration* functionMain EOF
+  //Składnia języka
+
+  start
+  : functionDeclaration* functionMain EOF
   ;
 
-  identifier : IDENT ;
+  identifier
+  : IDENT
+  ;
 
+  //Budowa funkcji
 
-	functionDeclaration
-	: FUNC functionIdentifier (ARROW type)? body
+  functionDeclaration
+  : FUNC functionIdentifier (ARROW type)? body
   ;
 
 
@@ -31,25 +37,43 @@ start
 
 
   parameterList
-  : variableDef (COMMA variableDef)*
+  : variableDeclaration (COMMA variableDeclaration)*
   | value (COMMA value)*
   ;
 
+  //Ciało funkcji i to co w nim
 
   body
   : OPEN_BRACKET  (expression SEMICOLON)* CLOSE_BRACKET
   ;
 
-
-  variable
-	: VAR variableDef (ASSIGNMENT value)?
+  variableOperations
+	: variableDeclaration
+	| variableAssigment
 	;
 
-  variableDef
-  : identifier COLON type
+  variableDeclaration
+  : VAR identifier COLON basicType (ASSIGNMENT value)?
+  | VAR identifier COLON arrayType (ASSIGNMENT arrayValue)?
   ;
 
-	selectionStatement
+  variableAssigment
+  : identifier ASSIGNMENT values
+  | identifier OPEN_SQAURE_BRACKET INT_VALUE CLOSE_SQARE_BRACKET ASSIGNMENT values //dla tablic
+  ;
+
+  values
+  : value
+  | arrayValue
+  | math_operation
+  | identifier
+  ;
+
+  arrayValue
+  : OPEN_BRACKET value (COMMA value)? CLOSE_BRACKET
+  ;
+
+    selectionStatement
     :   IF OPEN_PARENTHESIS logical_operation CLOSE_PARENTHESIS body (ELSE body)?
     ;
 
@@ -61,7 +85,7 @@ start
 
 
     forCondition
-    	:   (variable | identifier)? SEMICOLON logical_operation? SEMICOLON unaryExpression?
+    	:   (variableDeclaration | identifier)? SEMICOLON logical_operation? SEMICOLON unaryExpression?
     	;
 
     unaryExpression
@@ -70,11 +94,20 @@ start
         ;
 
   type
+  : basicType
+  | arrayType
+  ;
+
+  basicType
   : INT
   | STRING
   | CHAR
   | BOOLEAN
   | DOUBLE
+  ;
+
+  arrayType
+  : OPEN_SQAURE_BRACKET basicType CLOSE_SQARE_BRACKET
   ;
 
 	value
@@ -86,7 +119,7 @@ start
   ;
 
   expression
-  : variable
+  : variableOperations
   | operation
   | functionCall
   | selectionStatement
@@ -104,7 +137,7 @@ start
     ;
 
 	math_operation
-	: ( identifier | value ) math_operator ( identifier | value )
+	: (identifier | value) math_operator (identifier | value) (math_operator (identifier | value))*
 	;
 
   math_operator
@@ -122,6 +155,8 @@ start
   | LOWER_OR_EQUAL
   | GREATER_OR_EQUAL
   ;
+
+  //Tokeny
 
   VAR: 'var';
   FUNC: 'func';
@@ -159,33 +194,24 @@ start
   CLOSE_BRACKET: '}';
   OPEN_PARENTHESIS: '(';
   CLOSE_PARENTHESIS: ')';
+  OPEN_SQAURE_BRACKET: '[';
+  CLOSE_SQARE_BRACKET: ']';
   INCREMENT: '++';
   DECREMENT: '--';
-
 
   IDENT
 	:	('a'..'z' | 'A'..'Z' | '_') ('a'..'z' | 'A'..'Z' | '_' | '0'..'9')*
 	;
 
-
-
   STRING_VALUE: (CHAR_VALUE)+ ;
-
-
   CHAR_VALUE: [a-zA-Z] ;
-
    fragment
   DIGIT: '0' .. '9' ;
-
-
   INT_VALUE: DIGIT+;
-
-
   DOUBLE_VALUE: DIGIT+ DOT DIGIT+ ;
-
-
   BOOLEAN_VALUE: 'true' | 'false' ;
 
+  //Pomijane znaki
 
   Whitespace
     :   [ \t]+
