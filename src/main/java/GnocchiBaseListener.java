@@ -1,8 +1,13 @@
 // Generated from Gnocchi.g4 by ANTLR 4.7.1
 
 import org.antlr.v4.runtime.ParserRuleContext;
+import org.antlr.v4.runtime.RuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * This class provides an empty implementation of {@link GnocchiListener},
@@ -141,7 +146,12 @@ public class GnocchiBaseListener implements GnocchiListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVariableDeclaration(GnocchiParser.VariableDeclarationContext ctx) { }
+	@Override public void exitVariableDeclaration(GnocchiParser.VariableDeclarationContext ctx) {
+	    String identifier = ctx.identifier().getText();
+	    String value = ctx.value().getText();
+	    String type = ctx.basicType().getText();
+	    Handler.put(identifier, value, type);
+    }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -153,7 +163,14 @@ public class GnocchiBaseListener implements GnocchiListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVariableAssigment(GnocchiParser.VariableAssigmentContext ctx) { }
+	@Override public void exitVariableAssigment(GnocchiParser.VariableAssigmentContext ctx) {
+	    String identifier1 = ctx.identifier().getText();
+        String identifier2 = ctx.values().math_operation().identifier().get(0).getText() ;
+        Integer val = Integer.valueOf(ctx.values().math_operation().value().get(0).getText());
+	    Integer val1 = Integer.valueOf((String) Handler.get(identifier1).getValue());
+	    Integer val2 = Integer.valueOf((String) Handler.get(identifier2).getValue());
+        System.out.println(val1 + val2 + val);
+    }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -321,7 +338,16 @@ public class GnocchiBaseListener implements GnocchiListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMath_operation(GnocchiParser.Math_operationContext ctx) { }
+	@Override public void exitMath_operation(GnocchiParser.Math_operationContext ctx) {
+	    String mathOperator = ctx.math_operator().get(0).getText();
+        List<String> identifiers = ctx.identifier().stream()
+                                                    .map(RuleContext::getText)
+                                                    .collect(Collectors.toList());
+        List<String> values = ctx.value().stream()
+                                         .map(RuleContext::getText)
+                                         .collect(Collectors.toList());
+	    Handler.performMathOperation(identifiers, values, mathOperator);
+    }
 	/**
 	 * {@inheritDoc}
 	 *
