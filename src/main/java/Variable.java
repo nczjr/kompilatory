@@ -34,4 +34,13 @@ public class Variable {
     public void setType(Type type) {
         this.type = type;
     }
+
+    @Override
+    public String toString() {
+        return "Variable{" +
+                "identifier='" + identifier + '\'' +
+                ", value=" + value +
+                ", type=" + type +
+                '}';
+    }
 }
