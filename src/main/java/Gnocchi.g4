@@ -5,7 +5,7 @@ grammar Gnocchi;
   //Składnia języka
 
   start
-  : functionDeclaration* functionMain EOF
+  : (voidFunctionDeclaration | returningFunctionDeclaration)*  functionMain EOF
   ;
 
   identifier
@@ -13,14 +13,16 @@ grammar Gnocchi;
   ;
 
   //Budowa funkcji
-
-  functionDeclaration
-  : FUNC functionIdentifier (ARROW type)? body
-  ;
-
-
   functionMain
   : FUNC MAIN OPEN_PARENTHESIS CLOSE_PARENTHESIS body
+  ;
+
+  voidFunctionDeclaration
+  : FUNC functionIdentifier body
+  ;
+
+  returningFunctionDeclaration
+  : FUNC functionIdentifier ARROW type functionBody
   ;
 
   functionIdentifier
@@ -35,13 +37,15 @@ grammar Gnocchi;
   : OPEN_PARENTHESIS parameterList? CLOSE_PARENTHESIS
   ;
 
-
   parameterList
   : variableDeclaration (COMMA variableDeclaration)*
   | value (COMMA value)*
   ;
 
   //Ciało funkcji i to co w nim
+  functionBody
+  : OPEN_BRACKET (expression SEMICOLON)* (RETURN values SEMICOLON) CLOSE_BRACKET
+  ;
 
   body
   : OPEN_BRACKET  (expression SEMICOLON)* CLOSE_BRACKET
