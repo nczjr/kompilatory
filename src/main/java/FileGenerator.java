@@ -19,7 +19,7 @@ public class FileGenerator {
         for (String argument: arguments) {
           writer.print("Variable " + argument + ", ");
         }
-        writer.print(")");
+        writer.print(") {");
     }
 
     void write(String text) {

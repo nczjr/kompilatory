@@ -18,4 +18,18 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
         fileGenerator.write("   }");
         return null;
     }
+
+    @Override
+    public Variable visitVoidFunctionDeclaration(GnocchiParser.VoidFunctionDeclarationContext ctx) {
+        System.out.println("tutaj");
+        String identifier = ctx.functionIdentifier().identifier().getText();
+        String[] arguments = {};
+        fileGenerator.writeFunctionWith(identifier, arguments);
+        return super.visitVoidFunctionDeclaration(ctx);
+    }
+
+    @Override
+    public Variable visitFunctionIdentifier(GnocchiParser.FunctionIdentifierContext ctx) {
+        return super.visitFunctionIdentifier(ctx);
+    }
 }

@@ -148,40 +148,38 @@ public class GnocchiParser extends Parser {
 	public final StartContext start() throws RecognitionException {
 		StartContext _localctx = new StartContext(_ctx, getState());
 		enterRule(_localctx, 0, RULE_start);
+		int _la;
 		try {
-			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(62);
+			setState(58);
+			functionMain();
+			setState(63);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,1,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
-				if ( _alt==1 ) {
+			_la = _input.LA(1);
+			while (_la==FUNC) {
+				{
+				setState(61);
+				_errHandler.sync(this);
+				switch ( getInterpreter().adaptivePredict(_input,0,_ctx) ) {
+				case 1:
+					{
+					setState(59);
+					voidFunctionDeclaration();
+					}
+					break;
+				case 2:
 					{
 					setState(60);
-					_errHandler.sync(this);
-					switch ( getInterpreter().adaptivePredict(_input,0,_ctx) ) {
-					case 1:
-						{
-						setState(58);
-						voidFunctionDeclaration();
-						}
-						break;
-					case 2:
-						{
-						setState(59);
-						returningFunctionDeclaration();
-						}
-						break;
+					returningFunctionDeclaration();
 					}
-					} 
+					break;
 				}
-				setState(64);
+				}
+				setState(65);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,1,_ctx);
+				_la = _input.LA(1);
 			}
-			setState(65);
-			functionMain();
 			setState(66);
 			match(EOF);
 			}
@@ -2108,8 +2106,8 @@ public class GnocchiParser extends Parser {
 		"\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13"+
 		"\t\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
 		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31\t\31"+
-		"\4\32\t\32\4\33\t\33\4\34\t\34\4\35\t\35\4\36\t\36\3\2\3\2\7\2?\n\2\f"+
-		"\2\16\2B\13\2\3\2\3\2\3\2\3\3\3\3\3\4\3\4\3\4\3\4\3\4\3\4\3\5\3\5\3\5"+
+		"\4\32\t\32\4\33\t\33\4\34\t\34\4\35\t\35\4\36\t\36\3\2\3\2\3\2\7\2@\n"+
+		"\2\f\2\16\2C\13\2\3\2\3\2\3\3\3\3\3\4\3\4\3\4\3\4\3\4\3\4\3\5\3\5\3\5"+
 		"\3\5\3\6\3\6\3\6\3\6\3\6\3\6\3\7\3\7\3\7\3\b\3\b\3\t\3\t\5\t`\n\t\3\t"+
 		"\3\t\3\n\3\n\3\n\7\ng\n\n\f\n\16\nj\13\n\3\n\3\n\3\n\7\no\n\n\f\n\16\n"+
 		"r\13\n\5\nt\n\n\3\13\3\13\3\13\3\13\7\13z\n\13\f\13\16\13}\13\13\3\13"+
@@ -2126,14 +2124,14 @@ public class GnocchiParser extends Parser {
 		"\5\34\u00fb\n\34\3\34\3\34\3\34\5\34\u0100\n\34\7\34\u0102\n\34\f\34\16"+
 		"\34\u0105\13\34\3\35\3\35\3\36\3\36\3\36\2\2\37\2\4\6\b\n\f\16\20\22\24"+
 		"\26\30\32\34\36 \"$&(*,.\60\62\64\668:\2\6\4\2\f\f\20\20\3\2,-\3\2\31"+
-		"\34\3\2\23\30\2\u010d\2@\3\2\2\2\4F\3\2\2\2\6H\3\2\2\2\bN\3\2\2\2\nR\3"+
+		"\34\3\2\23\30\2\u010d\2<\3\2\2\2\4F\3\2\2\2\6H\3\2\2\2\bN\3\2\2\2\nR\3"+
 		"\2\2\2\fX\3\2\2\2\16[\3\2\2\2\20]\3\2\2\2\22s\3\2\2\2\24u\3\2\2\2\26\u0084"+
 		"\3\2\2\2\30\u0091\3\2\2\2\32\u0093\3\2\2\2\34\u0098\3\2\2\2\36\u009f\3"+
 		"\2\2\2 \u00a1\3\2\2\2\"\u00bd\3\2\2\2$\u00c1\3\2\2\2&\u00d1\3\2\2\2(\u00d5"+
 		"\3\2\2\2*\u00d7\3\2\2\2,\u00d9\3\2\2\2.\u00dd\3\2\2\2\60\u00e4\3\2\2\2"+
 		"\62\u00e8\3\2\2\2\64\u00ec\3\2\2\2\66\u00f5\3\2\2\28\u0106\3\2\2\2:\u0108"+
-		"\3\2\2\2<?\5\b\5\2=?\5\n\6\2><\3\2\2\2>=\3\2\2\2?B\3\2\2\2@>\3\2\2\2@"+
-		"A\3\2\2\2AC\3\2\2\2B@\3\2\2\2CD\5\6\4\2DE\7\2\2\3E\3\3\2\2\2FG\7)\2\2"+
+		"\3\2\2\2<A\5\6\4\2=@\5\b\5\2>@\5\n\6\2?=\3\2\2\2?>\3\2\2\2@C\3\2\2\2A"+
+		"?\3\2\2\2AB\3\2\2\2BD\3\2\2\2CA\3\2\2\2DE\7\2\2\3E\3\3\2\2\2FG\7)\2\2"+
 		"G\5\3\2\2\2HI\7\4\2\2IJ\7\6\2\2JK\7#\2\2KL\7$\2\2LM\5\26\f\2M\7\3\2\2"+
 		"\2NO\7\4\2\2OP\5\f\7\2PQ\5\26\f\2Q\t\3\2\2\2RS\7\4\2\2ST\5\f\7\2TU\7\37"+
 		"\2\2UV\5(\25\2VW\5\24\13\2W\13\3\2\2\2XY\5\4\3\2YZ\5\20\t\2Z\r\3\2\2\2"+
@@ -2188,7 +2186,7 @@ public class GnocchiParser extends Parser {
 		"\3\2\u00fe\u0100\5.\30\2\u00ff\u00fd\3\2\2\2\u00ff\u00fe\3\2\2\2\u0100"+
 		"\u0102\3\2\2\2\u0101\u00fc\3\2\2\2\u0102\u0105\3\2\2\2\u0103\u0101\3\2"+
 		"\2\2\u0103\u0104\3\2\2\2\u0104\67\3\2\2\2\u0105\u0103\3\2\2\2\u0106\u0107"+
-		"\t\4\2\2\u01079\3\2\2\2\u0108\u0109\t\5\2\2\u0109;\3\2\2\2\34>@_hps{\u008a"+
+		"\t\4\2\2\u01079\3\2\2\2\u0108\u0109\t\5\2\2\u0109;\3\2\2\2\34?A_hps{\u008a"+
 		"\u0091\u0096\u009f\u00a8\u00bd\u00c1\u00c5\u00c9\u00d1\u00d5\u00e4\u00e8"+
 		"\u00ec\u00f1\u00f5\u00fa\u00ff\u0103";
 	public static final ATN _ATN =
