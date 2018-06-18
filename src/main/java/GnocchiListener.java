@@ -27,16 +27,6 @@ public interface GnocchiListener extends ParseTreeListener {
 	 */
 	void exitIdentifier(GnocchiParser.IdentifierContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GnocchiParser#functionDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void enterFunctionDeclaration(GnocchiParser.FunctionDeclarationContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link GnocchiParser#functionDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void exitFunctionDeclaration(GnocchiParser.FunctionDeclarationContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link GnocchiParser#functionMain}.
 	 * @param ctx the parse tree
 	 */
@@ -46,6 +36,26 @@ public interface GnocchiListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitFunctionMain(GnocchiParser.FunctionMainContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GnocchiParser#voidFunctionDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void enterVoidFunctionDeclaration(GnocchiParser.VoidFunctionDeclarationContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GnocchiParser#voidFunctionDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void exitVoidFunctionDeclaration(GnocchiParser.VoidFunctionDeclarationContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GnocchiParser#returningFunctionDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void enterReturningFunctionDeclaration(GnocchiParser.ReturningFunctionDeclarationContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GnocchiParser#returningFunctionDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void exitReturningFunctionDeclaration(GnocchiParser.ReturningFunctionDeclarationContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link GnocchiParser#functionIdentifier}.
 	 * @param ctx the parse tree
@@ -86,6 +96,16 @@ public interface GnocchiListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitParameterList(GnocchiParser.ParameterListContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GnocchiParser#functionBody}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunctionBody(GnocchiParser.FunctionBodyContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GnocchiParser#functionBody}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunctionBody(GnocchiParser.FunctionBodyContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link GnocchiParser#body}.
 	 * @param ctx the parse tree
@@ -136,16 +156,6 @@ public interface GnocchiListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitValues(GnocchiParser.ValuesContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link GnocchiParser#arrayValue}.
-	 * @param ctx the parse tree
-	 */
-	void enterArrayValue(GnocchiParser.ArrayValueContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link GnocchiParser#arrayValue}.
-	 * @param ctx the parse tree
-	 */
-	void exitArrayValue(GnocchiParser.ArrayValueContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link GnocchiParser#selectionStatement}.
 	 * @param ctx the parse tree

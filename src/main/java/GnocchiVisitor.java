@@ -22,17 +22,23 @@ public interface GnocchiVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitIdentifier(GnocchiParser.IdentifierContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link GnocchiParser#functionDeclaration}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitFunctionDeclaration(GnocchiParser.FunctionDeclarationContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link GnocchiParser#functionMain}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitFunctionMain(GnocchiParser.FunctionMainContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GnocchiParser#voidFunctionDeclaration}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitVoidFunctionDeclaration(GnocchiParser.VoidFunctionDeclarationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GnocchiParser#returningFunctionDeclaration}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitReturningFunctionDeclaration(GnocchiParser.ReturningFunctionDeclarationContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link GnocchiParser#functionIdentifier}.
 	 * @param ctx the parse tree
@@ -57,6 +63,12 @@ public interface GnocchiVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitParameterList(GnocchiParser.ParameterListContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GnocchiParser#functionBody}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFunctionBody(GnocchiParser.FunctionBodyContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link GnocchiParser#body}.
 	 * @param ctx the parse tree
@@ -87,12 +99,6 @@ public interface GnocchiVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitValues(GnocchiParser.ValuesContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link GnocchiParser#arrayValue}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitArrayValue(GnocchiParser.ArrayValueContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link GnocchiParser#selectionStatement}.
 	 * @param ctx the parse tree

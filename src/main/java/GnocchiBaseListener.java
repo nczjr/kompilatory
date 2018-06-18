@@ -1,13 +1,8 @@
 // Generated from Gnocchi.g4 by ANTLR 4.7.1
 
 import org.antlr.v4.runtime.ParserRuleContext;
-import org.antlr.v4.runtime.RuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * This class provides an empty implementation of {@link GnocchiListener},
@@ -44,18 +39,6 @@ public class GnocchiBaseListener implements GnocchiListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFunctionDeclaration(GnocchiParser.FunctionDeclarationContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitFunctionDeclaration(GnocchiParser.FunctionDeclarationContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterFunctionMain(GnocchiParser.FunctionMainContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -63,6 +46,30 @@ public class GnocchiBaseListener implements GnocchiListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitFunctionMain(GnocchiParser.FunctionMainContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterVoidFunctionDeclaration(GnocchiParser.VoidFunctionDeclarationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitVoidFunctionDeclaration(GnocchiParser.VoidFunctionDeclarationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterReturningFunctionDeclaration(GnocchiParser.ReturningFunctionDeclarationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitReturningFunctionDeclaration(GnocchiParser.ReturningFunctionDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -116,6 +123,18 @@ public class GnocchiBaseListener implements GnocchiListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterFunctionBody(GnocchiParser.FunctionBodyContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFunctionBody(GnocchiParser.FunctionBodyContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterBody(GnocchiParser.BodyContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -146,12 +165,7 @@ public class GnocchiBaseListener implements GnocchiListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVariableDeclaration(GnocchiParser.VariableDeclarationContext ctx) {
-	    String identifier = ctx.identifier().getText();
-	    String value = ctx.value().getText();
-	    String type = ctx.basicType().getText();
-	    Handler.put(identifier, value, type);
-    }
+	@Override public void exitVariableDeclaration(GnocchiParser.VariableDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -163,14 +177,7 @@ public class GnocchiBaseListener implements GnocchiListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVariableAssigment(GnocchiParser.VariableAssigmentContext ctx) {
-	    String identifier1 = ctx.identifier().getText();
-        String identifier2 = ctx.values().math_operation().identifier().get(0).getText() ;
-        Integer val = Integer.valueOf(ctx.values().math_operation().value().get(0).getText());
-	    Integer val1 = Integer.valueOf((String) Handler.get(identifier1).getValue());
-	    Integer val2 = Integer.valueOf((String) Handler.get(identifier2).getValue());
-        System.out.println(val1 + val2 + val);
-    }
+	@Override public void exitVariableAssigment(GnocchiParser.VariableAssigmentContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -183,18 +190,6 @@ public class GnocchiBaseListener implements GnocchiListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitValues(GnocchiParser.ValuesContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterArrayValue(GnocchiParser.ArrayValueContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitArrayValue(GnocchiParser.ArrayValueContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -338,16 +333,7 @@ public class GnocchiBaseListener implements GnocchiListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMath_operation(GnocchiParser.Math_operationContext ctx) {
-	    String mathOperator = ctx.math_operator().get(0).getText();
-        List<String> identifiers = ctx.identifier().stream()
-                                                    .map(RuleContext::getText)
-                                                    .collect(Collectors.toList());
-        List<String> values = ctx.value().stream()
-                                         .map(RuleContext::getText)
-                                         .collect(Collectors.toList());
-	    Handler.performMathOperation(identifiers, values, mathOperator);
-    }
+	@Override public void exitMath_operation(GnocchiParser.Math_operationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

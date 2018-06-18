@@ -1,7 +1,5 @@
 grammar Gnocchi;
 
-  //TODO funckje systemowe: print
-
   //Składnia języka
 
   start
@@ -57,24 +55,17 @@ grammar Gnocchi;
 	;
 
   variableDeclaration
-  : VAR identifier COLON basicType (ASSIGNMENT value)?
-  | VAR identifier COLON arrayType (ASSIGNMENT arrayValue)?
+  : identifier (ASSIGNMENT value)?
   ;
 
   variableAssigment
   : identifier ASSIGNMENT values
-  | identifier OPEN_SQAURE_BRACKET INT_VALUE CLOSE_SQARE_BRACKET ASSIGNMENT values //dla tablic
   ;
 
   values
   : value
-  | arrayValue
   | math_operation
   | identifier
-  ;
-
-  arrayValue
-  : OPEN_BRACKET value (COMMA value)? CLOSE_BRACKET
   ;
 
     selectionStatement
@@ -104,9 +95,6 @@ grammar Gnocchi;
 
   basicType
   : INT
-  | STRING
-  | CHAR
-  | BOOLEAN
   | DOUBLE
   ;
 
@@ -115,10 +103,7 @@ grammar Gnocchi;
   ;
 
 	value
-  : STRING_VALUE
-  | INT_VALUE
-  | CHAR_VALUE
-  | BOOLEAN_VALUE
+  : INT_VALUE
   | DOUBLE_VALUE
   ;
 
