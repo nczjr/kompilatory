@@ -185,7 +185,8 @@ grammar Gnocchi;
 	:	('a'..'z' | 'A'..'Z' | '_') ('a'..'z' | 'A'..'Z' | '_' | '0'..'9')*
 	;
 
-  STRING_VALUE: (CHAR_VALUE)+ ;
+  //STRING_VALUE: (CHAR_VALUE)+ ;
+  STRING_VALUE: '"' ~('"')* '"';
   CHAR_VALUE: [a-zA-Z] ;
    fragment
   DIGIT: '0' .. '9' ;
