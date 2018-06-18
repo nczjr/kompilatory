@@ -45,9 +45,14 @@ public class FileGenerator {
         writer.println(identifer + " = " + value + ";");
     }
 
-    void write(String text) {
+    void writeln(String text) {
         writer.println(text);
     }
+
+    void write(String text) {
+        writer.print(text);
+    }
+
 
     void writeMain() {
         writer.println("public class AppGnocchi {");

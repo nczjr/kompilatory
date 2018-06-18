@@ -1,5 +1,3 @@
-import org.apache.commons.lang3.math.NumberUtils;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -18,7 +16,7 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
     public Variable visitFunctionMain(GnocchiParser.FunctionMainContext ctx) {
         fileGenerator.writeMain();
         super.visitFunctionMain(ctx);
-        fileGenerator.write("   }");
+        fileGenerator.writeln("   }");
         return null;
     }
 
@@ -28,7 +26,7 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
         String[] arguments = {};
         fileGenerator.writeVoidFunctionWith(identifier, arguments);
         super.visitVoidFunctionDeclaration(ctx);
-        fileGenerator.write("   }");
+        fileGenerator.writeln("   }");
         return null;
     }
 
@@ -41,8 +39,8 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
                                                                                                             .collect(Collectors.toList())
                 : Collections.emptyList();
         super.visitReturningFunctionDeclaration(ctx);
-        fileGenerator.write(" " + identifier + " (" + arguments + " )");
-        fileGenerator.write("   }");
+        fileGenerator.writeln(" " + identifier + " (" + arguments + " )" + " {");
+        fileGenerator.writeln("   }");
         return null;
     }
 
