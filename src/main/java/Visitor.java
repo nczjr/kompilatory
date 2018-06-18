@@ -47,7 +47,8 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
     }
 
     private String getReturnType(GnocchiParser.ReturningFunctionDeclarationContext ctx) {
-        String returnIdentifier = ctx.functionBody().values().identifier().getText();
+        String returnIdentifier = ctx.functionBody().values().identifier() != null ?
+                ctx.functionBody().values().identifier().getText() : null;
         String mathOperationValue = ctx.functionBody().values().math_operation() != null ?
                 ctx.functionBody().values().math_operation().value(0).getText() : null;
         String value = ctx.functionBody().values().value() != null ? ctx.functionBody().values().value().getText() : null;
