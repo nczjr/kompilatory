@@ -4,11 +4,30 @@ public class Variable {
     Object value;
     Type type;
 
+    public Variable(){};
 
     public Variable(String identifier, Object value, Type type) {
         this.identifier = identifier;
         this.value = value;
         this.type = type;
+    }
+
+    public Variable(Integer value, String identifier) {
+        this.identifier = identifier;
+        this.value = value;
+        this.type = Type.INT;
+    }
+
+    public Variable(Double value, String identifier) {
+        this.identifier = identifier;
+        this.value = value;
+        this.type = Type.DOUBLE;
+    }
+
+    public Variable(String value, String identifier) {
+        this.identifier = identifier;
+        this.value = value;
+        this.type = Type.STRING;
     }
 
     public String getIdentifier() {

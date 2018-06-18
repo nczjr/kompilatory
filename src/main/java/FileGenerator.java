@@ -23,7 +23,7 @@ public class FileGenerator {
     }
 
     void writeVariableDeclaration(String identifer, String initValue) {
-        writer.println("Variable " + identifer + " = " + initValue + ";");
+        writer.println("Variable " + identifer + " = new Variable(" + initValue + ",\"" + identifer + "\");");
     }
 
     void writeVariableAssigment(String identifer, String value) {
