@@ -35,7 +35,7 @@ public class FileGenerator {
     }
 
      Variable variableDeclaration(String identifer, String initValue) {
-        String type = NumberUtils.isNumber(initValue) ? (isInteger(initValue) ? "int" : "double") : "String";
+        String type = Util.getTypeOfValue(initValue);
         writer.println(type + " " + identifer + " = " + initValue + ";");
         return new Variable(identifer, Type.valueOf(type.toUpperCase()));
 
@@ -59,12 +59,8 @@ public class FileGenerator {
         writer.close();
     }
 
-    public static boolean isInteger(String s) {
-        try {
-            Integer.parseInt(s);
-        } catch(NumberFormatException e) {
-            return false;
-        }
-        return true;
+
+
+    public void writeReturnType() {
     }
 }
