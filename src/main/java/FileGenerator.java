@@ -19,7 +19,7 @@ public class FileGenerator {
     }
 
     void writeVoidFunctionWith(String identifier, String[] arguments) {
-        writer.print("  Void " + identifier + "(");
+        writer.print("  void " + identifier + "(");
         for (String argument: arguments) {
           writer.print("Variable " + argument + ", ");
         }
