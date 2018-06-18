@@ -28,9 +28,10 @@ public class FileGenerator {
 
     void writeReturnFunctionWith(String identifier, String[] arguments, String returnType) {
         writer.print("  " + returnType + " " + identifier + "(");
-        for (String argument: arguments) {
-            String type = Util.getTypeOfValue(argument);
-            writer.print(type + " " + argument + ", ");
+        for (int i= 0; i<arguments.length; i++) {
+            if (i!= 0) writer.print(", ");
+            writer.print("Object" + " " + arguments[i] );
+
         }
         writer.print(") {");
     }
@@ -62,5 +63,16 @@ public class FileGenerator {
     void closeWriter() {
         writer.print("}");
         writer.close();
+    }
+
+    public void writeFunctionCall(String function, List<String> arguments) {
+        writer.print(function + "(");
+        for(int i=0; i<arguments.size(); i++){
+            if (i!=0) {
+                writer.print(",");
+            }
+            writer.print(arguments.get(i));
+        }
+        writer.print(");");
     }
 }
