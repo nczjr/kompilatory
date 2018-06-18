@@ -14,6 +14,7 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
 
     @Override
     public Variable visitFunctionMain(GnocchiParser.FunctionMainContext ctx) {
+        clearVariables();
         fileGenerator.writeMain();
         super.visitFunctionMain(ctx);
         fileGenerator.writeln("   }");
@@ -22,6 +23,7 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
 
     @Override
     public Variable visitVoidFunctionDeclaration(GnocchiParser.VoidFunctionDeclarationContext ctx) {
+        clearVariables();
         String identifier = ctx.identifier().getText();
         String[] arguments = {};
         fileGenerator.writeVoidFunctionWith(identifier, arguments);
@@ -32,14 +34,15 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
 
     @Override
     public Variable visitReturningFunctionDeclaration(GnocchiParser.ReturningFunctionDeclarationContext ctx) {
+        clearVariables();
         String identifier = ctx.identifier().getText();
         List<String> arguments = ctx.parameterList() != null ? ctx.parameterList().identifier().stream()
                                                                                                             .map(parameter -> parameter.getText())
                                                                                                             .collect(Collectors.toList())
                 : Collections.emptyList();
-        super.visitReturningFunctionDeclaration(ctx);
         String[] argArray = new String[arguments.size()];
         fileGenerator.writeReturnFunctionWith(identifier, arguments.toArray(argArray), getReturnType(ctx));
+        super.visitReturningFunctionDeclaration(ctx);
         return null;
     }
 
@@ -65,5 +68,9 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
             variables.add(fileGenerator.variableDeclaration(identifier, value));
         }
         return super.visitVariableDeclaration(ctx);
+    }
+
+    private void clearVariables() {
+        variables.clear();
     }
 }

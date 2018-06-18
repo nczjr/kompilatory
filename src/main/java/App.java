@@ -5,7 +5,7 @@ import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
 public class App {
     public static void main(String[] args) {
-        String s = "func main() {  zmienna = 3.0;  s = \"bbbb\" ; b = 2; zmienna = b / 4; } func nazwa() { return 3; }";
+        String s = "func main() {  zmienna = 3.0;  s = \"bbbb\" ; b = 2; zmienna = b / 4; } func nazwa() { zmienna = 3; return 3; }";
         GnocchiLexer gnocchiLexer = new GnocchiLexer(new ANTLRInputStream(s));
         CommonTokenStream tokens = new CommonTokenStream(gnocchiLexer);
         String natka = "C:\\Users\\User.DESKTOP-57LLUVE\\IdeaProjects\\kompilatory\\src\\main\\java\\AppGnocchi.java";
