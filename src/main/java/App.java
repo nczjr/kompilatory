@@ -10,7 +10,7 @@ public class App {
         CommonTokenStream tokens = new CommonTokenStream(gnocchiLexer);
         String natka = "C:\\Users\\User.DESKTOP-57LLUVE\\IdeaProjects\\kompilatory\\src\\main\\java\\AppGnocchi.java";
         String macion = "/Users/marcinwloczko/IdeaProjects/kompilatory/src/main/java/AppGnocchi.java";
-        FileGenerator generator = new FileGenerator(natka);
+        FileGenerator generator = new FileGenerator(macion);
         GnocchiParser parser = new GnocchiParser(tokens);
         ParseTree parseTree = parser.start();
         Visitor visitor = new Visitor(generator);

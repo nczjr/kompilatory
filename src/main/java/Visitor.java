@@ -32,15 +32,14 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
 
     @Override
     public Variable visitReturningFunctionDeclaration(GnocchiParser.ReturningFunctionDeclarationContext ctx) {
-        fileGenerator.write(getReturnType(ctx));
         String identifier = ctx.identifier().getText();
         List<String> arguments = ctx.parameterList() != null ? ctx.parameterList().identifier().stream()
                                                                                                             .map(parameter -> parameter.getText())
                                                                                                             .collect(Collectors.toList())
                 : Collections.emptyList();
         super.visitReturningFunctionDeclaration(ctx);
-        fileGenerator.writeln(" " + identifier + " (" + arguments + " )" + " {");
-        fileGenerator.writeln("   }");
+        String[] argArray = new String[arguments.size()];
+        fileGenerator.writeReturnFunctionWith(identifier, arguments.toArray(argArray), getReturnType(ctx));
         return null;
     }
 

@@ -29,7 +29,8 @@ public class FileGenerator {
     void writeReturnFunctionWith(String identifier, String[] arguments, String returnType) {
         writer.print("  " + returnType + " " + identifier + "(");
         for (String argument: arguments) {
-            writer.print("Variable " + argument + ", ");
+            String type = Util.getTypeOfValue(argument);
+            writer.print(type + " " + argument + ", ");
         }
         writer.print(") {");
     }
@@ -53,7 +54,6 @@ public class FileGenerator {
         writer.print(text);
     }
 
-
     void writeMain() {
         writer.println("public class AppGnocchi {");
         writer.println("    public static void main(String[] args) {");
@@ -62,10 +62,5 @@ public class FileGenerator {
     void closeWriter() {
         writer.print("}");
         writer.close();
-    }
-
-
-
-    public void writeReturnType() {
     }
 }
