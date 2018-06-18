@@ -15,11 +15,19 @@ public class FileGenerator {
     }
 
     void writeFunctionWith(String identifier, String[] arguments) {
-        writer.print("Variable " + identifier + " (");
+        writer.print("  Variable " + identifier + "(");
         for (String argument: arguments) {
           writer.print("Variable " + argument + ", ");
         }
         writer.print(") {");
+    }
+
+    void writeVariableDeclaration(String identifer, String initValue) {
+        writer.println("Variable " + identifer + " = " + initValue + ";");
+    }
+
+    void writeVariableAssigment(String identifer, String value) {
+        writer.println(identifer + " = " + value + ";");
     }
 
     void write(String text) {
