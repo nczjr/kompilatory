@@ -1,6 +1,10 @@
+import org.apache.commons.lang3.math.NumberUtils;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+
+import static org.apache.commons.lang3.StringUtils.isNumeric;
 
 public class FileGenerator {
 
@@ -23,7 +27,8 @@ public class FileGenerator {
     }
 
     void writeVariableDeclaration(String identifer, String initValue) {
-        writer.println("Variable " + identifer + " = new Variable(" + initValue + ",\"" + identifer + "\");");
+        writer.print(NumberUtils.isNumber(initValue) ? (isInteger(initValue) ? "int " : "double ") : "String " );
+        writer.println(identifer + " = " + initValue + ";");
     }
 
     void writeVariableAssigment(String identifer, String value) {
@@ -42,5 +47,14 @@ public class FileGenerator {
     void closeWriter() {
         writer.print("}");
         writer.close();
+    }
+
+    public static boolean isInteger(String s) {
+        try {
+            Integer.parseInt(s);
+        } catch(NumberFormatException e) {
+            return false;
+        }
+        return true;
     }
 }
