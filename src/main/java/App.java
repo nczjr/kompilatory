@@ -8,13 +8,11 @@ public class App {
         String s = "func main() {  zmienna = 3.0;  s = bbbb ; b = 9; zmienna = b / 4; } func nazwa() {}";
         GnocchiLexer gnocchiLexer = new GnocchiLexer(new ANTLRInputStream(s));
         CommonTokenStream tokens = new CommonTokenStream(gnocchiLexer);
-
-        FileGenerator generator = new FileGenerator("/Users/marcinwloczko/IdeaProjects/kompilatory/src/main/java/AppGnocchi.java");
+        FileGenerator generator = new FileGenerator("C:\\Users\\User.DESKTOP-57LLUVE\\IdeaProjects\\kompilatory\\src\\main\\java\\AppGnocchi.java");
         GnocchiParser parser = new GnocchiParser(tokens);
         ParseTree parseTree = parser.start();
         Visitor visitor = new Visitor(generator);
         visitor.visit(parseTree);
-        System.out.println(Handler.getVariables());
         GnocchiParser.StartContext context = parser.start();
 
         generator.closeWriter();

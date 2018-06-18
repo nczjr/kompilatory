@@ -34,9 +34,11 @@ public class FileGenerator {
         writer.print(") {");
     }
 
-    void writeVariableDeclaration(String identifer, String initValue) {
-        writer.print(NumberUtils.isNumber(initValue) ? (isInteger(initValue) ? "int " : "double ") : "String " );
-        writer.println(identifer + " = " + initValue + ";");
+     Variable variableDeclaration(String identifer, String initValue) {
+        String type = NumberUtils.isNumber(initValue) ? (isInteger(initValue) ? "int" : "double") : "String";
+        writer.println(type + " " + identifer + " = " + initValue + ";");
+        return new Variable(identifer, Type.valueOf(type.toUpperCase()));
+
     }
 
     void writeVariableAssigment(String identifer, String value) {

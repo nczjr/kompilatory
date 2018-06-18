@@ -1,4 +1,3 @@
-import org.antlr.v4.runtime.RuleContext;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -6,7 +5,7 @@ import java.util.stream.Collectors;
 public class Visitor extends GnocchiBaseVisitor<Variable> {
 
     private FileGenerator fileGenerator;
-    private List<String> variables = new ArrayList<>();
+    private List<Variable> variables = new ArrayList<>();
 
     Visitor(FileGenerator fileGenerator) {
         this.fileGenerator = fileGenerator;
@@ -33,7 +32,7 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
     @Override
     public Variable visitReturningFunctionDeclaration(GnocchiParser.ReturningFunctionDeclarationContext ctx) {
         String identifier = ctx.identifier().getText();
-        List<String> arguments = ctx.parameterList().identifier().stream().map(parameter -> parameter.getText());
+        List<String> arguments = ctx.parameterList().identifier().stream().map(parameter -> parameter.getText()).collect(Collectors.toList());
         super.visitReturningFunctionDeclaration(ctx);
         fileGenerator.write("   }");
         return null;
@@ -46,8 +45,7 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
         if (variables.contains(identifier)) {
             fileGenerator.writeVariableAssigment(identifier, value);
         } else {
-            variables.add(identifier);
-            fileGenerator.writeVariableDeclaration(identifier, value);
+            variables.add(fileGenerator.variableDeclaration(identifier, value));
         }
         return super.visitVariableDeclaration(ctx);
     }
