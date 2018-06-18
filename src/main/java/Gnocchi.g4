@@ -16,28 +16,19 @@ grammar Gnocchi;
   ;
 
   voidFunctionDeclaration
-  : FUNC functionIdentifier body
+  : FUNC identifier OPEN_PARENTHESIS parameterList? CLOSE_PARENTHESIS body
   ;
 
   returningFunctionDeclaration
-  : FUNC functionIdentifier ARROW type functionBody
-  ;
-
-  functionIdentifier
-  : identifier parameters
+  : FUNC identifier OPEN_PARENTHESIS parameterList? CLOSE_PARENTHESIS functionBody
   ;
 
   functionCall
-  : functionIdentifier
-  ;
-
-  parameters
-  : OPEN_PARENTHESIS parameterList? CLOSE_PARENTHESIS
+  : identifier (value (COMMA value)*)?
   ;
 
   parameterList
-  : variableDeclaration (COMMA variableDeclaration)*
-  | value (COMMA value)*
+  : identifier (COMMA identifier)*
   ;
 
   //Ciało funkcji i to co w nim
@@ -96,6 +87,7 @@ grammar Gnocchi;
   basicType
   : INT
   | DOUBLE
+  | STRING
   ;
 
   arrayType
@@ -105,6 +97,7 @@ grammar Gnocchi;
 	value
   : INT_VALUE
   | DOUBLE_VALUE
+  | STRING_VALUE
   ;
 
   expression

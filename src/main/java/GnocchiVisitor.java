@@ -40,23 +40,11 @@ public interface GnocchiVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitReturningFunctionDeclaration(GnocchiParser.ReturningFunctionDeclarationContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link GnocchiParser#functionIdentifier}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitFunctionIdentifier(GnocchiParser.FunctionIdentifierContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link GnocchiParser#functionCall}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitFunctionCall(GnocchiParser.FunctionCallContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link GnocchiParser#parameters}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitParameters(GnocchiParser.ParametersContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link GnocchiParser#parameterList}.
 	 * @param ctx the parse tree

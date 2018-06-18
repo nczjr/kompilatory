@@ -1,5 +1,4 @@
 import org.antlr.v4.runtime.RuleContext;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,10 +22,19 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
 
     @Override
     public Variable visitVoidFunctionDeclaration(GnocchiParser.VoidFunctionDeclarationContext ctx) {
-        String identifier = ctx.functionIdentifier().identifier().getText();
+        String identifier = ctx.identifier().getText();
         String[] arguments = {};
-        fileGenerator.writeFunctionWith(identifier, arguments);
+        fileGenerator.writeVoidFunctionWith(identifier, arguments);
         super.visitVoidFunctionDeclaration(ctx);
+        fileGenerator.write("   }");
+        return null;
+    }
+
+    @Override
+    public Variable visitReturningFunctionDeclaration(GnocchiParser.ReturningFunctionDeclarationContext ctx) {
+        String identifier = ctx.identifier().getText();
+        List<String> arguments = ctx.parameterList().identifier().stream().map(parameter -> parameter.getText());
+        super.visitReturningFunctionDeclaration(ctx);
         fileGenerator.write("   }");
         return null;
     }
@@ -42,10 +50,5 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
             fileGenerator.writeVariableDeclaration(identifier, value);
         }
         return super.visitVariableDeclaration(ctx);
-    }
-
-    @Override
-    public Variable visitFunctionIdentifier(GnocchiParser.FunctionIdentifierContext ctx) {
-        return super.visitFunctionIdentifier(ctx);
     }
 }

@@ -14,10 +14,18 @@ public class FileGenerator {
         }
     }
 
-    void writeFunctionWith(String identifier, String[] arguments) {
+    void writeVoidFunctionWith(String identifier, String[] arguments) {
         writer.print("  Variable " + identifier + "(");
         for (String argument: arguments) {
           writer.print("Variable " + argument + ", ");
+        }
+        writer.print(") {");
+    }
+
+    void writeReturnFunctionWith(String identifier, String[] arguments, String returnType) {
+        writer.print(returnType + " " + identifier + "(");
+        for (String argument: arguments) {
+            writer.print("Variable " + argument + ", ");
         }
         writer.print(") {");
     }
