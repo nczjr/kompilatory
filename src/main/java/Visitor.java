@@ -36,54 +36,8 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
 
     @Override
     public Variable visitMath_operation(GnocchiParser.Math_operationContext ctx) {
-//        System.out.print("add(" + ctx.op(0).getText() + ", ");
-        int numberOfOpenBrackets = 0;
-        for (int i = 0; i < ctx.math_operator().size(); i++) {
-            switch (ctx.math_operator(i).getText()) {
-                case ("*"): {
-                    if (i == ctx.math_operator().size() - 1) {
-                        System.out.print("multi(" + ctx.op(i).getText() + "," + ctx.op(i++).getText() + ")");
-                    } else {
-                        System.out.print("multi(" + ctx.op(i).getText() + ",");
-                    }
-                    numberOfOpenBrackets++;
-                    break;
-                }
-                case ("/"): {
-                    if (i == ctx.math_operator().size() - 1) {
-                        System.out.print("div(" + ctx.op(i).getText() + "," + ctx.op(i++).getText() + ")");
-                    } else {
-                        System.out.print("div(" + ctx.op(i).getText() + ",");
-                    }
-                    numberOfOpenBrackets++;
-                    break;
-                }
-                default: {
-                    System.out.print(ctx.op(i).getText());
-                    for (int j = 0; j < numberOfOpenBrackets; j++) {
-                        System.out.print(")");
-                    }
-                    numberOfOpenBrackets = 0;
-                    System.out.print(ctx.math_operator(i).getText());
-                }
-            }
-        }
-        System.out.println(";");
-//            if (ctx.math_operator(i).getText().equals("*")) {
-//                System.out.println( "multi(" + ctx.op(i--).getText() + "");
-//            } else if {
-//
-//            }
-//            if (i == ctx.math_operator().size()) {
-//                System.out.print(ctx.op(i).getText() + ")");
-//            } else {
-//                System.out.print("add(" + ctx.op(i).getText() + ", ");
-//            }
-//        }
-//        for (int i = 2; i <= ctx.math_operator().size(); i++) {
-//            System.out.print(")");
-//        }
-//        System.out.println(";");
+        OperationHandler handler = new OperationHandler();
+        fileGenerator.write("System.out.println(" + handler.parseMathOperation(ctx) + ");");
         return super.visitMath_operation(ctx);
     }
 

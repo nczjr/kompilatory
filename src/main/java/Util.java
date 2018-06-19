@@ -14,19 +14,63 @@ public class Util {
         }
         return true;
     }
-    public void performMathOperation(String mathOperationString) {
-        String[] numbers = mathOperationString.split("[/]");
-        for (int i=0; i<numbers.length ; i++) {
 
-
+    public static Object add(Object a, Object b) {
+        if (a.getClass() == String.class || b.getClass() == String.class) {
+            return a.toString() + b.toString();
+        }
+        if (a.getClass() == Integer.class && b.getClass() == Integer.class) {
+            return (int) a + (int) b;
+        }
+        if (a.getClass() == Double.class && b.getClass() == Double.class) {
+            return (double) a + (double) b;
+        }
+        if (a.getClass() == Double.class && b.getClass() == Integer.class) {
+            return (double) a + (double) (Integer) b;
+        } else {
+            return (double) b + (double) (Integer) a;
         }
     }
 
-    public Double divide(Double... doubles) {
-        Double result = Double.valueOf(0);
-        for (Double d: doubles) {
-
+    public static Object subtract(Object a, Object b) {
+        if (a.getClass() == Integer.class && b.getClass() == Integer.class) {
+            return (int) b - (int) a;
         }
-        return result;
+        if (a.getClass() == Double.class && b.getClass() == Double.class) {
+            return (double) b - (double) a;
+        }
+        if (a.getClass() == Double.class && b.getClass() == Integer.class) {
+            return  (double) (Integer) b - (double) a ;
+        } else {
+            return (double) b - (double) (Integer) a;
+        }
+    }
+
+    public static Object divide(Object a, Object b) {
+        if (a.getClass() == Integer.class && b.getClass() == Integer.class) {
+            return (int) b / (int) a;
+        }
+        if (a.getClass() == Double.class && b.getClass() == Double.class) {
+            return (double) b / (double) a;
+        }
+        if (a.getClass() == Double.class && b.getClass() == Integer.class) {
+            return (double) (Integer) b / (double) a;
+        } else {
+            return (double) b / (double) (Integer) a;
+        }
+    }
+
+    public static Object multiply(Object a, Object b) {
+        if (a.getClass() == Integer.class && b.getClass() == Integer.class) {
+            return (int) a * (int) b;
+        }
+        if (a.getClass() == Double.class && b.getClass() == Double.class) {
+            return (double) a * (double) b;
+        }
+        if (a.getClass() == Double.class && b.getClass() == Integer.class) {
+            return (double) a * (double) (Integer) b;
+        } else {
+            return (double) b * (double) (Integer) a;
+        }
     }
 }
