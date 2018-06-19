@@ -119,8 +119,12 @@ grammar Gnocchi;
     ;
 
 	math_operation
-	: (identifier | value) math_operator (identifier | value) (math_operator (identifier | value))*
+	: op math_operator op (math_operator op)*
 	;
+
+  op
+  : (identifier | value)
+  ;
 
   math_operator
   : PLUS

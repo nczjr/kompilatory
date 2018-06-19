@@ -160,6 +160,12 @@ public interface GnocchiVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitMath_operation(GnocchiParser.Math_operationContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link GnocchiParser#op}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOp(GnocchiParser.OpContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link GnocchiParser#math_operator}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
