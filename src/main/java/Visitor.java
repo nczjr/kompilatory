@@ -83,6 +83,13 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
         return null;
     }
 
+    @Override
+    public Variable visitIterationStatement(GnocchiParser.IterationStatementContext ctx) {
+        return super.visitIterationStatement(ctx);
+    }
+
+
+
     private List<String> getReturnTypeAndValue(GnocchiParser.ReturningFunctionDeclarationContext ctx) {
         List<String> result = new ArrayList<>();
         String returnIdentifier = ctx.functionBody().values().identifier() != null ?
@@ -128,8 +135,34 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
     public Variable visitForCondition(GnocchiParser.ForConditionContext ctx) {
         fileGenerator.writeln("");
         fileGenerator.write("for(");
-        super.visitForCondition(ctx);
-        fileGenerator.write(")");
+        visitVariableDeclaration(ctx.variableDeclaration());
+        visitLogicalOperation(ctx.logicalOperation());
+        fileGenerator.write(";");
+        visitUnaryExpression(ctx.unaryExpression());
+        fileGenerator.write(") { ");
+        visitBody(ctx.body());
+        fileGenerator.writeln("}");
+
+        return null;
+    }
+
+    @Override
+    public Variable visitWhileCondition(GnocchiParser.WhileConditionContext ctx) {
+        fileGenerator.write("while (");
+        visitLogicalOperation(ctx.logicalOperation());
+        fileGenerator.write(") {");
+        visitBody(ctx.body());
+        fileGenerator.writeln("}");
+        return null;
+    }
+
+    @Override
+    public Variable visitDoCondition(GnocchiParser.DoConditionContext ctx) {
+        fileGenerator.write("do { ");
+        visitBody(ctx.body());
+        fileGenerator.write(" } while ( ");
+        visitLogicalOperation(ctx.logicalOperation());
+        fileGenerator.write(");");
         return null;
     }
 
