@@ -10,27 +10,27 @@ public class OperationHandler {
         String chain = "";
         switch (ctx.logicalOperator().getText()) {
             case ("=="): {
-                chain = "Util.equal(" + ctx.op(0) + ", " + ctx.op(1) + ")";
+                chain = "Util.equal(" + ctx.op(0).getText() + ", " + ctx.op(1).getText() + ")";
                 break;
             }
             case ("!="): {
-                chain = "Util.notEqual(" + ctx.op(0) + ", " + ctx.op(1) + ")";
+                chain = "Util.notEqual(" + ctx.op(0).getText() + ", " + ctx.op(1).getText() + ")";
                 break;
             }
             case (">"): {
-                chain = "Util.greater(" + ctx.op(0) + ", " + ctx.op(1) + ")";
+                chain = "Util.greater(" + ctx.op(0).getText() + ", " + ctx.op(1).getText() + ")";
                 break;
             }
             case ("<"): {
-                chain = "Util.lower(" + ctx.op(0) + ", " + ctx.op(1) + ")";
+                chain = "Util.lower(" + ctx.op(0).getText() + ", " + ctx.op(1).getText() + ")";
                 break;
             }
             case (">="): {
-                chain = "Util.greaterEqual(" + ctx.op(0) + ", " + ctx.op(1) + ")";
+                chain = "Util.greaterEqual(" + ctx.op(0).getText() + ", " + ctx.op(1).getText() + ")";
                 break;
             }
             case ("<="): {
-                chain = "Util.lowerEqual(" + ctx.op(0) + ", " + ctx.op(1) + ")";
+                chain = "Util.lowerEqual(" + ctx.op(0).getText() + ", " + ctx.op(1).getText() + ")";
                 break;
             }
         }

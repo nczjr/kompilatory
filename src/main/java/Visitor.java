@@ -24,8 +24,13 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
     }
 
     @Override
-    public Variable visitSelectionStatement(GnocchiParser.SelectionStatementContext ctx) {
-        return super.visitSelectionStatement(ctx);
+    public Variable visitIfStatement(GnocchiParser.IfStatementContext ctx) {
+//        OperationHandler handler = new OperationHandler();
+//        let statment =
+        fileGenerator.write("if (");
+        super.visitIfStatement(ctx);
+        fileGenerator.write(") {");
+        return null;
     }
 
     @Override
