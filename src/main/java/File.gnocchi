@@ -1,13 +1,23 @@
 func main() {
     avg = avarage(2,3);
     print(avg);
-    print(5);
+    showValues(5);
+    a = 3;
+    b = 5;
+    c = sum(a,b);
+    showValues(c);
 }
 func avarage(a, b) {
-    //suma = a + b;
-    return 3 + 2 + 4 ;
+    suma = a + b;
+    return suma/2 ;
 }
 
 func showValues(a) {
     print(a);
+}
+
+func sum(a,b) {
+    i = 3;
+    i = a + b;
+    return i;
 }

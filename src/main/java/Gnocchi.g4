@@ -24,7 +24,7 @@ grammar Gnocchi;
   ;
 
   functionCall
-  : identifier OPEN_PARENTHESIS (value (COMMA value)*)? CLOSE_PARENTHESIS
+  : identifier OPEN_PARENTHESIS (values (COMMA values)*)? CLOSE_PARENTHESIS
   ;
 
   parameterList

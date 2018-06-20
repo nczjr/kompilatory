@@ -32,8 +32,12 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
     public Variable visitVoidFunctionDeclaration(GnocchiParser.VoidFunctionDeclarationContext ctx) {
         clearVariables();
         String identifier = ctx.identifier().getText();
-        String[] arguments = {};
-        fileGenerator.writeVoidFunctionWith(identifier, arguments);
+        List<String> arguments = ctx.parameterList() != null ?
+                ctx.parameterList().identifier().stream()
+                        .map(RuleContext::getText)
+                        .collect(Collectors.toList()) : Collections.emptyList();
+        String[] argArray = new String[arguments.size()];
+        fileGenerator.writeVoidFunctionWith(identifier, arguments.toArray(argArray));
         super.visitVoidFunctionDeclaration(ctx);
         fileGenerator.writeln("   }");
         return null;
@@ -94,6 +98,12 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
         return null;
     }
 
+//    @Override
+//    public Variable visitValue(GnocchiParser.ValueContext ctx) {
+//        fileGenerator.write(ctx.getText());
+//        return null;
+//    }
+
     @Override
     public Variable visitFunctionBody(GnocchiParser.FunctionBodyContext ctx) {
         ctx.expression().forEach(ex -> visitExpression(ex));
@@ -121,11 +131,12 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
         String mathOperationValue = ctx.values().mathOperation() != null ?
                 ctx.values().mathOperation().op(0).getText() : null;
         String value = ctx.values().value() != null ? ctx.values().value().getText() : null;
-        String type = returnIdentifier != null ? variables.stream()
-                                                    .filter(variable -> variable.getIdentifier().equals(returnIdentifier))
-                                                    .findAny().get().getType().name().toLowerCase() :
-                (value != null ? Util.getTypeOfValue(value) : Util.getTypeOfValue(mathOperationValue));
-        result.add(type);
+//        String type = returnIdentifier != null ? variables.stream()
+//                                                    .filter(variable -> variable.getIdentifier().equals(returnIdentifier))
+//                                                    .findAny().get().getType().name().toLowerCase() :
+//                (value != null ? Util.getTypeOfValue(value) : Util.getTypeOfValue(mathOperationValue));
+//        result.add(type);
+        result.add("Object");
         String valueToReturn = returnIdentifier != null ? returnIdentifier :
                 (value != null ? value : mathOperationValue);
         result.add(valueToReturn);
@@ -135,21 +146,51 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
     @Override
     public Variable visitVariableDeclaration(GnocchiParser.VariableDeclarationContext ctx) {
         String identifier = ctx.identifier().getText();
-        String value = ctx.values().getText();
-        if (variables.stream()
+//        if ((ctx.values().value() != null) || (ctx.values().identifier() != null)) {
+//            value = ctx.values().getText();
+//        } else {
+//            visitMathOperation(ctx.values().mathOperation());
+//        }
+//        if (variables.stream()
+//                .anyMatch(variable -> variable.getIdentifier().equals(identifier))) {
+//            fileGenerator.writeVariableAssigment(identifier, value);
+//        } else {
+//            variables.add(fileGenerator.variableDeclaration(identifier, value));
+//        }
+        if (ctx.values() != null) {
+            if (variables.stream()
                 .anyMatch(variable -> variable.getIdentifier().equals(identifier))) {
-            fileGenerator.writeVariableAssigment(identifier, value);
-        } else {
-            variables.add(fileGenerator.variableDeclaration(identifier, value));
-        }
-        return super.visitVariableDeclaration(ctx);
+                if (ctx.values().mathOperation() == null) {
+                    fileGenerator.writeln(identifier + " = " + ctx.values().getText() + ";");
+                } else {
+                    fileGenerator.write(  identifier + " = ");
+                    visitValues(ctx.values());
+                }
+            } else {
+                if (ctx.values().mathOperation() == null) {
+                    variables.add(fileGenerator.variableDeclaration(identifier, ctx.values().getText()));
+                } else {
+                    fileGenerator.write("Object " + identifier + " = ");
+                    variables.add(new Variable(identifier, Type.OBJECT));
+                    visitValues(ctx.values());
+                }
+            }
+        } else           fileGenerator.write("Object " + identifier);
+        return null;
     }
 
 
     @Override
     public Variable visitFunctionCall(GnocchiParser.FunctionCallContext ctx) {
         String function = ctx.identifier().getText();
-        List<String> arguments = ctx.value().stream().map(RuleContext::getText).collect(Collectors.toList());
+        //MARK sprawdzi
+        List<String> arguments = new ArrayList<>();
+        for (int i = 0; i < ctx.values().size(); i++) {
+            if ((ctx.values(i).value() != null) || (ctx.values(i).identifier() != null)) {
+                arguments.add(ctx.values(i).getText());
+            }
+        }
+        //List<String> arguments = ctx.values().value().stream().map(RuleContext::getText).collect(Collectors.toList());
         fileGenerator.writeFunctionCall(function, arguments);
         return super.visitFunctionCall(ctx);
     }

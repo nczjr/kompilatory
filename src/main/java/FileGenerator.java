@@ -31,10 +31,11 @@ public class FileGenerator {
 
     void writeVoidFunctionWith(String identifier, String[] arguments) {
         writer.print("  void " + identifier + "(");
-        for (String argument: arguments) {
-          writer.print("Variable " + argument + ", ");
+        for (int i= 0; i<arguments.length; i++) {
+            if (i!= 0) writer.print(", ");
+            writer.print("Object" + " " + arguments[i] );
         }
-        writer.print(") {");
+        writer.println(") {");
     }
 
     void writeReturnFunctionWith(String identifier, String[] arguments, String returnType) {
@@ -44,13 +45,14 @@ public class FileGenerator {
             writer.print("Object" + " " + arguments[i] );
 
         }
-        writer.print(") {");
+        writer.println(") {");
     }
 
      Variable variableDeclaration(String identifer, String initValue) {
         String type = Util.getTypeOfValue(initValue);
         writer.println(type + " " + identifer + " = " + initValue + ";");
         return new Variable(identifer, Type.valueOf(type.toUpperCase()));
+
 
     }
 

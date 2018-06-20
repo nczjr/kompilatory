@@ -3,6 +3,7 @@ public enum Type {
     DOUBLE,
     STRING,
     CHAR,
-    BOOLEAN
+    BOOLEAN,
+    OBJECT
 
 }
