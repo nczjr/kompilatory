@@ -24,6 +24,11 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
     }
 
     @Override
+    public Variable visitSelectionStatement(GnocchiParser.SelectionStatementContext ctx) {
+        return super.visitSelectionStatement(ctx);
+    }
+
+    @Override
     public Variable visitVoidFunctionDeclaration(GnocchiParser.VoidFunctionDeclarationContext ctx) {
         clearVariables();
         String identifier = ctx.identifier().getText();

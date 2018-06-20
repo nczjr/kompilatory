@@ -171,13 +171,13 @@ public class GnocchiBaseListener implements GnocchiListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSelectionStatement(GnocchiParser.SelectionStatementContext ctx) { }
+	@Override public void enterIfStatement(GnocchiParser.IfStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSelectionStatement(GnocchiParser.SelectionStatementContext ctx) { }
+	@Override public void exitIfStatement(GnocchiParser.IfStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

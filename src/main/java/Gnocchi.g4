@@ -59,7 +59,7 @@ grammar Gnocchi;
   | identifier
   ;
 
-    selectionStatement
+    ifStatement
     :   IF OPEN_PARENTHESIS logicalOperation CLOSE_PARENTHESIS body (ELSE body)?
     ;
 
@@ -71,7 +71,7 @@ grammar Gnocchi;
 
 
     forCondition
-    	:   (variableDeclaration | identifier)? SEMICOLON logicalOperation? SEMICOLON unaryExpression?
+    	:   variableDeclaration SEMICOLON logicalOperation SEMICOLON unaryExpression
     	;
 
     unaryExpression
@@ -104,7 +104,7 @@ grammar Gnocchi;
   : variableOperations
   | operation
   | functionCall
-  | selectionStatement
+  | ifStatement
   | iterationStatement
   ;
 
