@@ -6,6 +6,10 @@ func main() {
     b = 5;
     c = sum(a,b);
     showValues(c);
+
+    for(i = 5; i < 3; i++) {
+
+    };
 }
 func avarage(a, b) {
     suma = a + b;
