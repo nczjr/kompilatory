@@ -66,7 +66,7 @@ grammar Gnocchi;
     iterationStatement
         :   whileCondition
         |   doCondition
-        |   FOR OPEN_PARENTHESIS forCondition CLOSE_PARENTHESIS body
+        |   forCondition
         ;
 
     whileCondition
@@ -74,12 +74,12 @@ grammar Gnocchi;
     ;
 
     doCondition
-    : DO body WHILE OPEN_PARENTHESIS logicalOperation CLOSE_PARENTHESIS
+    :  DO body WHILE OPEN_PARENTHESIS logicalOperation CLOSE_PARENTHESIS
     ;
 
 
     forCondition
-    	:   variableDeclaration SEMICOLON logicalOperation SEMICOLON unaryExpression
+    	: FOR OPEN_PARENTHESIS variableDeclaration SEMICOLON logicalOperation SEMICOLON unaryExpression CLOSE_PARENTHESIS body
     	;
 
     unaryExpression
