@@ -24,7 +24,7 @@ grammar Gnocchi;
   ;
 
   functionCall
-  : identifier (value (COMMA value)*)?
+  : identifier OPEN_PARENTHESIS (value (COMMA value)*)? CLOSE_PARENTHESIS
   ;
 
   parameterList
@@ -46,7 +46,7 @@ grammar Gnocchi;
 	;
 
   variableDeclaration
-  : identifier (ASSIGNMENT value)?
+  : identifier (ASSIGNMENT values)?
   ;
 
   variableFunctionAssigment
@@ -68,7 +68,7 @@ grammar Gnocchi;
   ;
 
   printExpression
-  : STRING_VALUE
+  : value
   | identifier
   | mathOperation
   ;

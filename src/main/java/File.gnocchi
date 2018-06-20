@@ -1,10 +1,13 @@
 func main() {
-    zmienna = 3.0;
-    s = "bbbb" ;
-    do {
-        nazwa;
-    } while( zmienna < 5 );
+    avg = avarage(2,3);
+    print(avg);
+    print(5);
 }
-func nazwa() {
-    zmienna = 3  + 5 - 7 * 2;
+func avarage(a, b) {
+    //suma = a + b;
+    return 3 + 2 + 4 ;
+}
+
+func showValues(a) {
+    print(a);
 }

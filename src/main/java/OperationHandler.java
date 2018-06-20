@@ -70,10 +70,6 @@ public class OperationHandler {
         String argument = currentOpertionChain.isEmpty() ? ctx.op(0).getText() : currentOpertionChain;
         newArgumentsList.add(argument);
 
-        System.out.println(newArgumentsList);
-        System.out.println(newOperatosList);
-        System.out.println(currentOpertionChain);
-
         return newOperatosList.isEmpty() ? currentOpertionChain : parseAddMinus();
     }
 
@@ -94,7 +90,6 @@ public class OperationHandler {
             }
         }
         operationChain += getBrackets(newOperatosList.size());
-        System.out.println(operationChain);
         return operationChain;
     }
 

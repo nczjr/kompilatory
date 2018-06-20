@@ -75,7 +75,7 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
     @Override
     public Variable visitMathOperation(GnocchiParser.MathOperationContext ctx) {
         OperationHandler handler = new OperationHandler();
-        fileGenerator.writeln("System.out.println(" + handler.parseMathOperation(ctx) + ");");
+        fileGenerator.writeln(handler.parseMathOperation(ctx) + ";");
         return super.visitMathOperation(ctx);
     }
 
@@ -85,13 +85,26 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
         String identifier = ctx.identifier().getText();
         List<String> arguments = ctx.parameterList() != null ?
                 ctx.parameterList().identifier().stream()
-                                                .map(parameter -> parameter.getText())
+                                                .map(RuleContext::getText)
                                                 .collect(Collectors.toList()) : Collections.emptyList();
         String[] argArray = new String[arguments.size()];
-        fileGenerator.writeReturnFunctionWith(identifier, arguments.toArray(argArray), getReturnTypeAndValue(ctx).get(0));
-        super.visitReturningFunctionDeclaration(ctx);
-        fileGenerator.writeln(" return " + getReturnTypeAndValue(ctx).get(1) + ";");
+        fileGenerator.writeReturnFunctionWith(identifier, arguments.toArray(argArray), getReturnTypeAndValue(ctx.functionBody()).get(0));
+        visitFunctionBody(ctx.functionBody());
         fileGenerator.writeln("   }");
+        return null;
+    }
+
+    @Override
+    public Variable visitFunctionBody(GnocchiParser.FunctionBodyContext ctx) {
+        ctx.expression().forEach(ex -> visitExpression(ex));
+        if (ctx.values().mathOperation() != null) {
+            fileGenerator.writeln("");
+            fileGenerator.write("return " + " (" + getReturnTypeAndValue(ctx).get(0) + ")");
+            visitValues(ctx.values());
+        } else if (ctx.values().identifier() != null ) {
+            fileGenerator.write("return " + ctx.values().identifier().getText() + ";");
+        } else fileGenerator.write("return " + ctx.values().value().getText() + ";");
+
         return null;
     }
 
@@ -100,16 +113,14 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
         return super.visitIterationStatement(ctx);
     }
 
-
-
-    private List<String> getReturnTypeAndValue(GnocchiParser.ReturningFunctionDeclarationContext ctx) {
+    private List<String> getReturnTypeAndValue(GnocchiParser.FunctionBodyContext ctx) {
         List<String> result = new ArrayList<>();
-        String returnIdentifier = ctx.functionBody().values().identifier() != null ?
-                ctx.functionBody().values().identifier().getText() : null;
+        String returnIdentifier = ctx.values().identifier() != null ?
+                ctx.values().identifier().getText() : null;
         //MARK:- jakby tpy nie działały to tu zmieniałem
-        String mathOperationValue = ctx.functionBody().values().mathOperation() != null ?
-                ctx.functionBody().values().mathOperation().getText() : null;
-        String value = ctx.functionBody().values().value() != null ? ctx.functionBody().values().value().getText() : null;
+        String mathOperationValue = ctx.values().mathOperation() != null ?
+                ctx.values().mathOperation().op(0).getText() : null;
+        String value = ctx.values().value() != null ? ctx.values().value().getText() : null;
         String type = returnIdentifier != null ? variables.stream()
                                                     .filter(variable -> variable.getIdentifier().equals(returnIdentifier))
                                                     .findAny().get().getType().name().toLowerCase() :
@@ -124,7 +135,7 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
     @Override
     public Variable visitVariableDeclaration(GnocchiParser.VariableDeclarationContext ctx) {
         String identifier = ctx.identifier().getText();
-        String value = ctx.value().getText();
+        String value = ctx.values().getText();
         if (variables.stream()
                 .anyMatch(variable -> variable.getIdentifier().equals(identifier))) {
             fileGenerator.writeVariableAssigment(identifier, value);
