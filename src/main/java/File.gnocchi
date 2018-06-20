@@ -1,0 +1,10 @@
+func main() {
+    zmienna = 3.0;
+    s = "bbbb" ;
+    do {
+        nazwa;
+    } while( zmienna < 5 );
+}
+func nazwa() {
+    zmienna = 3  + 5 - 7 * 2;
+}

@@ -18,6 +18,13 @@ public class FileGenerator {
         }
     }
 
+    void writeIfStatment(String statment) {
+        writer.println("if (" + statment + ") {");
+    }
+
+    void writeFunctionClassDef() {
+        writeln("public class FunctionGnocchi { ");
+    }
     void writePrint(String text) {
         writer.println("System.out.println( " +  text + ");");
     }
@@ -70,7 +77,7 @@ public class FileGenerator {
     }
 
     public void writeFunctionCall(String function, List<String> arguments) {
-        writer.print(function + "(");
+        writer.print("new FunctionGnocchi()." + function + "(");
         for(int i=0; i<arguments.size(); i++){
             if (i!=0) {
                 writer.print(",");

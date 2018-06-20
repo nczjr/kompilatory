@@ -8,10 +8,12 @@ import java.util.stream.Collectors;
 public class Visitor extends GnocchiBaseVisitor<Variable> {
 
     private FileGenerator fileGenerator;
+    private FileGenerator functionGenerator;
     private List<Variable> variables = new ArrayList<>();
 
-    Visitor(FileGenerator fileGenerator) {
+    Visitor(FileGenerator fileGenerator, FileGenerator functionGenerator) {
         this.fileGenerator = fileGenerator;
+        this.functionGenerator = functionGenerator;
     }
 
     @Override
@@ -20,6 +22,9 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
         fileGenerator.writeMain();
         super.visitFunctionMain(ctx);
         fileGenerator.writeln("   }");
+        fileGenerator.closeWriter();
+        fileGenerator = functionGenerator;
+        fileGenerator.writeFunctionClassDef();
         return null;
     }
 
@@ -155,9 +160,11 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
 
     @Override
     public Variable visitWhileCondition(GnocchiParser.WhileConditionContext ctx) {
+        fileGenerator.writeln("");
         fileGenerator.write("while (");
         visitLogicalOperation(ctx.logicalOperation());
         fileGenerator.write(") {");
+        fileGenerator.writeln("");
         visitBody(ctx.body());
         fileGenerator.writeln("}");
         return null;
@@ -165,11 +172,13 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
 
     @Override
     public Variable visitDoCondition(GnocchiParser.DoConditionContext ctx) {
-        fileGenerator.write("do { ");
+        fileGenerator.writeln("do { ");
         visitBody(ctx.body());
+        fileGenerator.writeln("");
         fileGenerator.write(" } while ( ");
         visitLogicalOperation(ctx.logicalOperation());
         fileGenerator.write(");");
+        fileGenerator.writeln("");
         return null;
     }
 

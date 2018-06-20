@@ -3,27 +3,43 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
+import java.io.*;
+
 public class App {
-    public static void main(String[] args) {
-        String s = "func main() {  zmienna = 3.0; if (3 < 4) { zmienna = 4.0;" +
-                "} else {zmienna = 2; zm = nazwa 5; print(\"siusiak\"); print(zmienna); print(\"text \" + zmienna); };} func nazwa( arg) { zmienna = 3  + 5 - 7 * 2; return 3; }";
-        GnocchiLexer gnocchiLexer = new GnocchiLexer(new ANTLRInputStream(s));
+
+    private static final String path = "C:\\Users\\User.DESKTOP-57LLUVE\\IdeaProjects\\kompilatory\\src\\main\\java\\";
+//    private static final String path = "/Users/marcinwloczko/IdeaProjects/kompilatory/src/main/java";
+
+    public static void main(String[] args) throws IOException {
+        GnocchiLexer gnocchiLexer = new GnocchiLexer(new ANTLRInputStream( readFileAsString(path + "File.gnocchi")));
         CommonTokenStream tokens = new CommonTokenStream(gnocchiLexer);
-        String natka = "C:\\Users\\User.DESKTOP-57LLUVE\\IdeaProjects\\kompilatory\\src\\main\\java\\AppGnocchi.java";
-        String macion = "/Users/marcinwloczko/IdeaProjects/kompilatory/src/main/java/AppGnocchi.java";
-        FileGenerator generator = new FileGenerator(macion);
+        FileGenerator generator = new FileGenerator(path + "AppGnocchi.java" );
+        FileGenerator functionGenerator = new FileGenerator(path + "FunctionGnocchi.java" );
         GnocchiParser parser = new GnocchiParser(tokens);
         ParseTree parseTree = parser.start();
-        Visitor visitor = new Visitor(generator);
+        Visitor visitor = new Visitor(generator,functionGenerator);
         visitor.visit(parseTree);
         GnocchiParser.StartContext context = parser.start();
 
-        generator.closeWriter();
+        functionGenerator.closeWriter();
 
 
         Object a = 3;
         Object b = 6;
         System.out.println(Util.divide(a,b));
 
+    }
+
+    public static String readFileAsString(String filePath) throws IOException {
+        FileInputStream fis = new FileInputStream(filePath);
+        InputStreamReader isr = new InputStreamReader(fis, "UTF8");
+        StringBuffer stringBuffer = new StringBuffer();
+        Reader in = new BufferedReader(isr);
+        int ch;
+        while ((ch = in.read()) > -1) {
+            stringBuffer.append((char)ch);
+        }
+        in.close();
+        return stringBuffer.toString();
     }
 }
