@@ -179,6 +179,12 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
         return super.visitUnaryExpression(ctx);
     }
 
+    @Override
+    public Variable visitPrintExpression(GnocchiParser.PrintExpressionContext ctx) {
+        fileGenerator.writePrint(ctx.getText());
+        return null;
+    }
+
     private void clearVariables() {
         variables.clear();
     }

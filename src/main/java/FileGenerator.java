@@ -18,6 +18,10 @@ public class FileGenerator {
         }
     }
 
+    void writePrint(String text) {
+        writer.println("System.out.println( " +  text + ");");
+    }
+
     void writeVoidFunctionWith(String identifier, String[] arguments) {
         writer.print("  void " + identifier + "(");
         for (String argument: arguments) {
@@ -73,6 +77,6 @@ public class FileGenerator {
             }
             writer.print(arguments.get(i));
         }
-        writer.print(");");
+        writer.println(");");
     }
 }
