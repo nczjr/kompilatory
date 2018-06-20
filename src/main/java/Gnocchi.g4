@@ -3,7 +3,11 @@ grammar Gnocchi;
   //Składnia języka
 
   start
-  : functionMain (voidFunctionDeclaration | returningFunctionDeclaration)* EOF
+  : block EOF
+  ;
+
+  block
+  : functionMain (voidFunctionDeclaration | returningFunctionDeclaration)*
   ;
 
   identifier

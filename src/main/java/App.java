@@ -6,8 +6,8 @@ import java.io.*;
 
 public class App {
 
-    private static final String path = "C:\\Users\\User.DESKTOP-57LLUVE\\IdeaProjects\\kompilatory\\src\\main\\java\\";
-//    private static final String path = "/Users/marcinwloczko/IdeaProjects/kompilatory/src/main/java/";
+//    private static final String path = "C:\\Users\\User.DESKTOP-57LLUVE\\IdeaProjects\\kompilatory\\src\\main\\java\\";
+    private static final String path = "/Users/marcinwloczko/IdeaProjects/kompilatory/src/main/java/";
 
     public static void main(String[] args) throws IOException {
         GnocchiLexer gnocchiLexer = new GnocchiLexer(new ANTLRInputStream( readFileAsString(path + "File.gnocchi")));
