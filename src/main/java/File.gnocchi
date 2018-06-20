@@ -5,6 +5,9 @@ func main() {
     a = 3;
     b = 5;
     c = sum(a,b);
+    for(i = 5; i < 3; i++) {
+
+        };
     showValues(c);
 
     for(i = 5; i < 3; i++) {

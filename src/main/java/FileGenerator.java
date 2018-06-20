@@ -49,9 +49,8 @@ public class FileGenerator {
     }
 
      Variable variableDeclaration(String identifer, String initValue) {
-        String type = Util.getTypeOfValue(initValue);
-        writer.println(type + " " + identifer + " = " + initValue + ";");
-        return new Variable(identifer, Type.valueOf(type.toUpperCase()));
+        writer.println("Object " + identifer + " = " + initValue + ";");
+        return new Variable(identifer, Type.valueOf("Object".toUpperCase()));
 
 
     }
