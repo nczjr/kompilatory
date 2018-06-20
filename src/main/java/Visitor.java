@@ -92,24 +92,19 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
                                                 .map(RuleContext::getText)
                                                 .collect(Collectors.toList()) : Collections.emptyList();
         String[] argArray = new String[arguments.size()];
-        fileGenerator.writeReturnFunctionWith(identifier, arguments.toArray(argArray), getReturnTypeAndValue(ctx.functionBody()).get(0));
+        fileGenerator.writeReturnFunctionWith(identifier, arguments.toArray(argArray),"Object");
         visitFunctionBody(ctx.functionBody());
         fileGenerator.writeln("   }");
         return null;
     }
 
-//    @Override
-//    public Variable visitValue(GnocchiParser.ValueContext ctx) {
-//        fileGenerator.write(ctx.getText());
-//        return null;
-//    }
 
     @Override
     public Variable visitFunctionBody(GnocchiParser.FunctionBodyContext ctx) {
         ctx.expression().forEach(ex -> visitExpression(ex));
         if (ctx.values().mathOperation() != null) {
             fileGenerator.writeln("");
-            fileGenerator.write("return " + " (" + getReturnTypeAndValue(ctx).get(0) + ")");
+            fileGenerator.write("return ");
             visitValues(ctx.values());
         } else if (ctx.values().identifier() != null ) {
             fileGenerator.write("return " + ctx.values().identifier().getText() + ";");
@@ -123,40 +118,9 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
         return super.visitIterationStatement(ctx);
     }
 
-    private List<String> getReturnTypeAndValue(GnocchiParser.FunctionBodyContext ctx) {
-        List<String> result = new ArrayList<>();
-        String returnIdentifier = ctx.values().identifier() != null ?
-                ctx.values().identifier().getText() : null;
-        //MARK:- jakby tpy nie działały to tu zmieniałem
-        String mathOperationValue = ctx.values().mathOperation() != null ?
-                ctx.values().mathOperation().op(0).getText() : null;
-        String value = ctx.values().value() != null ? ctx.values().value().getText() : null;
-//        String type = returnIdentifier != null ? variables.stream()
-//                                                    .filter(variable -> variable.getIdentifier().equals(returnIdentifier))
-//                                                    .findAny().get().getType().name().toLowerCase() :
-//                (value != null ? Util.getTypeOfValue(value) : Util.getTypeOfValue(mathOperationValue));
-//        result.add(type);
-        result.add("Object");
-        String valueToReturn = returnIdentifier != null ? returnIdentifier :
-                (value != null ? value : mathOperationValue);
-        result.add(valueToReturn);
-        return result;
-    }
-
     @Override
     public Variable visitVariableDeclaration(GnocchiParser.VariableDeclarationContext ctx) {
         String identifier = ctx.identifier().getText();
-//        if ((ctx.values().value() != null) || (ctx.values().identifier() != null)) {
-//            value = ctx.values().getText();
-//        } else {
-//            visitMathOperation(ctx.values().mathOperation());
-//        }
-//        if (variables.stream()
-//                .anyMatch(variable -> variable.getIdentifier().equals(identifier))) {
-//            fileGenerator.writeVariableAssigment(identifier, value);
-//        } else {
-//            variables.add(fileGenerator.variableDeclaration(identifier, value));
-//        }
         if (ctx.values() != null) {
             if (variables.stream()
                 .anyMatch(variable -> variable.getIdentifier().equals(identifier))) {
@@ -190,7 +154,6 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
                 arguments.add(ctx.values(i).getText());
             }
         }
-        //List<String> arguments = ctx.values().value().stream().map(RuleContext::getText).collect(Collectors.toList());
         fileGenerator.writeFunctionCall(function, arguments);
         return super.visitFunctionCall(ctx);
     }
@@ -198,8 +161,8 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
     @Override
     public Variable visitForCondition(GnocchiParser.ForConditionContext ctx) {
         fileGenerator.writeln("");
-        fileGenerator.write("for(");
-        visitVariableDeclaration(ctx.variableDeclaration());
+        fileGenerator.write("for(" + "int " + ctx.variableDeclaration().identifier().getText() + " = "
+                + ctx.variableDeclaration().values().value().getText() + ";");
         visitLogicalOperation(ctx.logicalOperation());
         fileGenerator.write(";");
         visitUnaryExpression(ctx.unaryExpression());
