@@ -157,6 +157,26 @@ public interface GnocchiListener extends ParseTreeListener {
 	 */
 	void exitIterationStatement(GnocchiParser.IterationStatementContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link GnocchiParser#whileCondition}.
+	 * @param ctx the parse tree
+	 */
+	void enterWhileCondition(GnocchiParser.WhileConditionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GnocchiParser#whileCondition}.
+	 * @param ctx the parse tree
+	 */
+	void exitWhileCondition(GnocchiParser.WhileConditionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GnocchiParser#doCondition}.
+	 * @param ctx the parse tree
+	 */
+	void enterDoCondition(GnocchiParser.DoConditionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GnocchiParser#doCondition}.
+	 * @param ctx the parse tree
+	 */
+	void exitDoCondition(GnocchiParser.DoConditionContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link GnocchiParser#forCondition}.
 	 * @param ctx the parse tree
 	 */

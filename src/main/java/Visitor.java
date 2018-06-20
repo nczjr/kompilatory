@@ -25,8 +25,6 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
 
     @Override
     public Variable visitIfStatement(GnocchiParser.IfStatementContext ctx) {
-//        OperationHandler handler = new OperationHandler();
-//        let statment =
         fileGenerator.write("if (");
         super.visitIfStatement(ctx);
         fileGenerator.write(") {");
@@ -47,7 +45,7 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
     @Override
     public Variable visitLogicalOperation(GnocchiParser.LogicalOperationContext ctx) {
         OperationHandler handler = new OperationHandler();
-        fileGenerator.writeln(handler.parseLogicalOperation(ctx));
+        fileGenerator.write(handler.parseLogicalOperation(ctx));
         return super.visitLogicalOperation(ctx);
     }
 

@@ -100,6 +100,18 @@ public interface GnocchiVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitIterationStatement(GnocchiParser.IterationStatementContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link GnocchiParser#whileCondition}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitWhileCondition(GnocchiParser.WhileConditionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GnocchiParser#doCondition}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDoCondition(GnocchiParser.DoConditionContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link GnocchiParser#forCondition}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

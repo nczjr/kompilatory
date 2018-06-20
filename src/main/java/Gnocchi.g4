@@ -64,10 +64,18 @@ grammar Gnocchi;
     ;
 
     iterationStatement
-        :   WHILE OPEN_PARENTHESIS logicalOperation CLOSE_PARENTHESIS body
-        |   DO body WHILE OPEN_PARENTHESIS logicalOperation CLOSE_PARENTHESIS
+        :   whileCondition
+        |   doCondition
         |   FOR OPEN_PARENTHESIS forCondition CLOSE_PARENTHESIS body
         ;
+
+    whileCondition
+    : WHILE OPEN_PARENTHESIS logicalOperation CLOSE_PARENTHESIS body
+    ;
+
+    doCondition
+    : DO body WHILE OPEN_PARENTHESIS logicalOperation CLOSE_PARENTHESIS
+    ;
 
 
     forCondition
