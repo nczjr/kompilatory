@@ -22,9 +22,6 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
         fileGenerator.writeMain();
         super.visitFunctionMain(ctx);
         fileGenerator.writeln("   }");
-        fileGenerator.closeWriter();
-        fileGenerator = functionGenerator;
-        fileGenerator.writeFunctionClassDef();
         return null;
     }
 
