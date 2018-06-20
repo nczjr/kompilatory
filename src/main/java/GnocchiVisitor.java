@@ -1,4 +1,4 @@
-// Generated from Gnocchi.g4 by ANTLR 4.7.1
+// Generated from Gnocchi.G4 by ANTLR 4.7.1
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -148,17 +148,17 @@ public interface GnocchiVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitOperation(GnocchiParser.OperationContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link GnocchiParser#logical_operation}.
+	 * Visit a parse tree produced by {@link GnocchiParser#logicalOperation}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitLogical_operation(GnocchiParser.Logical_operationContext ctx);
+	T visitLogicalOperation(GnocchiParser.LogicalOperationContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link GnocchiParser#math_operation}.
+	 * Visit a parse tree produced by {@link GnocchiParser#mathOperation}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitMath_operation(GnocchiParser.Math_operationContext ctx);
+	T visitMathOperation(GnocchiParser.MathOperationContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link GnocchiParser#op}.
 	 * @param ctx the parse tree
@@ -166,15 +166,15 @@ public interface GnocchiVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitOp(GnocchiParser.OpContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link GnocchiParser#math_operator}.
+	 * Visit a parse tree produced by {@link GnocchiParser#mathOperator}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitMath_operator(GnocchiParser.Math_operatorContext ctx);
+	T visitMathOperator(GnocchiParser.MathOperatorContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link GnocchiParser#logical_operator}.
+	 * Visit a parse tree produced by {@link GnocchiParser#logicalOperator}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitLogical_operator(GnocchiParser.Logical_operatorContext ctx);
+	T visitLogicalOperator(GnocchiParser.LogicalOperatorContext ctx);
 }

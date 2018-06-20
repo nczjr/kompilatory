@@ -55,23 +55,23 @@ grammar Gnocchi;
 
   values
   : value
-  | math_operation
+  | mathOperation
   | identifier
   ;
 
     selectionStatement
-    :   IF OPEN_PARENTHESIS logical_operation CLOSE_PARENTHESIS body (ELSE body)?
+    :   IF OPEN_PARENTHESIS logicalOperation CLOSE_PARENTHESIS body (ELSE body)?
     ;
 
     iterationStatement
-        :   WHILE OPEN_PARENTHESIS logical_operation CLOSE_PARENTHESIS body
-        |   DO body WHILE OPEN_PARENTHESIS logical_operation CLOSE_PARENTHESIS
+        :   WHILE OPEN_PARENTHESIS logicalOperation CLOSE_PARENTHESIS body
+        |   DO body WHILE OPEN_PARENTHESIS logicalOperation CLOSE_PARENTHESIS
         |   FOR OPEN_PARENTHESIS forCondition CLOSE_PARENTHESIS body
         ;
 
 
     forCondition
-    	:   (variableDeclaration | identifier)? SEMICOLON logical_operation? SEMICOLON unaryExpression?
+    	:   (variableDeclaration | identifier)? SEMICOLON logicalOperation? SEMICOLON unaryExpression?
     	;
 
     unaryExpression
@@ -110,30 +110,30 @@ grammar Gnocchi;
 
 
   operation
-  : logical_operation
-  | math_operation
+  : logicalOperation
+  | mathOperation
   ;
 
-  logical_operation
-  : ( identifier | value ) logical_operator ( identifier | value )
-    ;
+  logicalOperation
+  : op logicalOperator op
+  ;
 
-	math_operation
-	: op math_operator op (math_operator op)*
-	;
+  mathOperation
+  : op mathOperator op (mathOperator op)*
+  ;
 
   op
   : (identifier | value)
   ;
 
-  math_operator
+  mathOperator
   : PLUS
   | MINUS
   | DIVIDE
   | MULTIPLY
   ;
 
-  logical_operator
+  logicalOperator
   : EQUALS
   | NOT_EQUALS
   | LOWER

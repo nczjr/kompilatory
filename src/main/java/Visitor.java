@@ -35,10 +35,17 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
     }
 
     @Override
-    public Variable visitMath_operation(GnocchiParser.Math_operationContext ctx) {
+    public Variable visitLogicalOperation(GnocchiParser.LogicalOperationContext ctx) {
         OperationHandler handler = new OperationHandler();
-        fileGenerator.write("System.out.println(" + handler.parseMathOperation(ctx) + ");");
-        return super.visitMath_operation(ctx);
+        fileGenerator.writeln(handler.parseLogicalOperation(ctx));
+        return super.visitLogicalOperation(ctx);
+    }
+
+    @Override
+    public Variable visitMathOperation(GnocchiParser.MathOperationContext ctx) {
+        OperationHandler handler = new OperationHandler();
+        fileGenerator.writeln("System.out.println(" + handler.parseMathOperation(ctx) + ");");
+        return super.visitMathOperation(ctx);
     }
 
     @Override
@@ -57,24 +64,13 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
         return null;
     }
 
-    @Override
-    public Variable visitMath_operation(GnocchiParser.Math_operationContext ctx) {
-        String[] numbers = ctx.getText().split("[+-]");
-        return super.visitMath_operation(ctx);
-    }
-
-    @Override
-    public Variable visitMath_operator(GnocchiParser.Math_operatorContext ctx) {
-        fileGenerator.write(ctx.getText());
-        return super.visitMath_operator(ctx);
-    }
-
     private List<String> getReturnTypeAndValue(GnocchiParser.ReturningFunctionDeclarationContext ctx) {
         List<String> result = new ArrayList<>();
         String returnIdentifier = ctx.functionBody().values().identifier() != null ?
                 ctx.functionBody().values().identifier().getText() : null;
-        String mathOperationValue = ctx.functionBody().values().math_operation() != null ?
-                ctx.functionBody().values().math_operation().getText() : null;
+        //MARK:- jakby tpy nie działały to tu zmieniałem
+        String mathOperationValue = ctx.functionBody().values().mathOperation() != null ?
+                ctx.functionBody().values().mathOperation().getText() : null;
         String value = ctx.functionBody().values().value() != null ? ctx.functionBody().values().value().getText() : null;
         String type = returnIdentifier != null ? variables.stream()
                                                     .filter(variable -> variable.getIdentifier().equals(returnIdentifier))
@@ -115,13 +111,6 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
         super.visitForCondition(ctx);
         fileGenerator.write(")");
         return null;
-    }
-
-    @Override
-    public Variable visitLogical_operation(GnocchiParser.Logical_operationContext ctx) {
-        fileGenerator.write(ctx.getText());
-        fileGenerator.write(";");
-        return super.visitLogical_operation(ctx);
     }
 
     @Override

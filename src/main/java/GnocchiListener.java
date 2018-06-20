@@ -1,4 +1,4 @@
-// Generated from Gnocchi.g4 by ANTLR 4.7.1
+// Generated from Gnocchi.G4 by ANTLR 4.7.1
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -237,25 +237,25 @@ public interface GnocchiListener extends ParseTreeListener {
 	 */
 	void exitOperation(GnocchiParser.OperationContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GnocchiParser#logical_operation}.
+	 * Enter a parse tree produced by {@link GnocchiParser#logicalOperation}.
 	 * @param ctx the parse tree
 	 */
-	void enterLogical_operation(GnocchiParser.Logical_operationContext ctx);
+	void enterLogicalOperation(GnocchiParser.LogicalOperationContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link GnocchiParser#logical_operation}.
+	 * Exit a parse tree produced by {@link GnocchiParser#logicalOperation}.
 	 * @param ctx the parse tree
 	 */
-	void exitLogical_operation(GnocchiParser.Logical_operationContext ctx);
+	void exitLogicalOperation(GnocchiParser.LogicalOperationContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GnocchiParser#math_operation}.
+	 * Enter a parse tree produced by {@link GnocchiParser#mathOperation}.
 	 * @param ctx the parse tree
 	 */
-	void enterMath_operation(GnocchiParser.Math_operationContext ctx);
+	void enterMathOperation(GnocchiParser.MathOperationContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link GnocchiParser#math_operation}.
+	 * Exit a parse tree produced by {@link GnocchiParser#mathOperation}.
 	 * @param ctx the parse tree
 	 */
-	void exitMath_operation(GnocchiParser.Math_operationContext ctx);
+	void exitMathOperation(GnocchiParser.MathOperationContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link GnocchiParser#op}.
 	 * @param ctx the parse tree
@@ -267,23 +267,23 @@ public interface GnocchiListener extends ParseTreeListener {
 	 */
 	void exitOp(GnocchiParser.OpContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GnocchiParser#math_operator}.
+	 * Enter a parse tree produced by {@link GnocchiParser#mathOperator}.
 	 * @param ctx the parse tree
 	 */
-	void enterMath_operator(GnocchiParser.Math_operatorContext ctx);
+	void enterMathOperator(GnocchiParser.MathOperatorContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link GnocchiParser#math_operator}.
+	 * Exit a parse tree produced by {@link GnocchiParser#mathOperator}.
 	 * @param ctx the parse tree
 	 */
-	void exitMath_operator(GnocchiParser.Math_operatorContext ctx);
+	void exitMathOperator(GnocchiParser.MathOperatorContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GnocchiParser#logical_operator}.
+	 * Enter a parse tree produced by {@link GnocchiParser#logicalOperator}.
 	 * @param ctx the parse tree
 	 */
-	void enterLogical_operator(GnocchiParser.Logical_operatorContext ctx);
+	void enterLogicalOperator(GnocchiParser.LogicalOperatorContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link GnocchiParser#logical_operator}.
+	 * Exit a parse tree produced by {@link GnocchiParser#logicalOperator}.
 	 * @param ctx the parse tree
 	 */
-	void exitLogical_operator(GnocchiParser.Logical_operatorContext ctx);
+	void exitLogicalOperator(GnocchiParser.LogicalOperatorContext ctx);
 }

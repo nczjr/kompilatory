@@ -1,4 +1,4 @@
-// Generated from Gnocchi.g4 by ANTLR 4.7.1
+// Generated from Gnocchi.G4 by ANTLR 4.7.1
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
@@ -291,25 +291,25 @@ public class GnocchiBaseListener implements GnocchiListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLogical_operation(GnocchiParser.Logical_operationContext ctx) { }
+	@Override public void enterLogicalOperation(GnocchiParser.LogicalOperationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLogical_operation(GnocchiParser.Logical_operationContext ctx) { }
+	@Override public void exitLogicalOperation(GnocchiParser.LogicalOperationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMath_operation(GnocchiParser.Math_operationContext ctx) { }
+	@Override public void enterMathOperation(GnocchiParser.MathOperationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMath_operation(GnocchiParser.Math_operationContext ctx) { }
+	@Override public void exitMathOperation(GnocchiParser.MathOperationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -327,25 +327,25 @@ public class GnocchiBaseListener implements GnocchiListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMath_operator(GnocchiParser.Math_operatorContext ctx) { }
+	@Override public void enterMathOperator(GnocchiParser.MathOperatorContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMath_operator(GnocchiParser.Math_operatorContext ctx) { }
+	@Override public void exitMathOperator(GnocchiParser.MathOperatorContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLogical_operator(GnocchiParser.Logical_operatorContext ctx) { }
+	@Override public void enterLogicalOperator(GnocchiParser.LogicalOperatorContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLogical_operator(GnocchiParser.Logical_operatorContext ctx) { }
+	@Override public void exitLogicalOperator(GnocchiParser.LogicalOperatorContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

@@ -6,11 +6,42 @@ public class OperationHandler {
     private List<String> newOperatosList = new ArrayList<>();
     private List<String> newArgumentsList = new ArrayList<>();
 
-    String parseMathOperation(GnocchiParser.Math_operationContext ctx) {
+    String parseLogicalOperation(GnocchiParser.LogicalOperationContext ctx) {
+        String chain = "";
+        switch (ctx.logicalOperator().getText()) {
+            case ("=="): {
+                chain = "Util.equal(" + ctx.op(0) + ", " + ctx.op(1) + ")";
+                break;
+            }
+            case ("!="): {
+                chain = "Util.notEqual(" + ctx.op(0) + ", " + ctx.op(1) + ")";
+                break;
+            }
+            case (">"): {
+                chain = "Util.greater(" + ctx.op(0) + ", " + ctx.op(1) + ")";
+                break;
+            }
+            case ("<"): {
+                chain = "Util.lower(" + ctx.op(0) + ", " + ctx.op(1) + ")";
+                break;
+            }
+            case (">="): {
+                chain = "Util.greaterEqual(" + ctx.op(0) + ", " + ctx.op(1) + ")";
+                break;
+            }
+            case ("<="): {
+                chain = "Util.lowerEqual(" + ctx.op(0) + ", " + ctx.op(1) + ")";
+                break;
+            }
+        }
+        return chain;
+    }
+
+    String parseMathOperation(GnocchiParser.MathOperationContext ctx) {
         int numberOfOpenBrackets = 0;
         String currentOpertionChain = new String();
-        for (int i = ctx.math_operator().size() - 1  ; i >= 0; i--) {
-            switch (ctx.math_operator(i).getText()) {
+        for (int i = ctx.mathOperator().size() - 1  ; i >= 0; i--) {
+            switch (ctx.mathOperator(i).getText()) {
                 case ("*"): {
                     currentOpertionChain += "Util.multiply(" + ctx.op(i+1).getText() + ", ";
                     currentOpertionChain += i == 0 ? ctx.op(i).getText() : "";
@@ -29,7 +60,7 @@ public class OperationHandler {
                     numberOfOpenBrackets = 0;
 
                     String argument = currentOpertionChain.isEmpty() ? ctx.op(i+1).getText() : currentOpertionChain;
-                    newOperatosList.add(ctx.math_operator(i).getText());
+                    newOperatosList.add(ctx.mathOperator(i).getText());
                     newArgumentsList.add(argument);
                     currentOpertionChain = "";
                 }

@@ -1,4 +1,4 @@
-// Generated from Gnocchi.g4 by ANTLR 4.7.1
+// Generated from Gnocchi.G4 by ANTLR 4.7.1
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
@@ -100,7 +100,7 @@ public class GnocchiLexer extends Lexer {
 	}
 
 	@Override
-	public String getGrammarFileName() { return "Gnocchi.g4"; }
+	public String getGrammarFileName() { return "Gnocchi.G4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }

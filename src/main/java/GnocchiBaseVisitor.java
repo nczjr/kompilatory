@@ -1,4 +1,4 @@
-// Generated from Gnocchi.g4 by ANTLR 4.7.1
+// Generated from Gnocchi.G4 by ANTLR 4.7.1
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
 /**
@@ -177,14 +177,14 @@ public class GnocchiBaseVisitor<T> extends AbstractParseTreeVisitor<T> implement
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitLogical_operation(GnocchiParser.Logical_operationContext ctx) { return visitChildren(ctx); }
+	@Override public T visitLogicalOperation(GnocchiParser.LogicalOperationContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitMath_operation(GnocchiParser.Math_operationContext ctx) { return visitChildren(ctx); }
+	@Override public T visitMathOperation(GnocchiParser.MathOperationContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -198,12 +198,12 @@ public class GnocchiBaseVisitor<T> extends AbstractParseTreeVisitor<T> implement
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitMath_operator(GnocchiParser.Math_operatorContext ctx) { return visitChildren(ctx); }
+	@Override public T visitMathOperator(GnocchiParser.MathOperatorContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitLogical_operator(GnocchiParser.Logical_operatorContext ctx) { return visitChildren(ctx); }
+	@Override public T visitLogicalOperator(GnocchiParser.LogicalOperatorContext ctx) { return visitChildren(ctx); }
 }
