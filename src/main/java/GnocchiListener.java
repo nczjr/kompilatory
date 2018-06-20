@@ -117,6 +117,16 @@ public interface GnocchiListener extends ParseTreeListener {
 	 */
 	void exitVariableDeclaration(GnocchiParser.VariableDeclarationContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link GnocchiParser#variableFunctionAssigment}.
+	 * @param ctx the parse tree
+	 */
+	void enterVariableFunctionAssigment(GnocchiParser.VariableFunctionAssigmentContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GnocchiParser#variableFunctionAssigment}.
+	 * @param ctx the parse tree
+	 */
+	void exitVariableFunctionAssigment(GnocchiParser.VariableFunctionAssigmentContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link GnocchiParser#variableAssigment}.
 	 * @param ctx the parse tree
 	 */

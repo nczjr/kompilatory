@@ -49,6 +49,10 @@ grammar Gnocchi;
   : identifier (ASSIGNMENT value)?
   ;
 
+  variableFunctionAssigment
+  : identifier ASSIGNMENT functionCall
+  ;
+
   variableAssigment
   : identifier ASSIGNMENT values
   ;
@@ -123,9 +127,10 @@ grammar Gnocchi;
   ;
 
   expression
-  : variableOperations
+  : functionCall
+  | variableFunctionAssigment
+  | variableOperations
   | operation
-  | functionCall
   | ifStatement
   | iterationStatement
   | printFunction

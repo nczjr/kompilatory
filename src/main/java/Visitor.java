@@ -24,6 +24,24 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
     }
 
     @Override
+    public Variable visitVoidFunctionDeclaration(GnocchiParser.VoidFunctionDeclarationContext ctx) {
+        clearVariables();
+        String identifier = ctx.identifier().getText();
+        String[] arguments = {};
+        fileGenerator.writeVoidFunctionWith(identifier, arguments);
+        super.visitVoidFunctionDeclaration(ctx);
+        fileGenerator.writeln("   }");
+        return null;
+    }
+
+    @Override
+    public Variable visitLogicalOperation(GnocchiParser.LogicalOperationContext ctx) {
+        OperationHandler handler = new OperationHandler();
+        fileGenerator.write(handler.parseLogicalOperation(ctx));
+        return super.visitLogicalOperation(ctx);
+    }
+
+    @Override
     public Variable visitIfStatement(GnocchiParser.IfStatementContext ctx) {
         fileGenerator.write("if (");
         visitLogicalOperation(ctx.logicalOperation());
@@ -43,21 +61,10 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
     }
 
     @Override
-    public Variable visitVoidFunctionDeclaration(GnocchiParser.VoidFunctionDeclarationContext ctx) {
-        clearVariables();
+    public Variable visitVariableFunctionAssigment(GnocchiParser.VariableFunctionAssigmentContext ctx) {
         String identifier = ctx.identifier().getText();
-        String[] arguments = {};
-        fileGenerator.writeVoidFunctionWith(identifier, arguments);
-        super.visitVoidFunctionDeclaration(ctx);
-        fileGenerator.writeln("   }");
-        return null;
-    }
-
-    @Override
-    public Variable visitLogicalOperation(GnocchiParser.LogicalOperationContext ctx) {
-        OperationHandler handler = new OperationHandler();
-        fileGenerator.write(handler.parseLogicalOperation(ctx));
-        return super.visitLogicalOperation(ctx);
+        fileGenerator.write("Object " + identifier + " = ");
+        return super.visitVariableFunctionAssigment(ctx);
     }
 
     @Override

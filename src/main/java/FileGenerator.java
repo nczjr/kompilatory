@@ -18,10 +18,6 @@ public class FileGenerator {
         }
     }
 
-    void writeIfStatment(String statment) {
-        writer.println("if (" + statment + ") {");
-    }
-
     void writeVoidFunctionWith(String identifier, String[] arguments) {
         writer.print("  void " + identifier + "(");
         for (String argument: arguments) {

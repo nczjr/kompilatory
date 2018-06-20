@@ -147,6 +147,18 @@ public class GnocchiBaseListener implements GnocchiListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterVariableFunctionAssigment(GnocchiParser.VariableFunctionAssigmentContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitVariableFunctionAssigment(GnocchiParser.VariableFunctionAssigmentContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterVariableAssigment(GnocchiParser.VariableAssigmentContext ctx) { }
 	/**
 	 * {@inheritDoc}

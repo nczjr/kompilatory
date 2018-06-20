@@ -76,6 +76,12 @@ public interface GnocchiVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitVariableDeclaration(GnocchiParser.VariableDeclarationContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link GnocchiParser#variableFunctionAssigment}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitVariableFunctionAssigment(GnocchiParser.VariableFunctionAssigmentContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link GnocchiParser#variableAssigment}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
