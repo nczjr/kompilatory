@@ -59,8 +59,22 @@ grammar Gnocchi;
   | identifier
   ;
 
+  printFunction
+  : PRINT OPEN_PARENTHESIS printExpression CLOSE_PARENTHESIS
+  ;
+
+  printExpression
+  : STRING_VALUE
+  | identifier
+  | mathOperation
+  ;
+
     ifStatement
-    :   IF OPEN_PARENTHESIS logicalOperation CLOSE_PARENTHESIS body (ELSE body)?
+    : IF OPEN_PARENTHESIS logicalOperation CLOSE_PARENTHESIS body elsePattern?
+    ;
+
+    elsePattern
+    : ELSE body
     ;
 
     iterationStatement
@@ -114,6 +128,7 @@ grammar Gnocchi;
   | functionCall
   | ifStatement
   | iterationStatement
+  | printFunction
   ;
 
 
@@ -153,6 +168,7 @@ grammar Gnocchi;
   //Tokeny
 
   VAR: 'var';
+  PRINT: 'print';
   FUNC: 'func';
   RETURN: 'return';
   MAIN: 'main';

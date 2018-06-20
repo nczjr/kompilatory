@@ -137,6 +137,26 @@ public interface GnocchiListener extends ParseTreeListener {
 	 */
 	void exitValues(GnocchiParser.ValuesContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link GnocchiParser#printFunction}.
+	 * @param ctx the parse tree
+	 */
+	void enterPrintFunction(GnocchiParser.PrintFunctionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GnocchiParser#printFunction}.
+	 * @param ctx the parse tree
+	 */
+	void exitPrintFunction(GnocchiParser.PrintFunctionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GnocchiParser#printExpression}.
+	 * @param ctx the parse tree
+	 */
+	void enterPrintExpression(GnocchiParser.PrintExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GnocchiParser#printExpression}.
+	 * @param ctx the parse tree
+	 */
+	void exitPrintExpression(GnocchiParser.PrintExpressionContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link GnocchiParser#ifStatement}.
 	 * @param ctx the parse tree
 	 */
@@ -146,6 +166,16 @@ public interface GnocchiListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitIfStatement(GnocchiParser.IfStatementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GnocchiParser#elsePattern}.
+	 * @param ctx the parse tree
+	 */
+	void enterElsePattern(GnocchiParser.ElsePatternContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GnocchiParser#elsePattern}.
+	 * @param ctx the parse tree
+	 */
+	void exitElsePattern(GnocchiParser.ElsePatternContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link GnocchiParser#iterationStatement}.
 	 * @param ctx the parse tree

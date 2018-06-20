@@ -26,8 +26,19 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
     @Override
     public Variable visitIfStatement(GnocchiParser.IfStatementContext ctx) {
         fileGenerator.write("if (");
-        super.visitIfStatement(ctx);
+        visitLogicalOperation(ctx.logicalOperation());
         fileGenerator.write(") {");
+        visitBody(ctx.body());
+        fileGenerator.write("}");
+        visitElsePattern(ctx.elsePattern());
+        return null;
+    }
+
+    @Override
+    public Variable visitElsePattern(GnocchiParser.ElsePatternContext ctx) {
+        fileGenerator.write("else {");
+        super.visitElsePattern(ctx);
+        fileGenerator.write("}");
         return null;
     }
 
@@ -95,7 +106,8 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
     public Variable visitVariableDeclaration(GnocchiParser.VariableDeclarationContext ctx) {
         String identifier = ctx.identifier().getText();
         String value = ctx.value().getText();
-        if (variables.contains(identifier)) {
+        if (variables.stream()
+                .anyMatch(variable -> variable.getIdentifier().equals(identifier))) {
             fileGenerator.writeVariableAssigment(identifier, value);
         } else {
             variables.add(fileGenerator.variableDeclaration(identifier, value));

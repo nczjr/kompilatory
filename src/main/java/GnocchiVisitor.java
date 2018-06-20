@@ -88,11 +88,29 @@ public interface GnocchiVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitValues(GnocchiParser.ValuesContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link GnocchiParser#printFunction}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPrintFunction(GnocchiParser.PrintFunctionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GnocchiParser#printExpression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPrintExpression(GnocchiParser.PrintExpressionContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link GnocchiParser#ifStatement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitIfStatement(GnocchiParser.IfStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GnocchiParser#elsePattern}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitElsePattern(GnocchiParser.ElsePatternContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link GnocchiParser#iterationStatement}.
 	 * @param ctx the parse tree
