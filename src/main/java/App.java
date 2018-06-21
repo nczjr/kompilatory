@@ -20,7 +20,7 @@ public class App {
         visitor.visit(parseTree);
         GnocchiParser.StartContext context = parser.start();
 
-        functionGenerator.closeWriter();
+        generator.closeWriter();
     }
 
     public static String readFileAsString(String filePath) throws IOException {

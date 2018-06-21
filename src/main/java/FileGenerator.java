@@ -30,7 +30,7 @@ public class FileGenerator {
     }
 
     void writeVoidFunctionWith(String identifier, String[] arguments) {
-        writer.print("  void " + identifier + "(");
+        writer.print(" static void " + identifier + "(");
         for (int i= 0; i<arguments.length; i++) {
             if (i!= 0) writer.print(", ");
             writer.print("Object" + " " + arguments[i] );
@@ -39,7 +39,7 @@ public class FileGenerator {
     }
 
     void writeReturnFunctionWith(String identifier, String[] arguments, String returnType) {
-        writer.print("  " + returnType + " " + identifier + "(");
+        writer.print(" static " + returnType + " " + identifier + "(");
         for (int i= 0; i<arguments.length; i++) {
             if (i!= 0) writer.print(", ");
             writer.print("Object" + " " + arguments[i] );
@@ -78,7 +78,7 @@ public class FileGenerator {
     }
 
     public void writeFunctionCall(String function, List<String> arguments) {
-        writer.print("new FunctionGnocchi()." + function + "(");
+        writer.print(function + "(");
         for(int i=0; i<arguments.size(); i++){
             if (i!=0) {
                 writer.print(",");
