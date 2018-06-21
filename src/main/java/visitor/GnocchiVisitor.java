@@ -155,24 +155,6 @@ public interface GnocchiVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitUnaryExpression(GnocchiParser.UnaryExpressionContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link GnocchiParser#type}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitType(GnocchiParser.TypeContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link GnocchiParser#basicType}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitBasicType(GnocchiParser.BasicTypeContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link GnocchiParser#arrayType}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitArrayType(GnocchiParser.ArrayTypeContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link GnocchiParser#value}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

@@ -248,36 +248,6 @@ public interface GnocchiListener extends ParseTreeListener {
 	 */
 	void exitUnaryExpression(GnocchiParser.UnaryExpressionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GnocchiParser#type}.
-	 * @param ctx the parse tree
-	 */
-	void enterType(GnocchiParser.TypeContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link GnocchiParser#type}.
-	 * @param ctx the parse tree
-	 */
-	void exitType(GnocchiParser.TypeContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link GnocchiParser#basicType}.
-	 * @param ctx the parse tree
-	 */
-	void enterBasicType(GnocchiParser.BasicTypeContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link GnocchiParser#basicType}.
-	 * @param ctx the parse tree
-	 */
-	void exitBasicType(GnocchiParser.BasicTypeContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link GnocchiParser#arrayType}.
-	 * @param ctx the parse tree
-	 */
-	void enterArrayType(GnocchiParser.ArrayTypeContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link GnocchiParser#arrayType}.
-	 * @param ctx the parse tree
-	 */
-	void exitArrayType(GnocchiParser.ArrayTypeContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link GnocchiParser#value}.
 	 * @param ctx the parse tree
 	 */
