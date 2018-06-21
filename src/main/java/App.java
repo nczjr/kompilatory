@@ -1,19 +1,22 @@
+import lexer.GnocchiLexer;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
+import parser.GnocchiParser;
+import util.FileGenerator;
+import visitor.Visitor;
 
 import java.io.*;
 
 public class App {
 
-//    private static final String path = "C:\\Users\\User.DESKTOP-57LLUVE\\IdeaProjects\\kompilatory\\src\\main\\java\\";
-    private static final String path = "/Users/marcinwloczko/IdeaProjects/kompilatory/src/main/java/";
+    private static final String path = "C:\\Users\\User.DESKTOP-57LLUVE\\IdeaProjects\\kompilatory\\src\\main\\java\\";
+//    private static final String path = "/Users/marcinwloczko/IdeaProjects/kompilatory/src/main/java/";
 
     public static void main(String[] args) throws IOException {
         GnocchiLexer gnocchiLexer = new GnocchiLexer(new ANTLRInputStream( readFileAsString(path + "file.gnocchi")));
         CommonTokenStream tokens = new CommonTokenStream(gnocchiLexer);
         FileGenerator generator = new FileGenerator(path + "AppGnocchi.java" );
-        FileGenerator functionGenerator = new FileGenerator(path + "FunctionGnocchi.java" );
         GnocchiParser parser = new GnocchiParser(tokens);
         GnocchiErrorListner errorListner = new GnocchiErrorListner(path, "file.gnocchi");
 
@@ -21,7 +24,7 @@ public class App {
         parser.addErrorListener(errorListner);
 
         ParseTree parseTree = parser.start();
-        Visitor visitor = new Visitor(generator,functionGenerator);
+        Visitor visitor = new Visitor(generator);
         visitor.visit(parseTree);
         GnocchiParser.StartContext context = parser.start();
 

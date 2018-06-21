@@ -41,6 +41,7 @@ public class GnocchiErrorListner implements ANTLRErrorListener {
 
     @Override
     public void reportContextSensitivity(Parser parser, DFA dfa, int i, int i1, int i2, ATNConfigSet atnConfigSet) {
+package listener;
 
     }
 

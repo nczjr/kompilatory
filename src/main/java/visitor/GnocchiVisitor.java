@@ -1,5 +1,6 @@
-// Generated from Gnocchi.G4 by ANTLR 4.7.1
+package visitor;// Generated from Gnocchi.G4 by ANTLR 4.7.1
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
+import parser.GnocchiParser;
 
 /**
  * This interface defines a complete generic visitor for a parse tree produced

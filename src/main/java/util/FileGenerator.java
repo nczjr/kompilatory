@@ -1,16 +1,14 @@
-import org.apache.commons.lang3.math.NumberUtils;
+package util;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-import static org.apache.commons.lang3.StringUtils.isNumeric;
-
 public class FileGenerator {
 
     private PrintWriter writer;
 
-    FileGenerator(String destinationPath) {
+    public FileGenerator(String destinationPath) {
         try {
             this.writer = new PrintWriter(destinationPath, "UTF-8");
         } catch (IOException e) {
@@ -18,18 +16,15 @@ public class FileGenerator {
         }
     }
 
-    void writeIfStatment(String statment) {
+    public void writeIfStatment(String statment) {
         writer.println("if (" + statment + ") {");
     }
 
-    void writeFunctionClassDef() {
-        writeln("public class FunctionGnocchi { ");
-    }
-    void writePrint(String text) {
+    public void writePrint(String text) {
         writer.println("System.out.println( " +  text + ");");
     }
 
-    void writeVoidFunctionWith(String identifier, String[] arguments) {
+    public void writeVoidFunctionWith(String identifier, String[] arguments) {
         writer.print(" static void " + identifier + "(");
         for (int i= 0; i<arguments.length; i++) {
             if (i!= 0) writer.print(", ");
@@ -38,7 +33,7 @@ public class FileGenerator {
         writer.println(") {");
     }
 
-    void writeReturnFunctionWith(String identifier, String[] arguments, String returnType) {
+    public void writeReturnFunctionWith(String identifier, String[] arguments, String returnType) {
         writer.print(" static " + returnType + " " + identifier + "(");
         for (int i= 0; i<arguments.length; i++) {
             if (i!= 0) writer.print(", ");
@@ -48,31 +43,32 @@ public class FileGenerator {
         writer.println(") {");
     }
 
-     Variable variableDeclaration(String identifer, String initValue) {
+     public Variable variableDeclaration(String identifer, String initValue) {
         writer.println("Object " + identifer + " = " + initValue + ";");
-        return new Variable(identifer, Type.valueOf("Object".toUpperCase()));
+        return new Variable(identifer, "Object");
 
 
     }
 
-    void writeVariableAssigment(String identifer, String value) {
+    public void writeVariableAssigment(String identifer, String value) {
         writer.println(identifer + " = " + value + ";");
     }
 
-    void writeln(String text) {
+    public void writeln(String text) {
         writer.println(text);
     }
 
-    void write(String text) {
+    public void write(String text) {
         writer.print(text);
     }
 
-    void writeMain() {
+    public void writeMain() {
+        writer.println("import static util.Math.*;");
         writer.println("public class AppGnocchi {");
         writer.println("    public static void main(String[] args) {");
     }
 
-    void closeWriter() {
+    public void closeWriter() {
         writer.print("}");
         writer.close();
     }

@@ -1,5 +1,6 @@
-// Generated from Gnocchi.G4 by ANTLR 4.7.1
+package visitor;// Generated from Gnocchi.G4 by ANTLR 4.7.1
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
+import parser.GnocchiParser;
 
 /**
  * This class provides an empty implementation of {@link GnocchiVisitor},

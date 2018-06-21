@@ -1,16 +1,6 @@
-import org.apache.commons.lang3.math.NumberUtils;
+package util;
 
-public class Util {
-
-
-    private static boolean isInteger(String s) {
-        try {
-            Integer.parseInt(s);
-        } catch(NumberFormatException e) {
-            return false;
-        }
-        return true;
-    }
+public class Math {
 
     public static Object add(Object a, Object b) {
         if (a.getClass() == String.class || b.getClass() == String.class) {

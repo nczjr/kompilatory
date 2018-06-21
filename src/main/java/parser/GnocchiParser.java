@@ -1,12 +1,11 @@
-// Generated from Gnocchi.G4 by ANTLR 4.7.1
+package parser;// Generated from Gnocchi.G4 by ANTLR 4.7.1
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
-import org.antlr.v4.runtime.misc.*;
 import org.antlr.v4.runtime.tree.*;
 import java.util.List;
-import java.util.Iterator;
-import java.util.ArrayList;
+import listener.*;
+import visitor.*;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class GnocchiParser extends Parser {
@@ -135,15 +134,15 @@ public class GnocchiParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_start; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).enterStart(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).enterStart(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).exitStart(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).exitStart(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GnocchiVisitor ) return ((GnocchiVisitor<? extends T>)visitor).visitStart(this);
+			if ( visitor instanceof GnocchiVisitor) return ((GnocchiVisitor<? extends T>)visitor).visitStart(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -206,15 +205,15 @@ public class GnocchiParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_identifier; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).enterIdentifier(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).enterIdentifier(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).exitIdentifier(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).exitIdentifier(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GnocchiVisitor ) return ((GnocchiVisitor<? extends T>)visitor).visitIdentifier(this);
+			if ( visitor instanceof GnocchiVisitor) return ((GnocchiVisitor<? extends T>)visitor).visitIdentifier(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -254,15 +253,15 @@ public class GnocchiParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_functionMain; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).enterFunctionMain(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).enterFunctionMain(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).exitFunctionMain(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).exitFunctionMain(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GnocchiVisitor ) return ((GnocchiVisitor<? extends T>)visitor).visitFunctionMain(this);
+			if ( visitor instanceof GnocchiVisitor) return ((GnocchiVisitor<? extends T>)visitor).visitFunctionMain(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -315,15 +314,15 @@ public class GnocchiParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_voidFunctionDeclaration; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).enterVoidFunctionDeclaration(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).enterVoidFunctionDeclaration(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).exitVoidFunctionDeclaration(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).exitVoidFunctionDeclaration(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GnocchiVisitor ) return ((GnocchiVisitor<? extends T>)visitor).visitVoidFunctionDeclaration(this);
+			if ( visitor instanceof GnocchiVisitor) return ((GnocchiVisitor<? extends T>)visitor).visitVoidFunctionDeclaration(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -387,15 +386,15 @@ public class GnocchiParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_returningFunctionDeclaration; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).enterReturningFunctionDeclaration(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).enterReturningFunctionDeclaration(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).exitReturningFunctionDeclaration(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).exitReturningFunctionDeclaration(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GnocchiVisitor ) return ((GnocchiVisitor<? extends T>)visitor).visitReturningFunctionDeclaration(this);
+			if ( visitor instanceof GnocchiVisitor) return ((GnocchiVisitor<? extends T>)visitor).visitReturningFunctionDeclaration(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -462,15 +461,15 @@ public class GnocchiParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_functionCall; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).enterFunctionCall(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).enterFunctionCall(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).exitFunctionCall(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).exitFunctionCall(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GnocchiVisitor ) return ((GnocchiVisitor<? extends T>)visitor).visitFunctionCall(this);
+			if ( visitor instanceof GnocchiVisitor) return ((GnocchiVisitor<? extends T>)visitor).visitFunctionCall(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -544,15 +543,15 @@ public class GnocchiParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_parameterList; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).enterParameterList(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).enterParameterList(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).exitParameterList(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).exitParameterList(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GnocchiVisitor ) return ((GnocchiVisitor<? extends T>)visitor).visitParameterList(this);
+			if ( visitor instanceof GnocchiVisitor) return ((GnocchiVisitor<? extends T>)visitor).visitParameterList(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -618,15 +617,15 @@ public class GnocchiParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_functionBody; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).enterFunctionBody(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).enterFunctionBody(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).exitFunctionBody(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).exitFunctionBody(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GnocchiVisitor ) return ((GnocchiVisitor<? extends T>)visitor).visitFunctionBody(this);
+			if ( visitor instanceof GnocchiVisitor) return ((GnocchiVisitor<? extends T>)visitor).visitFunctionBody(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -698,15 +697,15 @@ public class GnocchiParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_body; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).enterBody(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).enterBody(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).exitBody(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).exitBody(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GnocchiVisitor ) return ((GnocchiVisitor<? extends T>)visitor).visitBody(this);
+			if ( visitor instanceof GnocchiVisitor) return ((GnocchiVisitor<? extends T>)visitor).visitBody(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -764,15 +763,15 @@ public class GnocchiParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_variableOperations; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).enterVariableOperations(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).enterVariableOperations(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).exitVariableOperations(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).exitVariableOperations(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GnocchiVisitor ) return ((GnocchiVisitor<? extends T>)visitor).visitVariableOperations(this);
+			if ( visitor instanceof GnocchiVisitor) return ((GnocchiVisitor<? extends T>)visitor).visitVariableOperations(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -825,15 +824,15 @@ public class GnocchiParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_variableDeclaration; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).enterVariableDeclaration(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).enterVariableDeclaration(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).exitVariableDeclaration(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).exitVariableDeclaration(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GnocchiVisitor ) return ((GnocchiVisitor<? extends T>)visitor).visitVariableDeclaration(this);
+			if ( visitor instanceof GnocchiVisitor) return ((GnocchiVisitor<? extends T>)visitor).visitVariableDeclaration(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -886,15 +885,15 @@ public class GnocchiParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_variableFunctionAssigment; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).enterVariableFunctionAssigment(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).enterVariableFunctionAssigment(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).exitVariableFunctionAssigment(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).exitVariableFunctionAssigment(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GnocchiVisitor ) return ((GnocchiVisitor<? extends T>)visitor).visitVariableFunctionAssigment(this);
+			if ( visitor instanceof GnocchiVisitor) return ((GnocchiVisitor<? extends T>)visitor).visitVariableFunctionAssigment(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -938,15 +937,15 @@ public class GnocchiParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_variableAssigment; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).enterVariableAssigment(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).enterVariableAssigment(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).exitVariableAssigment(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).exitVariableAssigment(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GnocchiVisitor ) return ((GnocchiVisitor<? extends T>)visitor).visitVariableAssigment(this);
+			if ( visitor instanceof GnocchiVisitor) return ((GnocchiVisitor<? extends T>)visitor).visitVariableAssigment(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -992,15 +991,15 @@ public class GnocchiParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_values; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).enterValues(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).enterValues(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).exitValues(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).exitValues(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GnocchiVisitor ) return ((GnocchiVisitor<? extends T>)visitor).visitValues(this);
+			if ( visitor instanceof GnocchiVisitor) return ((GnocchiVisitor<? extends T>)visitor).visitValues(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1059,15 +1058,15 @@ public class GnocchiParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_printFunction; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).enterPrintFunction(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).enterPrintFunction(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).exitPrintFunction(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).exitPrintFunction(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GnocchiVisitor ) return ((GnocchiVisitor<? extends T>)visitor).visitPrintFunction(this);
+			if ( visitor instanceof GnocchiVisitor) return ((GnocchiVisitor<? extends T>)visitor).visitPrintFunction(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1115,15 +1114,15 @@ public class GnocchiParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_printExpression; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).enterPrintExpression(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).enterPrintExpression(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).exitPrintExpression(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).exitPrintExpression(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GnocchiVisitor ) return ((GnocchiVisitor<? extends T>)visitor).visitPrintExpression(this);
+			if ( visitor instanceof GnocchiVisitor) return ((GnocchiVisitor<? extends T>)visitor).visitPrintExpression(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1188,15 +1187,15 @@ public class GnocchiParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_ifStatement; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).enterIfStatement(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).enterIfStatement(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).exitIfStatement(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).exitIfStatement(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GnocchiVisitor ) return ((GnocchiVisitor<? extends T>)visitor).visitIfStatement(this);
+			if ( visitor instanceof GnocchiVisitor) return ((GnocchiVisitor<? extends T>)visitor).visitIfStatement(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1252,15 +1251,15 @@ public class GnocchiParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_elsePattern; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).enterElsePattern(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).enterElsePattern(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).exitElsePattern(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).exitElsePattern(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GnocchiVisitor ) return ((GnocchiVisitor<? extends T>)visitor).visitElsePattern(this);
+			if ( visitor instanceof GnocchiVisitor) return ((GnocchiVisitor<? extends T>)visitor).visitElsePattern(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1304,15 +1303,15 @@ public class GnocchiParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_iterationStatement; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).enterIterationStatement(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).enterIterationStatement(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).exitIterationStatement(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).exitIterationStatement(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GnocchiVisitor ) return ((GnocchiVisitor<? extends T>)visitor).visitIterationStatement(this);
+			if ( visitor instanceof GnocchiVisitor) return ((GnocchiVisitor<? extends T>)visitor).visitIterationStatement(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1376,15 +1375,15 @@ public class GnocchiParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_whileCondition; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).enterWhileCondition(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).enterWhileCondition(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).exitWhileCondition(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).exitWhileCondition(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GnocchiVisitor ) return ((GnocchiVisitor<? extends T>)visitor).visitWhileCondition(this);
+			if ( visitor instanceof GnocchiVisitor) return ((GnocchiVisitor<? extends T>)visitor).visitWhileCondition(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1435,15 +1434,15 @@ public class GnocchiParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_doCondition; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).enterDoCondition(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).enterDoCondition(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).exitDoCondition(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).exitDoCondition(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GnocchiVisitor ) return ((GnocchiVisitor<? extends T>)visitor).visitDoCondition(this);
+			if ( visitor instanceof GnocchiVisitor) return ((GnocchiVisitor<? extends T>)visitor).visitDoCondition(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1505,15 +1504,15 @@ public class GnocchiParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_forCondition; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).enterForCondition(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).enterForCondition(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).exitForCondition(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).exitForCondition(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GnocchiVisitor ) return ((GnocchiVisitor<? extends T>)visitor).visitForCondition(this);
+			if ( visitor instanceof GnocchiVisitor) return ((GnocchiVisitor<? extends T>)visitor).visitForCondition(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1567,15 +1566,15 @@ public class GnocchiParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_unaryExpression; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).enterUnaryExpression(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).enterUnaryExpression(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).exitUnaryExpression(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).exitUnaryExpression(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GnocchiVisitor ) return ((GnocchiVisitor<? extends T>)visitor).visitUnaryExpression(this);
+			if ( visitor instanceof GnocchiVisitor) return ((GnocchiVisitor<? extends T>)visitor).visitUnaryExpression(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1631,15 +1630,15 @@ public class GnocchiParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_type; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).enterType(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).enterType(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).exitType(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).exitType(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GnocchiVisitor ) return ((GnocchiVisitor<? extends T>)visitor).visitType(this);
+			if ( visitor instanceof GnocchiVisitor) return ((GnocchiVisitor<? extends T>)visitor).visitType(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1692,15 +1691,15 @@ public class GnocchiParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_basicType; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).enterBasicType(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).enterBasicType(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).exitBasicType(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).exitBasicType(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GnocchiVisitor ) return ((GnocchiVisitor<? extends T>)visitor).visitBasicType(this);
+			if ( visitor instanceof GnocchiVisitor) return ((GnocchiVisitor<? extends T>)visitor).visitBasicType(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1747,15 +1746,15 @@ public class GnocchiParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_arrayType; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).enterArrayType(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).enterArrayType(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).exitArrayType(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).exitArrayType(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GnocchiVisitor ) return ((GnocchiVisitor<? extends T>)visitor).visitArrayType(this);
+			if ( visitor instanceof GnocchiVisitor) return ((GnocchiVisitor<? extends T>)visitor).visitArrayType(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1795,15 +1794,15 @@ public class GnocchiParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_value; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).enterValue(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).enterValue(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).exitValue(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).exitValue(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GnocchiVisitor ) return ((GnocchiVisitor<? extends T>)visitor).visitValue(this);
+			if ( visitor instanceof GnocchiVisitor) return ((GnocchiVisitor<? extends T>)visitor).visitValue(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1866,15 +1865,15 @@ public class GnocchiParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_expression; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).enterExpression(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).enterExpression(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).exitExpression(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).exitExpression(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GnocchiVisitor ) return ((GnocchiVisitor<? extends T>)visitor).visitExpression(this);
+			if ( visitor instanceof GnocchiVisitor) return ((GnocchiVisitor<? extends T>)visitor).visitExpression(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1961,15 +1960,15 @@ public class GnocchiParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_operation; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).enterOperation(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).enterOperation(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).exitOperation(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).exitOperation(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GnocchiVisitor ) return ((GnocchiVisitor<? extends T>)visitor).visitOperation(this);
+			if ( visitor instanceof GnocchiVisitor) return ((GnocchiVisitor<? extends T>)visitor).visitOperation(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -2024,15 +2023,15 @@ public class GnocchiParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_logicalOperation; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).enterLogicalOperation(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).enterLogicalOperation(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).exitLogicalOperation(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).exitLogicalOperation(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GnocchiVisitor ) return ((GnocchiVisitor<? extends T>)visitor).visitLogicalOperation(this);
+			if ( visitor instanceof GnocchiVisitor) return ((GnocchiVisitor<? extends T>)visitor).visitLogicalOperation(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -2081,15 +2080,15 @@ public class GnocchiParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_mathOperation; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).enterMathOperation(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).enterMathOperation(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).exitMathOperation(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).exitMathOperation(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GnocchiVisitor ) return ((GnocchiVisitor<? extends T>)visitor).visitMathOperation(this);
+			if ( visitor instanceof GnocchiVisitor) return ((GnocchiVisitor<? extends T>)visitor).visitMathOperation(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -2149,15 +2148,15 @@ public class GnocchiParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_op; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).enterOp(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).enterOp(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).exitOp(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).exitOp(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GnocchiVisitor ) return ((GnocchiVisitor<? extends T>)visitor).visitOp(this);
+			if ( visitor instanceof GnocchiVisitor) return ((GnocchiVisitor<? extends T>)visitor).visitOp(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -2212,15 +2211,15 @@ public class GnocchiParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_mathOperator; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).enterMathOperator(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).enterMathOperator(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).exitMathOperator(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).exitMathOperator(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GnocchiVisitor ) return ((GnocchiVisitor<? extends T>)visitor).visitMathOperator(this);
+			if ( visitor instanceof GnocchiVisitor) return ((GnocchiVisitor<? extends T>)visitor).visitMathOperator(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -2268,15 +2267,15 @@ public class GnocchiParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_logicalOperator; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).enterLogicalOperator(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).enterLogicalOperator(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GnocchiListener ) ((GnocchiListener)listener).exitLogicalOperator(this);
+			if ( listener instanceof GnocchiListener) ((GnocchiListener)listener).exitLogicalOperator(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GnocchiVisitor ) return ((GnocchiVisitor<? extends T>)visitor).visitLogicalOperator(this);
+			if ( visitor instanceof GnocchiVisitor) return ((GnocchiVisitor<? extends T>)visitor).visitLogicalOperator(this);
 			else return visitor.visitChildren(this);
 		}
 	}
