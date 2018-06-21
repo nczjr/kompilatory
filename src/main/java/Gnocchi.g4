@@ -124,7 +124,7 @@ grammar Gnocchi;
   : OPEN_SQAURE_BRACKET basicType CLOSE_SQARE_BRACKET
   ;
 
-	value
+    value
   : INT_VALUE
   | DOUBLE_VALUE
   | STRING_VALUE

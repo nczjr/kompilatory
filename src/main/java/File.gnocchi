@@ -1,26 +1,7 @@
-func main() {
-    avg = avarage(2,3);
-    print(avg);
-    showValues(5);
-    a = 3;
-    b = 5;
-    c = sum(a,b);
-    for(i = 5; i < 3; i++) {
 
-        };
-    showValues(c);
-}
-func avarage(a, b) {
-    suma = a + b;
-    return suma/2 ;
-}
 
-func showValues(a) {
-    print(a);
-}
+    func main {    // <- Error at 10 character: mismatched input '{' expecting '('
+        a = 3;
+        b = 4;
+    }
 
-func sum(a,b) {
-    i = 3;
-    i = a + b;
-    return i;
-}
