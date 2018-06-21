@@ -1,8 +1,9 @@
-// Generated from Gnocchi.G4 by ANTLR 4.7.1
+package listener;// Generated from Gnocchi.G4 by ANTLR 4.7.1
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
+import parser.GnocchiParser;
 
 /**
  * This class provides an empty implementation of {@link GnocchiListener},

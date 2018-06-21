@@ -1,4 +1,10 @@
+package visitor;
+
 import org.antlr.v4.runtime.RuleContext;
+import parser.GnocchiParser;
+import util.FileGenerator;
+import util.OperationHandler;
+import util.Variable;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,12 +14,10 @@ import java.util.stream.Collectors;
 public class Visitor extends GnocchiBaseVisitor<Variable> {
 
     private FileGenerator fileGenerator;
-    private FileGenerator functionGenerator;
     private List<Variable> variables = new ArrayList<>();
 
-    Visitor(FileGenerator fileGenerator, FileGenerator functionGenerator) {
+    public Visitor(FileGenerator fileGenerator) {
         this.fileGenerator = fileGenerator;
-        this.functionGenerator = functionGenerator;
     }
 
     @Override
@@ -132,7 +136,7 @@ public class Visitor extends GnocchiBaseVisitor<Variable> {
                     variables.add(fileGenerator.variableDeclaration(identifier, ctx.values().getText()));
                 } else {
                     fileGenerator.write("Object " + identifier + " = ");
-                    variables.add(new Variable(identifier, Type.OBJECT));
+                    variables.add(new Variable(identifier, "Object"));
                     visitValues(ctx.values());
                 }
             }
