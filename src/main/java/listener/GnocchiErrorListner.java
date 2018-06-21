@@ -1,3 +1,4 @@
+package listener;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.atn.ATNConfigSet;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -12,7 +13,7 @@ public class GnocchiErrorListner implements ANTLRErrorListener {
     private String destinationFile;
     private String tmpFile;
 
-    GnocchiErrorListner(String destinationPath, String file) {
+    public GnocchiErrorListner(String destinationPath, String file) {
         try {
             this.writer = new PrintWriter(new BufferedWriter(new FileWriter(destinationPath + "file.tmp")));
             this.reader = new BufferedReader(new FileReader(destinationPath + file));
@@ -41,7 +42,6 @@ public class GnocchiErrorListner implements ANTLRErrorListener {
 
     @Override
     public void reportContextSensitivity(Parser parser, DFA dfa, int i, int i1, int i2, ATNConfigSet atnConfigSet) {
-package listener;
 
     }
 
