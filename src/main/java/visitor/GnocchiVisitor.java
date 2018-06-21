@@ -17,6 +17,12 @@ public interface GnocchiVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitStart(GnocchiParser.StartContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link GnocchiParser#block}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBlock(GnocchiParser.BlockContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link GnocchiParser#identifier}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

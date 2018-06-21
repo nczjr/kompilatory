@@ -75,6 +75,7 @@ grammar Gnocchi;
   : value
   | identifier
   | mathOperation
+  | functionCall
   ;
 
     ifStatement
@@ -108,21 +109,6 @@ grammar Gnocchi;
         :   identifier INCREMENT
         |   identifier DECREMENT
         ;
-
-  type
-  : basicType
-  | arrayType
-  ;
-
-  basicType
-  : INT
-  | DOUBLE
-  | STRING
-  ;
-
-  arrayType
-  : OPEN_SQAURE_BRACKET basicType CLOSE_SQARE_BRACKET
-  ;
 
     value
   : INT_VALUE
@@ -186,11 +172,6 @@ grammar Gnocchi;
 	FOR: 'for';
 	WHILE: 'while';
 	DO: 'do';
-	INT: 'Int';
-  STRING: 'String';
-  CHAR: 'Char';
-  BOOLEAN: 'Bool';
-  DOUBLE: 'Double';
   DOT: '.';
 
   ASSIGNMENT: '=';
@@ -207,14 +188,11 @@ grammar Gnocchi;
 
   SEMICOLON: ';';
   COLON: ':';
-  ARROW: '=>';
   COMMA: ',';
   OPEN_BRACKET: '{';
   CLOSE_BRACKET: '}';
   OPEN_PARENTHESIS: '(';
   CLOSE_PARENTHESIS: ')';
-  OPEN_SQAURE_BRACKET: '[';
-  CLOSE_SQARE_BRACKET: ']';
   INCREMENT: '++';
   DECREMENT: '--';
 
@@ -222,14 +200,11 @@ grammar Gnocchi;
 	:	('a'..'z' | 'A'..'Z' | '_') ('a'..'z' | 'A'..'Z' | '_' | '0'..'9')*
 	;
 
-  //STRING_VALUE: (CHAR_VALUE)+ ;
   STRING_VALUE: '"' ~('"')* '"';
-  CHAR_VALUE: [a-zA-Z] ;
    fragment
   DIGIT: '0' .. '9' ;
   INT_VALUE: DIGIT+;
   DOUBLE_VALUE: DIGIT+ DOT DIGIT+ ;
-  BOOLEAN_VALUE: 'true' | 'false' ;
 
   //Pomijane znaki
 

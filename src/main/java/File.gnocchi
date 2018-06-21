@@ -1,7 +1,22 @@
+func main() {
+    x = 3;
+    y = 7;
+    print(avarage(x, y));
+    print(connectText(3, "ccc", x));
+    countToTen();
+}
 
+func avarage(a,b) {
+    sum = a + b;
+    return sum/2;
+}
 
-    func main {    // <- Error at 10 character: mismatched input '{' expecting '('
-        a = 3;
-        b = 4;
-    }
+func connectText(a,b,c) {
+    return a + b + c;
+}
 
+func countToTen() {
+    for(i = 0; i <= 10; i++ ) {
+        print( "i = " + i);    
+    };
+}

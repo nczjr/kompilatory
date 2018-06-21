@@ -18,6 +18,16 @@ public interface GnocchiListener extends ParseTreeListener {
 	 */
 	void exitStart(GnocchiParser.StartContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link GnocchiParser#block}.
+	 * @param ctx the parse tree
+	 */
+	void enterBlock(GnocchiParser.BlockContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GnocchiParser#block}.
+	 * @param ctx the parse tree
+	 */
+	void exitBlock(GnocchiParser.BlockContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link GnocchiParser#identifier}.
 	 * @param ctx the parse tree
 	 */
